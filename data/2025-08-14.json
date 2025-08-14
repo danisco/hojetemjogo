@@ -211,6 +211,146 @@
   },
   {
     "fixture": {
+      "id": 1377455,
+      "referee": "Wilmar Alexander Roldán Pérez",
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-14T19:00:00-03:00",
+      "timestamp": 1755208800,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": null,
+        "name": "Estádio Olímpico Nilton Santos",
+        "city": "Rio de Janeiro"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "country": "World",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "flag": null,
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 120,
+        "name": "Botafogo",
+        "logo": "https://media.api-sports.io/football/teams/120.png",
+        "winner": null
+      },
+      "away": {
+        "id": 1158,
+        "name": "LDU de Quito",
+        "logo": "https://media.api-sports.io/football/teams/1158.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1377447,
+      "referee": "Facundo Raúl Tello Figueroa",
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-14T21:30:00-03:00",
+      "timestamp": 1755217800,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 1242,
+        "name": "Estadio Monumental",
+        "city": "Lima"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "country": "World",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "flag": null,
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 2540,
+        "name": "Universitario",
+        "logo": "https://media.api-sports.io/football/teams/2540.png",
+        "winner": null
+      },
+      "away": {
+        "id": 121,
+        "name": "Palmeiras",
+        "logo": "https://media.api-sports.io/football/teams/121.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
       "id": 1353478,
       "referee": null,
       "timezone": "America/Sao_Paulo",

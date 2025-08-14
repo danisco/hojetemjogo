@@ -211,6 +211,636 @@
   },
   {
     "fixture": {
+      "id": 1328697,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T13:00:00-03:00",
+      "timestamp": 1755273600,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 1175,
+        "name": "Aspmyra Stadion",
+        "city": "Bodø"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 725,
+      "name": "Toppserien",
+      "country": "Norway",
+      "logo": "https://media.api-sports.io/football/leagues/725.png",
+      "flag": "https://media.api-sports.io/flags/no.svg",
+      "season": 2025,
+      "round": "Regular Season - 17",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 22858,
+        "name": "Bodø / Glimt",
+        "logo": "https://media.api-sports.io/football/teams/22858.png",
+        "winner": null
+      },
+      "away": {
+        "id": 15953,
+        "name": "Stabæk W",
+        "logo": "https://media.api-sports.io/football/teams/15953.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1433619,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T13:00:00-03:00",
+      "timestamp": 1755273600,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 22168,
+        "name": "Bagsværd Stadion",
+        "city": "Bagsværd"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 125,
+      "name": "Denmark Series - Group 2",
+      "country": "Denmark",
+      "logo": "https://media.api-sports.io/football/leagues/125.png",
+      "flag": "https://media.api-sports.io/flags/dk.svg",
+      "season": 2025,
+      "round": "Group 2 - 2",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 24213,
+        "name": "Gladsaxe",
+        "logo": "https://media.api-sports.io/football/teams/24213.png",
+        "winner": null
+      },
+      "away": {
+        "id": 6055,
+        "name": "Skjold Sæby",
+        "logo": "https://media.api-sports.io/football/teams/6055.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1433530,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T13:30:00-03:00",
+      "timestamp": 1755275400,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 6174,
+        "name": "Frederikssund Stadion",
+        "city": "Frederikssund"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 124,
+      "name": "Denmark Series - Group 1",
+      "country": "Denmark",
+      "logo": "https://media.api-sports.io/football/leagues/124.png",
+      "flag": "https://media.api-sports.io/flags/dk.svg",
+      "season": 2025,
+      "round": "Group 1 - 2",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 8642,
+        "name": "Frederikssund",
+        "logo": "https://media.api-sports.io/football/teams/8642.png",
+        "winner": null
+      },
+      "away": {
+        "id": 14445,
+        "name": "Glostrup",
+        "logo": "https://media.api-sports.io/football/teams/14445.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1433620,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T13:30:00-03:00",
+      "timestamp": 1755275400,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 19820,
+        "name": "Gørslev Stadion",
+        "city": "Ringsted"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 125,
+      "name": "Denmark Series - Group 2",
+      "country": "Denmark",
+      "logo": "https://media.api-sports.io/football/leagues/125.png",
+      "flag": "https://media.api-sports.io/flags/dk.svg",
+      "season": 2025,
+      "round": "Group 2 - 2",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 19305,
+        "name": "Gørslev",
+        "logo": "https://media.api-sports.io/football/teams/19305.png",
+        "winner": null
+      },
+      "away": {
+        "id": 11522,
+        "name": "Fredensborg BI",
+        "logo": "https://media.api-sports.io/football/teams/11522.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1433621,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T13:30:00-03:00",
+      "timestamp": 1755275400,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 7602,
+        "name": "Ringsted Stadion",
+        "city": "Ringsted"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 125,
+      "name": "Denmark Series - Group 2",
+      "country": "Denmark",
+      "logo": "https://media.api-sports.io/football/leagues/125.png",
+      "flag": "https://media.api-sports.io/flags/dk.svg",
+      "season": 2025,
+      "round": "Group 2 - 2",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 11532,
+        "name": "Ringsted",
+        "logo": "https://media.api-sports.io/football/teams/11532.png",
+        "winner": null
+      },
+      "away": {
+        "id": 26314,
+        "name": "Sydkysten",
+        "logo": "https://media.api-sports.io/football/teams/26314.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1433701,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T13:45:00-03:00",
+      "timestamp": 1755276300,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": null,
+        "name": "Elsborg Park",
+        "city": "Hedensted"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 126,
+      "name": "Denmark Series - Group 3",
+      "country": "Denmark",
+      "logo": "https://media.api-sports.io/football/leagues/126.png",
+      "flag": "https://media.api-sports.io/flags/dk.svg",
+      "season": 2025,
+      "round": "Group 3 - 2",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 6023,
+        "name": "Hedensted",
+        "logo": "https://media.api-sports.io/football/teams/6023.png",
+        "winner": null
+      },
+      "away": {
+        "id": 6040,
+        "name": "Marienlyst",
+        "logo": "https://media.api-sports.io/football/teams/6040.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1342327,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T14:00:00-03:00",
+      "timestamp": 1755277200,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 1199,
+        "name": "Marienlyst Stadion",
+        "city": "Drammen"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 103,
+      "name": "Eliteserien",
+      "country": "Norway",
+      "logo": "https://media.api-sports.io/football/leagues/103.png",
+      "flag": "https://media.api-sports.io/flags/no.svg",
+      "season": 2025,
+      "round": "Regular Season - 18",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 324,
+        "name": "Stromsgodset",
+        "logo": "https://media.api-sports.io/football/teams/324.png",
+        "winner": null
+      },
+      "away": {
+        "id": 327,
+        "name": "Bodo/Glimt",
+        "logo": "https://media.api-sports.io/football/teams/327.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1433789,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T14:00:00-03:00",
+      "timestamp": 1755277200,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": null,
+        "name": "ASA grounds",
+        "city": "Århus"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 127,
+      "name": "Denmark Series - Group 4",
+      "country": "Denmark",
+      "logo": "https://media.api-sports.io/football/leagues/127.png",
+      "flag": "https://media.api-sports.io/flags/dk.svg",
+      "season": 2025,
+      "round": "Group 4 - 2",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 14443,
+        "name": "ASA Aarhus",
+        "logo": "https://media.api-sports.io/football/teams/14443.png",
+        "winner": null
+      },
+      "away": {
+        "id": 8647,
+        "name": "Aarhus Fremad II",
+        "logo": "https://media.api-sports.io/football/teams/8647.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1433790,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T14:15:00-03:00",
+      "timestamp": 1755278100,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 6180,
+        "name": "NES Park",
+        "city": "Risskov"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 127,
+      "name": "Denmark Series - Group 4",
+      "country": "Denmark",
+      "logo": "https://media.api-sports.io/football/leagues/127.png",
+      "flag": "https://media.api-sports.io/flags/dk.svg",
+      "season": 2025,
+      "round": "Group 4 - 2",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 8649,
+        "name": "VRI",
+        "logo": "https://media.api-sports.io/football/teams/8649.png",
+        "winner": null
+      },
+      "away": {
+        "id": 6069,
+        "name": "Viby",
+        "logo": "https://media.api-sports.io/football/teams/6069.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
       "id": 1434200,
       "referee": null,
       "timezone": "America/Sao_Paulo",
@@ -253,6 +883,76 @@
         "id": 25219,
         "name": "Trabalhista U20",
         "logo": "https://media.api-sports.io/football/teams/25219.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1354703,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-15T17:30:00-03:00",
+      "timestamp": 1755289800,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 2683,
+        "name": "Estadio Olímpico de Ibarra",
+        "city": "Ibarra"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 243,
+      "name": "Liga Pro Serie B",
+      "country": "Ecuador",
+      "logo": "https://media.api-sports.io/football/leagues/243.png",
+      "flag": "https://media.api-sports.io/flags/ec.svg",
+      "season": 2025,
+      "round": "Regular Season - 22",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 19034,
+        "name": "Leones del Norte",
+        "logo": "https://media.api-sports.io/football/teams/19034.png",
+        "winner": null
+      },
+      "away": {
+        "id": 1983,
+        "name": "Imbabura",
+        "logo": "https://media.api-sports.io/football/teams/1983.png",
         "winner": null
       }
     },

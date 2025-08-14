@@ -1,6 +1,76 @@
 [
   {
     "fixture": {
+      "id": 1328712,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T13:00:00-03:00",
+      "timestamp": 1755100800,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 5125,
+        "name": "Koteng Arena",
+        "city": "Trondheim"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 725,
+      "name": "Toppserien",
+      "country": "Norway",
+      "logo": "https://media.api-sports.io/football/leagues/725.png",
+      "flag": "https://media.api-sports.io/flags/no.svg",
+      "season": 2025,
+      "round": "Regular Season - 20",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 15956,
+        "name": "Rosenborg W",
+        "logo": "https://media.api-sports.io/football/teams/15956.png",
+        "winner": true
+      },
+      "away": {
+        "id": 10894,
+        "name": "Lillestrøm",
+        "logo": "https://media.api-sports.io/football/teams/10894.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 4,
+      "away": 1
+    },
+    "score": {
+      "halftime": {
+        "home": 2,
+        "away": 1
+      },
+      "fulltime": {
+        "home": 4,
+        "away": 1
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
       "id": 1373853,
       "referee": null,
       "timezone": "America/Sao_Paulo",
@@ -911,6 +981,76 @@
   },
   {
     "fixture": {
+      "id": 1354704,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T19:00:00-03:00",
+      "timestamp": 1755122400,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 21646,
+        "name": "Estadio Arena CHUBB",
+        "city": "Quito"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 243,
+      "name": "Liga Pro Serie B",
+      "country": "Ecuador",
+      "logo": "https://media.api-sports.io/football/leagues/243.png",
+      "flag": "https://media.api-sports.io/flags/ec.svg",
+      "season": 2025,
+      "round": "Regular Season - 22",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 2238,
+        "name": "Ind. Juniors",
+        "logo": "https://media.api-sports.io/football/teams/2238.png",
+        "winner": null
+      },
+      "away": {
+        "id": 23310,
+        "name": "San Antonio",
+        "logo": "https://media.api-sports.io/football/teams/23310.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
       "id": 1429762,
       "referee": null,
       "timezone": "America/Sao_Paulo",
@@ -1177,6 +1317,76 @@
       },
       "fulltime": {
         "home": 3,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1377445,
+      "referee": "Dario Herrera, Argentina",
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T21:30:00-03:00",
+      "timestamp": 1755131400,
+      "periods": {
+        "first": 1755131400,
+        "second": 1755135000
+      },
+      "venue": {
+        "id": null,
+        "name": "Estadio Jornalista Mário Filho",
+        "city": "Rio de Janeiro"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 7
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "country": "World",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "flag": null,
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png",
+        "winner": true
+      },
+      "away": {
+        "id": 119,
+        "name": "Internacional",
+        "logo": "https://media.api-sports.io/football/teams/119.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 1,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 1,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 1,
         "away": 0
       },
       "extratime": {

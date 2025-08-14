@@ -1,4 +1,4 @@
-// Enhanced search and filtering functionality
+// Enhanced search and filtering functionality for Brazilian teams
 (function() {
   const search = document.getElementById('teamSearch');
   const leagueFilter = document.getElementById('leagueFilter');
@@ -6,6 +6,26 @@
   if (!search) return;
   
   const sections = ['list-today', 'list-tomorrow', 'list-next'].map(id => document.getElementById(id));
+  
+  // Load comprehensive Brazilian teams database
+  function loadBrazilianTeams() {
+    if (window.ALL_BRAZILIAN_TEAMS) {
+      return window.ALL_BRAZILIAN_TEAMS;
+    }
+    
+    // Fallback comprehensive list if external database not loaded
+    return [
+      'Flamengo', 'Corinthians', 'Palmeiras', 'São Paulo', 'Santos', 'Vasco', 'Botafogo', 'Fluminense',
+      'Grêmio', 'Internacional', 'Atlético-MG', 'Cruzeiro', 'Bahia', 'Fortaleza', 'Ceará', 'Sport',
+      'Vitória', 'Athletico-PR', 'Coritiba', 'Cuiabá', 'Bragantino', 'Juventude', 'América-MG',
+      'Avaí', 'Chapecoense', 'CRB', 'Goiás', 'Guarani', 'Ituano', 'Londrina', 'Mirassol',
+      'Novorizontino', 'Operário-PR', 'Paysandu', 'Ponte Preta', 'Remo', 'Tombense', 'Vila Nova',
+      'Volta Redonda', 'ABC', 'Atlético-GO', 'Botafogo-PB', 'Campinense', 'Caxias', 'CSA',
+      'Figueirense', 'Manaus', 'Náutico', 'Sampaio Corrêa', 'São Bernardo', 'Ypiranga-RS'
+    ];
+  }
+  
+  const brazilianTeams = loadBrazilianTeams();
   
   function applyFilters() {
     const searchQuery = (search.value || '').toLowerCase();

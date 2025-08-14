@@ -9,7 +9,114 @@ const OUT = process.cwd();
 const DATA_DIR = path.join(OUT, "data");
 const DIAS_DIR = path.join(OUT, "dias");
 const TIMES_DIR = path.join(OUT, "times");
-const TEAMS = JSON.parse(fs.readFileSync(path.join("assets","teams.json"), "utf-8"));
+// Load comprehensive Brazilian teams
+const TEAMS_JSON = JSON.parse(fs.readFileSync(path.join("assets","teams.json"), "utf-8"));
+
+// Create comprehensive teams list from new database structure
+const COMPREHENSIVE_TEAMS = [
+  // Serie A teams
+  { name: "Athletico-PR", slug: "athletico-pr" },
+  { name: "Atlético-MG", slug: "atletico-mg" },
+  { name: "Bahia", slug: "bahia" },
+  { name: "Botafogo", slug: "botafogo" },
+  { name: "Bragantino", slug: "bragantino" },
+  { name: "Corinthians", slug: "corinthians" },
+  { name: "Criciúma", slug: "criciuma" },
+  { name: "Cruzeiro", slug: "cruzeiro" },
+  { name: "Cuiabá", slug: "cuiaba" },
+  { name: "Flamengo", slug: "flamengo" },
+  { name: "Fluminense", slug: "fluminense" },
+  { name: "Fortaleza", slug: "fortaleza" },
+  { name: "Grêmio", slug: "gremio" },
+  { name: "Internacional", slug: "internacional" },
+  { name: "Juventude", slug: "juventude" },
+  { name: "Palmeiras", slug: "palmeiras" },
+  { name: "São Paulo", slug: "sao-paulo" },
+  { name: "Santos", slug: "santos" },
+  { name: "Vasco", slug: "vasco" },
+  { name: "Vitória", slug: "vitoria" },
+  
+  // Serie B teams
+  { name: "América-MG", slug: "america-mg" },
+  { name: "Avaí", slug: "avai" },
+  { name: "Ceará", slug: "ceara" },
+  { name: "Chapecoense", slug: "chapecoense" },
+  { name: "Coritiba", slug: "coritiba" },
+  { name: "CRB", slug: "crb" },
+  { name: "Goiás", slug: "goias" },
+  { name: "Guarani", slug: "guarani" },
+  { name: "Ituano", slug: "ituano" },
+  { name: "Londrina", slug: "londrina" },
+  { name: "Mirassol", slug: "mirassol" },
+  { name: "Novorizontino", slug: "novorizontino" },
+  { name: "Operário-PR", slug: "operario-pr" },
+  { name: "Paysandu", slug: "paysandu" },
+  { name: "Ponte Preta", slug: "ponte-preta" },
+  { name: "Remo", slug: "remo" },
+  { name: "Sport", slug: "sport" },
+  { name: "Tombense", slug: "tombense" },
+  { name: "Vila Nova", slug: "vila-nova" },
+  { name: "Volta Redonda", slug: "volta-redonda" },
+  
+  // Serie C and major regional teams
+  { name: "ABC", slug: "abc" },
+  { name: "Altos", slug: "altos" },
+  { name: "Atlético-GO", slug: "atletico-go" },
+  { name: "Botafogo-PB", slug: "botafogo-pb" },
+  { name: "Botafogo-SP", slug: "botafogo-sp" },
+  { name: "Campinense", slug: "campinense" },
+  { name: "Caxias", slug: "caxias" },
+  { name: "CSA", slug: "csa" },
+  { name: "Figueirense", slug: "figueirense" },
+  { name: "Manaus", slug: "manaus" },
+  { name: "Náutico", slug: "nautico" },
+  { name: "Sampaio Corrêa", slug: "sampaio-correa" },
+  { name: "São Bernardo", slug: "sao-bernardo" },
+  { name: "São José-RS", slug: "sao-jose-rs" },
+  { name: "Ypiranga-RS", slug: "ypiranga-rs" },
+  
+  // Use original teams.json as fallback
+  ...TEAMS_JSON
+];
+
+const TEAMS = COMPREHENSIVE_TEAMS;
+
+// Broadcast information function (server-side version)
+function getBroadcastInfo(fixture) {
+  const league = fixture.league?.name?.toLowerCase() || '';
+  const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
+  const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
+  
+  // Determine competition type and platform
+  if (league.includes('serie a') || league.includes('brasileiro a')) {
+    const bigTeams = ['flamengo', 'corinthians', 'palmeiras', 'são paulo', 'santos'];
+    const hasBigTeam = bigTeams.some(team => homeTeam.includes(team) || awayTeam.includes(team));
+    return {
+      platform: hasBigTeam ? 'Globo/SporTV/Premiere' : 'Premiere',
+      type: 'TV/Streaming'
+    };
+  } else if (league.includes('serie b')) {
+    return { platform: 'SporTV/Premiere', type: 'TV Fechada' };
+  } else if (league.includes('copa do brasil')) {
+    return { platform: 'Amazon Prime/SporTV', type: 'Streaming' };
+  } else if (league.includes('libertadores')) {
+    return { platform: 'Paramount+/SBT', type: 'Streaming/TV' };
+  } else if (league.includes('sul-americana') || league.includes('sudamericana')) {
+    return { platform: 'Paramount+', type: 'Streaming' };
+  } else if (league.includes('carioca')) {
+    return { platform: 'Globo RJ/SporTV', type: 'TV Aberta/Fechada' };
+  } else if (league.includes('paulista')) {
+    return { platform: 'Globo SP/SporTV', type: 'TV Aberta/Fechada' };
+  } else if (league.includes('mineiro')) {
+    return { platform: 'SporTV/Premiere', type: 'TV Fechada' };
+  } else if (league.includes('gaúcho') || league.includes('gaucho')) {
+    return { platform: 'SporTV/Premiere', type: 'TV Fechada' };
+  } else if (league.includes('copa do nordeste')) {
+    return { platform: 'SBT/SporTV', type: 'TV Aberta/Fechada' };
+  } else {
+    return { platform: 'Consulte programação', type: 'Verificar' };
+  }
+}
 
 async function api(pathname, params){
   const apiKey = process.env.API_FOOTBALL_KEY || "64dbbac01db6ca5c41fefe0e061937a8";
@@ -65,6 +172,11 @@ function renderCards(fixtures){
     const google = `https://www.google.com/search?q=${q}`;
     const dataSearch = `${h} ${a} ${league.name||""} ${venue}`.toLowerCase();
     
+    // Get real broadcast information
+    const broadcastInfo = getBroadcastInfo(f);
+    const broadcastPlatform = broadcastInfo.platform;
+    const broadcastType = broadcastInfo.type;
+    
     // Status badge with better styling
     let statusBadge = "";
     if (live) {
@@ -114,14 +226,17 @@ function renderCards(fixtures){
           📍 ${venue || "Local a definir"}
         </div>
         <div class="flex items-center gap-3 flex-shrink-0">
-          <a href="${google}" target="_blank" rel="nofollow noopener" 
-             class="inline-flex items-center gap-1 px-3 py-1 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors font-medium">
-            📺 Onde assistir
-          </a>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(h + ' x ' + a)}&dates=${encodeURIComponent(ts ? new Date(ts).toISOString().replace(/[-:]|\\.\\d{3}/g,'') + '/' + new Date(new Date(ts).getTime()+2*3600000).toISOString().replace(/[-:]|\\.\\d{3}/g,'') : '')}&details=${encodeURIComponent('Jogo • hojetemjogo.com.br')}" 
+          <div class="inline-flex items-center gap-1 px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium text-sm">
+            📺 ${broadcastPlatform}
+          </div>
+          <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(h + ' x ' + a)}&dates=${encodeURIComponent(ts ? new Date(ts).toISOString().replace(/[-:]|\\.\\d{3}/g,'') + '/' + new Date(new Date(ts).getTime()+2*3600000).toISOString().replace(/[-:]|\\.\\d{3}/g,'') : '')}&details=${encodeURIComponent('Jogo • hojetemjogo.com.br • ' + broadcastPlatform)}" 
              target="_blank" rel="nofollow"
              class="inline-flex items-center gap-1 px-3 py-1 bg-gray-50 text-gray-700 rounded-full hover:bg-gray-100 transition-colors text-xs">
             📅 Lembrete
+          </a>
+          <a href="${google}" target="_blank" rel="nofollow noopener" 
+             class="inline-flex items-center gap-1 px-2 py-1 text-blue-600 hover:text-blue-800 transition-colors text-xs">
+            🔗 Mais info
           </a>
         </div>
       </div>
@@ -190,7 +305,8 @@ async function main(){
   fs.mkdirSync(TIMES_DIR, {recursive:true});
 
   const today = new Date();
-  const dates = [0,1,2,3,4,5].map(n=>{
+  // Extend to 21 days for comprehensive coverage
+  const dates = Array.from({length: 21}, (_, n) => {
     const d = new Date(today.getTime()+n*86400000);
     return fmtDate(d);
   });
@@ -200,10 +316,49 @@ async function main(){
   for (const ds of dates){
     console.log(`Fetching fixtures for ${ds}...`);
     const allFixtures = await api("/fixtures", { date: ds, timezone: TZ });
-    // Filter for Brazilian leagues
-    const brazilianFixtures = allFixtures.filter(fixture => 
-      fixture.league?.country?.toLowerCase().includes('brazil')
-    );
+    
+    // Enhanced Brazilian filtering - include all competitions with Brazilian teams
+    const brazilianFixtures = allFixtures.filter(fixture => {
+      const league = fixture.league?.name?.toLowerCase() || '';
+      const country = fixture.league?.country?.toLowerCase() || '';
+      const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
+      const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
+      
+      // Check if it's a Brazilian league/competition
+      const isBrazilianLeague = country.includes('brazil') || 
+        league.includes('brasileiro') || 
+        league.includes('serie') ||
+        league.includes('copa do brasil') ||
+        league.includes('carioca') ||
+        league.includes('paulista') ||
+        league.includes('mineiro') ||
+        league.includes('gaúcho') ||
+        league.includes('baiano') ||
+        league.includes('pernambucano') ||
+        league.includes('cearense') ||
+        league.includes('paraense') ||
+        league.includes('copa do nordeste') ||
+        league.includes('copa verde') ||
+        league.includes('recopa');
+      
+      // Check if it involves Brazilian teams (for international competitions)
+      const hasBrazilianTeam = COMPREHENSIVE_TEAMS.some(team => {
+        const teamName = team.name.toLowerCase();
+        return homeTeam.includes(teamName) || 
+               awayTeam.includes(teamName) ||
+               homeTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, '')) ||
+               awayTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, ''));
+      });
+      
+      // Include if it's a Brazilian league OR has Brazilian teams in international competitions
+      return isBrazilianLeague || (hasBrazilianTeam && (
+        league.includes('libertadores') ||
+        league.includes('sul-americana') ||
+        league.includes('sudamericana') ||
+        league.includes('recopa')
+      ));
+    });
+    
     console.log(`  Found ${allFixtures.length} total, ${brazilianFixtures.length} Brazilian fixtures`);
     byDate[ds] = brazilianFixtures;
     fs.writeFileSync(path.join(DATA_DIR, `${ds}.json`), JSON.stringify(brazilianFixtures, null, 2));
