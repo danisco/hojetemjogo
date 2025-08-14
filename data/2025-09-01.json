@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Allianz Parque"
+        "name": "Estádio Olímpico Nilton Santos"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 120,
-        "name": "Botafogo",
-        "logo": "https://media.api-sports.io/football/teams/120.png"
+        "id": 131,
+        "name": "Grêmio",
+        "logo": "https://media.api-sports.io/football/teams/131.png"
       },
       "away": {
-        "id": 127,
-        "name": "Flamengo",
-        "logo": "https://media.api-sports.io/football/teams/127.png"
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Neo Química Arena"
+        "name": "Morumbi"
       }
     },
     "league": {
@@ -54,14 +54,49 @@
     },
     "teams": {
       "home": {
-        "id": 127,
-        "name": "Flamengo",
-        "logo": "https://media.api-sports.io/football/teams/127.png"
+        "id": 132,
+        "name": "Internacional",
+        "logo": "https://media.api-sports.io/football/teams/132.png"
       },
       "away": {
         "id": 129,
         "name": "Cruzeiro",
         "logo": "https://media.api-sports.io/football/teams/129.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250903,
+      "date": "2025-09-01T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Morumbi"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 122,
+        "name": "Athletico Paranaense",
+        "logo": "https://media.api-sports.io/football/teams/122.png"
+      },
+      "away": {
+        "id": 158,
+        "name": "Avaí",
+        "logo": "https://media.api-sports.io/football/teams/158.png"
       }
     },
     "goals": {

@@ -11,53 +11,53 @@ const TIMES_DIR = path.join(OUT, "times");
 // Load comprehensive Brazilian teams
 const TEAMS_JSON = JSON.parse(fs.readFileSync(path.join("assets","teams.json"), "utf-8"));
 
-// Create comprehensive teams list from new database structure
+// Create comprehensive teams list with complete 2025 Serie A and Serie B coverage
 const COMPREHENSIVE_TEAMS = [
-  // Serie A teams
-  { name: "Athletico-PR", slug: "athletico-pr" },
-  { name: "Atlético-MG", slug: "atletico-mg" },
-  { name: "Bahia", slug: "bahia" },
-  { name: "Botafogo", slug: "botafogo" },
-  { name: "Bragantino", slug: "bragantino" },
-  { name: "Corinthians", slug: "corinthians" },
-  { name: "Criciúma", slug: "criciuma" },
-  { name: "Cruzeiro", slug: "cruzeiro" },
-  { name: "Cuiabá", slug: "cuiaba" },
-  { name: "Flamengo", slug: "flamengo" },
-  { name: "Fluminense", slug: "fluminense" },
-  { name: "Fortaleza", slug: "fortaleza" },
-  { name: "Grêmio", slug: "gremio" },
-  { name: "Internacional", slug: "internacional" },
-  { name: "Juventude", slug: "juventude" },
-  { name: "Palmeiras", slug: "palmeiras" },
-  { name: "São Paulo", slug: "sao-paulo" },
-  { name: "Santos", slug: "santos" },
-  { name: "Vasco", slug: "vasco" },
-  { name: "Vitória", slug: "vitoria" },
+  // Serie A 2025 teams - ALL 20 teams
+  { name: "Flamengo", slug: "flamengo", id: 127 },
+  { name: "Botafogo", slug: "botafogo", id: 120 },
+  { name: "Palmeiras", slug: "palmeiras", id: 121 },
+  { name: "Corinthians", slug: "corinthians", id: 119 },
+  { name: "São Paulo", slug: "sao-paulo", id: 126 },
+  { name: "Internacional", slug: "internacional", id: 132 },
+  { name: "Cruzeiro", slug: "cruzeiro", id: 129 },
+  { name: "Atlético-MG", slug: "atletico-mg", id: 130 },
+  { name: "Fluminense", slug: "fluminense", id: 125 },
+  { name: "Grêmio", slug: "gremio", id: 131 },
+  { name: "RB Bragantino", slug: "bragantino", id: 1207 },
+  { name: "Vitória", slug: "vitoria", id: 159 },
+  { name: "Vasco da Gama", slug: "vasco", id: 124 },
+  { name: "Fortaleza", slug: "fortaleza", id: 160 },
+  { name: "Juventude", slug: "juventude", id: 1204 },
+  { name: "Bahia", slug: "bahia", id: 133 },
+  { name: "Santos", slug: "santos", id: 128 }, // Promoted from Serie B
+  { name: "Mirassol", slug: "mirassol", id: 10269 }, // Promoted from Serie B
+  { name: "Sport", slug: "sport", id: 134 }, // Promoted from Serie B  
+  { name: "Ceará", slug: "ceara", id: 161 }, // Promoted from Serie B
   
-  // Serie B teams
-  { name: "América-MG", slug: "america-mg" },
-  { name: "Avaí", slug: "avai" },
-  { name: "Ceará", slug: "ceara" },
-  { name: "Chapecoense", slug: "chapecoense" },
-  { name: "Coritiba", slug: "coritiba" },
-  { name: "CRB", slug: "crb" },
-  { name: "Goiás", slug: "goias" },
-  { name: "Guarani", slug: "guarani" },
-  { name: "Ituano", slug: "ituano" },
-  { name: "Londrina", slug: "londrina" },
-  { name: "Mirassol", slug: "mirassol" },
-  { name: "Novorizontino", slug: "novorizontino" },
-  { name: "Operário-PR", slug: "operario-pr" },
-  { name: "Paysandu", slug: "paysandu" },
-  { name: "Ponte Preta", slug: "ponte-preta" },
-  { name: "Remo", slug: "remo" },
-  { name: "Sport", slug: "sport" },
-  { name: "Tombense", slug: "tombense" },
-  { name: "Vila Nova", slug: "vila-nova" },
-  { name: "Volta Redonda", slug: "volta-redonda" },
+  // Serie B 2025 teams - ALL 20 teams
+  { name: "Goiás", slug: "goias", id: 156 },
+  { name: "Novorizontino", slug: "novorizontino", id: 10264 },
+  { name: "Coritiba", slug: "coritiba", id: 123 },
+  { name: "CRB", slug: "crb", id: 1203 },
+  { name: "Cuiabá", slug: "cuiaba", id: 1569 }, // Relegated from Serie A
+  { name: "Athletico Paranaense", slug: "athletico-pr", id: 122 }, // Relegated from Serie A
+  { name: "Avaí", slug: "avai", id: 158 },
+  { name: "Remo", slug: "remo", id: 1202 }, // Promoted from Serie C
+  { name: "Chapecoense", slug: "chapecoense", id: 1209 },
+  { name: "Atlético Goianiense", slug: "atletico-goianiense", id: 1197 }, // Relegated from Serie A
+  { name: "Ferroviária", slug: "ferroviaria", id: 7305 }, // Promoted from Serie C
+  { name: "Operário", slug: "operario", id: 8794 },
+  { name: "América-MG", slug: "america-mg", id: 155 },
+  { name: "Vila Nova", slug: "vila-nova", id: 157 },
+  { name: "Criciúma", slug: "criciuma", id: 1214 }, // Relegated from Serie A
+  { name: "Botafogo-SP", slug: "botafogo-sp", id: 1220 },
+  { name: "Amazonas", slug: "amazonas", id: 10265 },
+  { name: "Athletic Club", slug: "athletic-club", id: 2282 }, // Promoted from Serie C
+  { name: "Volta Redonda", slug: "volta-redonda", id: 2353 }, // Promoted from Serie C
+  { name: "Paysandu", slug: "paysandu", id: 1205 },
   
-  // Use original teams.json as fallback
+  // Use original teams.json as fallback for any additional teams
   ...TEAMS_JSON
 ];
 
@@ -66,6 +66,7 @@ const TEAMS = COMPREHENSIVE_TEAMS;
 // Sample fixture data to demonstrate calendar functionality when API data is limited
 function generateSampleFixtures(date, count = 2) {
   const sampleTeams = [
+    // Serie A teams
     { name: "Flamengo", id: 127, logo: "https://media.api-sports.io/football/teams/127.png" },
     { name: "Corinthians", id: 119, logo: "https://media.api-sports.io/football/teams/119.png" },
     { name: "Palmeiras", id: 121, logo: "https://media.api-sports.io/football/teams/121.png" },
@@ -73,7 +74,27 @@ function generateSampleFixtures(date, count = 2) {
     { name: "Santos", id: 128, logo: "https://media.api-sports.io/football/teams/128.png" },
     { name: "Botafogo", id: 120, logo: "https://media.api-sports.io/football/teams/120.png" },
     { name: "Cruzeiro", id: 129, logo: "https://media.api-sports.io/football/teams/129.png" },
-    { name: "Atlético-MG", id: 130, logo: "https://media.api-sports.io/football/teams/130.png" }
+    { name: "Atlético-MG", id: 130, logo: "https://media.api-sports.io/football/teams/130.png" },
+    { name: "Fluminense", id: 125, logo: "https://media.api-sports.io/football/teams/125.png" },
+    { name: "Internacional", id: 132, logo: "https://media.api-sports.io/football/teams/132.png" },
+    { name: "Grêmio", id: 131, logo: "https://media.api-sports.io/football/teams/131.png" },
+    { name: "RB Bragantino", id: 1207, logo: "https://media.api-sports.io/football/teams/1207.png" },
+    { name: "Vasco da Gama", id: 124, logo: "https://media.api-sports.io/football/teams/124.png" },
+    { name: "Bahia", id: 133, logo: "https://media.api-sports.io/football/teams/133.png" },
+    { name: "Fortaleza", id: 160, logo: "https://media.api-sports.io/football/teams/160.png" },
+    { name: "Vitória", id: 159, logo: "https://media.api-sports.io/football/teams/159.png" },
+    { name: "Mirassol", id: 10269, logo: "https://media.api-sports.io/football/teams/10269.png" },
+    { name: "Sport", id: 134, logo: "https://media.api-sports.io/football/teams/134.png" },
+    { name: "Ceará", id: 161, logo: "https://media.api-sports.io/football/teams/161.png" },
+    // Serie B teams  
+    { name: "Coritiba", id: 123, logo: "https://media.api-sports.io/football/teams/123.png" },
+    { name: "Goiás", id: 156, logo: "https://media.api-sports.io/football/teams/156.png" },
+    { name: "América-MG", id: 155, logo: "https://media.api-sports.io/football/teams/155.png" },
+    { name: "Athletico Paranaense", id: 122, logo: "https://media.api-sports.io/football/teams/122.png" },
+    { name: "Criciúma", id: 1214, logo: "https://media.api-sports.io/football/teams/1214.png" },
+    { name: "Cuiabá", id: 1569, logo: "https://media.api-sports.io/football/teams/1569.png" },
+    { name: "Avaí", id: 158, logo: "https://media.api-sports.io/football/teams/158.png" },
+    { name: "Chapecoense", id: 1209, logo: "https://media.api-sports.io/football/teams/1209.png" }
   ];
   
   const venues = [
