@@ -143,14 +143,14 @@ async function main(){
   for (const ds of dates){
     const outDir = path.join(DIAS_DIR, ds);
     fs.mkdirSync(outDir, {recursive:true});
-    const page = tpl\
-      .replaceAll("{date_today}", ds)\
-      .replaceAll("{date_tomorrow}", dates[1] || ds)\
-      .replaceAll("{cards_today}", renderCards(byDate[ds]))\
-      .replaceAll("{cards_tomorrow}", "")\
-      .replaceAll("{cards_next}", "")\
-      .replaceAll("{json_ld}", jsonLD(byDate[ds]))\
-      .replaceAll("{year}", String(new Date().getFullYear()))\
+    const page = tpl
+      .replaceAll("{date_today}", ds)
+      .replaceAll("{date_tomorrow}", dates[1] || ds)
+      .replaceAll("{cards_today}", renderCards(byDate[ds]))
+      .replaceAll("{cards_tomorrow}", "")
+      .replaceAll("{cards_next}", "")
+      .replaceAll("{json_ld}", jsonLD(byDate[ds]))
+      .replaceAll("{year}", String(new Date().getFullYear()))
       .replaceAll("{kw_team}", "Palmeiras");
     fs.writeFileSync(path.join(outDir,"index.html"), page, "utf-8");
   }
@@ -167,14 +167,14 @@ async function main(){
     });
     const outDir = path.join(TIMES_DIR, slug);
     fs.mkdirSync(outDir, {recursive:true});
-    const page = tpl\
-      .replaceAll("{date_today}", fmtDate(new Date()))\
-      .replaceAll("{date_tomorrow}", fmtDate(new Date(Date.now()+86400000)))\
-      .replaceAll("{cards_today}", renderCards(filtered))\
-      .replaceAll("{cards_tomorrow}", "")\
-      .replaceAll("{cards_next}", "")\
-      .replaceAll("{json_ld}", jsonLD(filtered))\
-      .replaceAll("{year}", String(new Date().getFullYear()))\
+    const page = tpl
+      .replaceAll("{date_today}", fmtDate(new Date()))
+      .replaceAll("{date_tomorrow}", fmtDate(new Date(Date.now()+86400000)))
+      .replaceAll("{cards_today}", renderCards(filtered))
+      .replaceAll("{cards_tomorrow}", "")
+      .replaceAll("{cards_next}", "")
+      .replaceAll("{json_ld}", jsonLD(filtered))
+      .replaceAll("{year}", String(new Date().getFullYear()))
       .replaceAll("{kw_team}", team.name);
     fs.writeFileSync(path.join(outDir,"index.html"), page, "utf-8");
   }

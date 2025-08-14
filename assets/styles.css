@@ -1,5 +1,34 @@
 
 /* Tailwind is loaded via CDN. Only place minimal custom tweaks here if needed. */
 :root { --brand: #0ea5e9; }
-.card { background:white; border:1px solid #e5e7eb; border-radius:1rem; padding:1rem; }
-.badge { font-size: .75rem; border:1px solid #e5e7eb; border-radius:.75rem; padding:.15rem .5rem; }
+.card { 
+  background: white; 
+  border: 1px solid #e5e7eb; 
+  border-radius: 1rem; 
+  padding: 1rem; 
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.badge { 
+  font-size: .75rem; 
+  border: 1px solid #e5e7eb; 
+  border-radius: .75rem; 
+  padding: .15rem .5rem; 
+  background: #f8fafc;
+}
+.error-state {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.loading-state {
+  text-align: center;
+  padding: 2rem;
+  color: #64748b;
+}

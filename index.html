@@ -1,1 +1,87 @@
-<!doctype html><meta charset='utf-8'><title>Build me</title>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hoje Tem Jogo - Jogos de hoje, horários e onde assistir</title>
+  <meta name="description" content="Jogos de hoje no Brasil: horários, placar e onde assistir (TV/streaming). Brasileirão, Copa do Brasil, Libertadores e mais. Atualizado duas vezes por dia.">
+  <meta name="keywords" content="jogos de hoje, jogo do Flamengo hoje, onde assistir Flamengo, horário do jogo, canal do jogo, transmissão ao vivo, Brasileirão, Copa do Brasil, Libertadores, Sul-Americana, jogos de amanhã, placar ao vivo, futebol hoje">
+  <link rel="canonical" href="https://hojetemjogo.com.br/"/>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0ea5e9">
+  <meta property="og:title" content="Hoje Tem Jogo - Jogos de hoje, horários e onde assistir">
+  <meta property="og:description" content="Calendário diário e onde assistir futebol no Brasil. Atualizado automaticamente.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hojetemjogo.com.br/">
+  <meta property="og:image" content="https://hojetemjogo.com.br/assets/og.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/assets/logo.svg" alt="Hoje Tem Jogo" class="h-8 w-auto"/>
+        <span class="font-bold text-xl">Hoje Tem Jogo</span>
+      </a>
+      <nav class="hidden sm:flex gap-4 text-sm">
+        <a href="#hoje" class="hover:underline">Hoje</a>
+        <a href="#amanha" class="hover:underline">Amanhã</a>
+        <a href="/dias/" class="hover:underline">Dias</a>
+        <a href="/times/" class="hover:underline">Times</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <section class="mb-6">
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Jogos de hoje no Brasil — horários e onde assistir</h1>
+      <p class="text-slate-600 mt-2">Conteúdo atualizado automaticamente com dados da API-Football.</p>
+      <div id="alert" class="hidden mb-4 p-3 rounded-lg"></div>
+      <div class="mt-3">
+        <label class="block text-sm mb-1" for="teamSearch">Pesquisar time</label>
+        <input id="teamSearch" type="search" placeholder="Ex.: Flamengo, Fortaleza, Palmeiras…" class="w-full sm:max-w-sm px-3 py-2 border rounded-lg" />
+      </div>
+    </section>
+
+    <section id="hoje" class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Hoje <span id="date-today" class="font-normal text-slate-500"></span></h2>
+      <div id="list-today" class="grid gap-3">
+        <div class="text-slate-500 text-center py-8">Carregando jogos de hoje...</div>
+      </div>
+      <button id="more-today" class="hidden mt-4 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-sm">Ver mais jogos</button>
+    </section>
+
+    <section id="amanha" class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Amanhã <span id="date-tomorrow" class="font-normal text-slate-500"></span></h2>
+      <div id="list-tomorrow" class="grid gap-3">
+        <div class="text-slate-500 text-center py-8">Carregando jogos de amanhã...</div>
+      </div>
+      <button id="more-tomorrow" class="hidden mt-4 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-sm">Ver mais jogos</button>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Próximos dias</h2>
+      <div id="list-next" class="grid gap-3"></div>
+      <button id="more-next" class="hidden mt-4 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-sm">Ver mais jogos</button>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 mt-10">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-slate-600 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+      <div>&copy; 2025 Hoje Tem Jogo — Atualizado automaticamente</div>
+      <nav class="flex gap-4">
+        <a class="hover:underline" href="/sitemap.xml">Sitemap</a>
+        <a class="hover:underline" href="/robots.txt">Robots</a>
+        <a class="hover:underline" href="mailto:contato@hojetemjogo.com.br">Contato</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/config.js"></script>
+  <script src="/assets/app.js"></script>
+  <script src="/assets/teams.js" defer></script>
+  <script src="/assets/search-only.js" defer></script>
+</body>
+</html>
