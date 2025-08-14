@@ -1,30 +1,45 @@
-# Hoje Tem Jogo — site estático
 
-Site simples, bonito e **estático** que mostra os jogos do dia no Brasil e links de onde assistir (Google Search), usando **API-FOOTBALL** no client-side.
+# Hoje Tem Jogo — build estático com atualização programada
 
-> ⚠️ Ideal: mover a chamada de API para um **proxy/serveless** (Netlify Functions, Vercel Edge, Cloudflare Workers) para **não expor** a chave pública. Aqui incluímos um `config.js` por praticidade.
+- Gera **HTML no servidor** (index + `/dias/YYYY-MM-DD/` + `/times/<slug>` ) com dados da **API-FOOTBALL**.
+- **Atualização automática 2x por dia** via _Deploy Hook do Vercel_ (ou GitHub Actions).
+- Ótimo para **SEO**: conteúdo já vem no HTML (JSON-LD incluído).
 
-## Como usar
+## Como funciona
+Durante o build (`node scripts/build.js`), o script busca os jogos de **hoje e próximos dias** e escreve:
+- `index.html` (Hoje, Amanhã e Próximos)
+- `dias/YYYY-MM-DD/index.html` (páginas por data)
+- `times/<time>/index.html` (páginas por time)
+- `data/YYYY-MM-DD.json` (dados brutos, útil para debug)
+- `sitemap.xml` (inclui raiz, dias e times)
 
-1. **Edite/rotacione a sua chave** em `config.js` (ou copie `config.example.js` para `config.js`).
-2. Coloque os arquivos em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, Cloudflare Pages).
-3. Pronto. O site carrega os jogos de hoje; se não houver, mostra os próximos dias. Há busca por time e botão "Ver mais".
+## Variáveis de ambiente
+- `API_FOOTBALL_KEY` — sua chave da API-FOOTBALL (coloque no Vercel → Project → Settings → Environment Variables).
+- `TZ` (opcional) — padrão `America/Sao_Paulo`.
 
-### Desenvolvimento local
+## Vercel
+- O repo tem `vercel.json` com `framework=other` e `buildCommand=node scripts/build.js`.
+- Configure **Environment Variable** `API_FOOTBALL_KEY`.
+- Faça um deploy para testar.
 
-Abra `index.html` no navegador. Se o CORS do provedor bloquear, use um servidor local (ex.: `python -m http.server 5173`) e acesse `http://localhost:5173`.
+### Atualização 2x por dia (Deploy Hook)
+1. Em Vercel → Project → Settings → **Deploy Hooks** → crie um Hook (`main`).
+2. Em **Settings → Cron Jobs**, adicione 2 crons (UTC):
+   - `0 9 * * *` → chama o Deploy Hook
+   - `0 21 * * *` → chama o Deploy Hook
+3. Cada cron dispara um deploy que roda o **build** e atualiza o HTML.
+
+> Alternativa: use o GitHub Actions (arquivo em `.github/workflows/scheduled-redeploy.yml`) para chamar o Deploy Hook nos mesmos horários.
+
+## Desenvolvimento local
+```bash
+# exporte sua chave localmente
+export API_FOOTBALL_KEY="SUA_CHAVE"
+npm run build
+# abra index.html no navegador (ou sirva com um server estático)
+```
 
 ## SEO
-
-- Título, descrição, palavras-chave e JSON-LD (SportsEvent / ItemList).
-- Conteúdo em português e termos populares: *jogo do [time] hoje*, *horário do jogo*, *onde assistir [time]*, *canal que transmite*, *transmissão ao vivo*, *Brasileirão*, *Libertadores*, *Copa do Brasil*.
-- `robots.txt` e `sitemap.xml` incluídos.
-
-## Onde assistir
-
-A API-FOOTBALL nem sempre fornece canais. Por enquanto, apontamos para uma busca "onde assistir [mandante] x [visitante]".
-Sugestão: criar um pequeno serviço que faça scraping de fontes confiáveis ou integre um provedor com dados de transmissão, e preencher no front.
-
-## Licença
-
-MIT
+- Metatags + `keywords` (não mostram texto ao usuário).
+- Páginas por time e por dia geram muita cauda longa ("onde assistir Flamengo", "jogo do Vasco hoje"...).
+- JSON-LD (`ItemList`/`SportsEvent`) incluído.

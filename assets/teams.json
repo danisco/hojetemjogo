@@ -1,0 +1,258 @@
+[
+  {
+    "name": "ABC",
+    "slug": "abc"
+  },
+  {
+    "name": "América-MG",
+    "slug": "am-rica-mg"
+  },
+  {
+    "name": "América-RN",
+    "slug": "am-rica-rn"
+  },
+  {
+    "name": "Amazonas",
+    "slug": "amazonas"
+  },
+  {
+    "name": "Athletico-PR",
+    "slug": "athletico-pr"
+  },
+  {
+    "name": "Atlético-GO",
+    "slug": "atl-tico-go"
+  },
+  {
+    "name": "Atlético-MG",
+    "slug": "atl-tico-mg"
+  },
+  {
+    "name": "Avaí",
+    "slug": "ava"
+  },
+  {
+    "name": "Bahia",
+    "slug": "bahia"
+  },
+  {
+    "name": "Botafogo",
+    "slug": "botafogo"
+  },
+  {
+    "name": "Botafogo-PB",
+    "slug": "botafogo-pb"
+  },
+  {
+    "name": "Botafogo-SP",
+    "slug": "botafogo-sp"
+  },
+  {
+    "name": "Brasiliense",
+    "slug": "brasiliense"
+  },
+  {
+    "name": "Brusque",
+    "slug": "brusque"
+  },
+  {
+    "name": "Campinense",
+    "slug": "campinense"
+  },
+  {
+    "name": "Caxias",
+    "slug": "caxias"
+  },
+  {
+    "name": "Ceará",
+    "slug": "cear"
+  },
+  {
+    "name": "Chapecoense",
+    "slug": "chapecoense"
+  },
+  {
+    "name": "Confiança",
+    "slug": "confian-a"
+  },
+  {
+    "name": "Corinthians",
+    "slug": "corinthians"
+  },
+  {
+    "name": "Coritiba",
+    "slug": "coritiba"
+  },
+  {
+    "name": "CRB",
+    "slug": "crb"
+  },
+  {
+    "name": "Criciúma",
+    "slug": "crici-ma"
+  },
+  {
+    "name": "Cruzeiro",
+    "slug": "cruzeiro"
+  },
+  {
+    "name": "CSA",
+    "slug": "csa"
+  },
+  {
+    "name": "Cuiabá",
+    "slug": "cuiab"
+  },
+  {
+    "name": "Ferroviária",
+    "slug": "ferrovi-ria"
+  },
+  {
+    "name": "Figueirense",
+    "slug": "figueirense"
+  },
+  {
+    "name": "Flamengo",
+    "slug": "flamengo"
+  },
+  {
+    "name": "Fluminense",
+    "slug": "fluminense"
+  },
+  {
+    "name": "Fortaleza",
+    "slug": "fortaleza"
+  },
+  {
+    "name": "Goiás",
+    "slug": "goi-s"
+  },
+  {
+    "name": "Grêmio",
+    "slug": "gr-mio"
+  },
+  {
+    "name": "Gremio Novorizontino",
+    "slug": "gremio-novorizontino"
+  },
+  {
+    "name": "Guarani",
+    "slug": "guarani"
+  },
+  {
+    "name": "Internacional",
+    "slug": "internacional"
+  },
+  {
+    "name": "Ipatinga",
+    "slug": "ipatinga"
+  },
+  {
+    "name": "Ituano",
+    "slug": "ituano"
+  },
+  {
+    "name": "Juventude",
+    "slug": "juventude"
+  },
+  {
+    "name": "Londrina",
+    "slug": "londrina"
+  },
+  {
+    "name": "Manaus",
+    "slug": "manaus"
+  },
+  {
+    "name": "Mirassol",
+    "slug": "mirassol"
+  },
+  {
+    "name": "Náutico",
+    "slug": "n-utico"
+  },
+  {
+    "name": "Novorizontino",
+    "slug": "novorizontino"
+  },
+  {
+    "name": "Operário-PR",
+    "slug": "oper-rio-pr"
+  },
+  {
+    "name": "Palmeiras",
+    "slug": "palmeiras"
+  },
+  {
+    "name": "Paysandu",
+    "slug": "paysandu"
+  },
+  {
+    "name": "Ponte Preta",
+    "slug": "ponte-preta"
+  },
+  {
+    "name": "Portuguesa",
+    "slug": "portuguesa"
+  },
+  {
+    "name": "Red Bull Bragantino",
+    "slug": "red-bull-bragantino"
+  },
+  {
+    "name": "Remo",
+    "slug": "remo"
+  },
+  {
+    "name": "São Bernardo",
+    "slug": "s-o-bernardo"
+  },
+  {
+    "name": "São José-RS",
+    "slug": "s-o-jos-rs"
+  },
+  {
+    "name": "São Paulo",
+    "slug": "s-o-paulo"
+  },
+  {
+    "name": "Sampaio Corrêa",
+    "slug": "sampaio-corr-a"
+  },
+  {
+    "name": "Sampaio Corrêa-RJ",
+    "slug": "sampaio-corr-a-rj"
+  },
+  {
+    "name": "Santos",
+    "slug": "santos"
+  },
+  {
+    "name": "Sport",
+    "slug": "sport"
+  },
+  {
+    "name": "Tombense",
+    "slug": "tombense"
+  },
+  {
+    "name": "Vasco da Gama",
+    "slug": "vasco-da-gama"
+  },
+  {
+    "name": "Vila Nova",
+    "slug": "vila-nova"
+  },
+  {
+    "name": "Vitória",
+    "slug": "vit-ria"
+  },
+  {
+    "name": "Volta Redonda",
+    "slug": "volta-redonda"
+  },
+  {
+    "name": "Ypiranga-RS",
+    "slug": "ypiranga-rs"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "name": "hojetemjogo-static",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "vercel-build": "node scripts/build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

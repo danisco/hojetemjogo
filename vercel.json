@@ -1,0 +1,5 @@
+{
+  "framework": "other",
+  "buildCommand": "node scripts/build.js",
+  "outputDirectory": "."
+}
