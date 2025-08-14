@@ -81,6 +81,76 @@ const COMPREHENSIVE_TEAMS = [
 
 const TEAMS = COMPREHENSIVE_TEAMS;
 
+// Betting odds integration with The Odds API
+async function getBettingOdds(homeTeam, awayTeam, leagueId) {
+  const oddsApiKey = process.env.ODDS_API_KEY;
+  if (!oddsApiKey) {
+    console.log('  No ODDS_API_KEY found, skipping odds fetch');
+    return null;
+  }
+
+  try {
+    // Map common Brazilian leagues to The Odds API sport keys
+    const leagueMapping = {
+      '71': 'soccer_brazil_campeonato', // Brasileirão Serie A
+      // Add more mappings as needed
+    };
+
+    const sportKey = leagueMapping[leagueId];
+    if (!sportKey) {
+      return null; // No odds available for this league
+    }
+
+    const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds?regions=us,uk&markets=h2h&apiKey=${oddsApiKey}`;
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      console.log(`  Odds API error: ${response.status}`);
+      return null;
+    }
+
+    const data = await response.json();
+    
+    // Find match by team names
+    const match = data.find(event => {
+      const homeMatch = event.home_team?.toLowerCase().includes(homeTeam.toLowerCase()) ||
+                       homeTeam.toLowerCase().includes(event.home_team?.toLowerCase());
+      const awayMatch = event.away_team?.toLowerCase().includes(awayTeam.toLowerCase()) ||
+                       awayTeam.toLowerCase().includes(event.away_team?.toLowerCase());
+      return homeMatch && awayMatch;
+    });
+
+    if (!match || !match.bookmakers || match.bookmakers.length === 0) {
+      return null;
+    }
+
+    // Get odds from first available bookmaker
+    const bookmaker = match.bookmakers[0];
+    const h2hMarket = bookmaker.markets.find(market => market.key === 'h2h');
+    
+    if (!h2hMarket || !h2hMarket.outcomes) {
+      return null;
+    }
+
+    // Extract odds (home, draw, away)
+    const outcomes = h2hMarket.outcomes;
+    const homeOdds = outcomes.find(o => o.name === match.home_team)?.price;
+    const awayOdds = outcomes.find(o => o.name === match.away_team)?.price;
+    const drawOdds = outcomes.find(o => o.name === 'Draw')?.price;
+
+    return {
+      home: homeOdds,
+      draw: drawOdds,
+      away: awayOdds,
+      bookmaker: bookmaker.title
+    };
+
+  } catch (error) {
+    console.log(`  Error fetching odds: ${error.message}`);
+    return null;
+  }
+}
+
 // Broadcast information function (server-side version)
 function getBroadcastInfo(fixture) {
   const league = fixture.league?.name?.toLowerCase() || '';
@@ -140,7 +210,7 @@ function fmtDate(d){
 const tpl = fs.readFileSync(path.join("scripts","template_index.html"), "utf-8");
 
 // Enhanced card rendering with better SEO and UX
-function renderCards(fixtures){
+function renderCards(fixtures, oddsData = {}){
   function cardHTML(f){
     const league = f.league || {};
     const home = f.teams?.home || {};
@@ -195,6 +265,10 @@ function renderCards(fixtures){
     const broadcastPlatform = broadcastInfo.platform;
     const broadcastType = broadcastInfo.type;
     
+    // Get betting odds for this match
+    const fixtureId = f.fixture?.id;
+    const odds = oddsData[fixtureId] || null;
+    
     // Status badge with better styling
     let statusBadge = "";
     if (live) {
@@ -244,6 +318,30 @@ function renderCards(fixtures){
           <span class="font-medium text-gray-800 truncate text-right">${a}</span>
         </div>
       </div>
+      
+      <!-- Betting Odds Section -->
+      ${odds ? `
+      <div class="border-t border-gray-100 pt-3 mb-3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-medium text-gray-600">🎲 Odds de Apostas</span>
+          <span class="text-xs text-gray-500">${odds.bookmaker}</span>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div class="text-center p-2 bg-blue-50 rounded border">
+            <div class="text-xs text-gray-600 mb-1">${h.length > 10 ? h.substring(0, 10) + '...' : h}</div>
+            <div class="font-semibold text-blue-700">${odds.home ? odds.home.toFixed(2) : '-'}</div>
+          </div>
+          <div class="text-center p-2 bg-gray-50 rounded border">
+            <div class="text-xs text-gray-600 mb-1">Empate</div>
+            <div class="font-semibold text-gray-700">${odds.draw ? odds.draw.toFixed(2) : '-'}</div>
+          </div>
+          <div class="text-center p-2 bg-red-50 rounded border">
+            <div class="text-xs text-gray-600 mb-1">${a.length > 10 ? a.substring(0, 10) + '...' : a}</div>
+            <div class="font-semibold text-red-700">${odds.away ? odds.away.toFixed(2) : '-'}</div>
+          </div>
+        </div>
+      </div>
+      ` : ''}
       
       <!-- Match Info and Actions -->
       <div class="flex items-center justify-between text-sm border-t border-gray-100 pt-3">
@@ -401,6 +499,23 @@ async function main(){
         return false;
       }
       
+      // EXCLUDE women's tournaments
+      if (league.includes('women') || league.includes('feminino') || league.includes('female') ||
+          league.includes('w ') || league.endsWith(' w') || homeTeam.includes(' w ') || 
+          awayTeam.includes(' w ') || homeTeam.endsWith(' w') || awayTeam.endsWith(' w')) {
+        return false;
+      }
+      
+      // EXCLUDE lower division state tournaments (2a, 3a divisao, etc.)
+      if (league.includes('2a divisao') || league.includes('3a divisao') || league.includes('4a divisao') ||
+          league.includes('segunda divisao') || league.includes('terceira divisao') || 
+          league.includes('division 2') || league.includes('division 3') ||
+          league.includes('serie c2') || league.includes('serie d') ||
+          league.includes('2º divisão') || league.includes('3º divisão') ||
+          league.includes('segunda categoria') || league.includes('terceira categoria')) {
+        return false;
+      }
+      
       // EXCLUDE European competitions entirely
       if (league.includes('champions league') || league.includes('europa league') || 
           league.includes('premier league') || league.includes('la liga') || 
@@ -497,6 +612,23 @@ async function main(){
           return false;
         }
         
+        // Exclude women's tournaments
+        if (league.includes('women') || league.includes('feminino') || league.includes('female') ||
+            league.includes('w ') || league.endsWith(' w') || homeTeam.includes(' w ') || 
+            awayTeam.includes(' w ') || homeTeam.endsWith(' w') || awayTeam.endsWith(' w')) {
+          return false;
+        }
+        
+        // Exclude lower division state tournaments
+        if (league.includes('2a divisao') || league.includes('3a divisao') || league.includes('4a divisao') ||
+            league.includes('segunda divisao') || league.includes('terceira divisao') || 
+            league.includes('division 2') || league.includes('division 3') ||
+            league.includes('serie c2') || league.includes('serie d') ||
+            league.includes('2º divisão') || league.includes('3º divisão') ||
+            league.includes('segunda categoria') || league.includes('terceira categoria')) {
+          return false;
+        }
+        
         const isBrazilianDomestic = country.includes('brazil') && (
           league.includes('brasileiro') || 
           league.includes('serie a') || league.includes('serie b') || league.includes('serie c')
@@ -537,17 +669,45 @@ async function main(){
     console.log(`  ${date}: ${gameCount} games ${gameCount > 0 ? '⚽' : '-'}`);
   });
   
-  // Build index.html
+  // Fetch betting odds for today's and tomorrow's matches
+  console.log('\n🎲 Fetching betting odds...');
   const date_today = dates[0], date_tomorrow = dates[1];
-  const cards_today = renderCards(byDate[date_today]);
-  const cards_tomorrow = renderCards(byDate[date_tomorrow]);
+  const allTodayFixtures = [...byDate[date_today], ...byDate[date_tomorrow]];
+  const oddsData = {};
+  
+  for (const fixture of allTodayFixtures) {
+    if (fixture.league?.id === 71) { // Only fetch for Brasileirão Serie A for now
+      const homeTeam = fixture.teams?.home?.name || '';
+      const awayTeam = fixture.teams?.away?.name || '';
+      const leagueId = fixture.league?.id?.toString();
+      
+      console.log(`  Fetching odds for ${homeTeam} vs ${awayTeam}...`);
+      const odds = await getBettingOdds(homeTeam, awayTeam, leagueId);
+      
+      if (odds) {
+        oddsData[fixture.fixture?.id] = odds;
+        console.log(`    ✅ Found odds: ${odds.home}/${odds.draw}/${odds.away} (${odds.bookmaker})`);
+      } else {
+        console.log(`    ❌ No odds found`);
+      }
+      
+      // Add small delay to respect API rate limits
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+  }
+  
+  console.log(`🎲 Fetched odds for ${Object.keys(oddsData).length} matches`);
+
+  // Build index.html
+  const cards_today = renderCards(byDate[date_today], oddsData);
+  const cards_tomorrow = renderCards(byDate[date_tomorrow], oddsData);
   
   // Next days: first date after today that has fixtures
   let nextFixtures = [];
   for (let i=1;i<dates.length;i++){
     if (byDate[dates[i]].length){ nextFixtures = byDate[dates[i]]; break; }
   }
-  const cards_next = renderCards(nextFixtures);
+  const cards_next = renderCards(nextFixtures, oddsData);
   
   // Generate calendar navigation
   const calendar_nav = generateCalendarNav(date_today, datesWithGames);
@@ -590,7 +750,7 @@ async function main(){
     ) || "Brasileirão";
     
     // Generate content for this specific day
-    const dayCards = byDate[ds].length > 0 ? renderCards(byDate[ds]) : 
+    const dayCards = byDate[ds].length > 0 ? renderCards(byDate[ds], {}) : 
       `<div class="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
         <div class="text-4xl mb-4">📅</div>
         <h3 class="text-lg font-semibold text-gray-700 mb-2">Nenhum jogo brasileiro agendado</h3>
@@ -633,7 +793,7 @@ async function main(){
     const page = tpl
       .replaceAll("{date_today}", fmtDate(new Date()))
       .replaceAll("{date_tomorrow}", fmtDate(new Date(Date.now()+86400000)))
-      .replaceAll("{cards_today}", renderCards(filtered))
+      .replaceAll("{cards_today}", renderCards(filtered, {}))
       .replaceAll("{cards_tomorrow}", "")
       .replaceAll("{cards_next}", "")
       .replaceAll("{calendar_nav}", generateCalendarNav(fmtDate(new Date()), datesWithGames))
