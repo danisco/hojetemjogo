@@ -250,8 +250,8 @@ function generateCalendarNav(currentDate, availableDates) {
   const today = new Date();
   const days = [];
   
-  // Generate 14 days starting from today
-  for (let i = 0; i < 14; i++) {
+  // Generate 21 days starting from today to match data fetching
+  for (let i = 0; i < 21; i++) {
     const date = new Date(today.getTime() + i * 86400000);
     const dateStr = fmtDate(date);
     const hasGames = availableDates.includes(dateStr);
@@ -259,11 +259,12 @@ function generateCalendarNav(currentDate, availableDates) {
     const dayName = date.toLocaleDateString("pt-BR", { weekday: "short" });
     const dayNum = date.getDate();
     
+    // Always make dates clickable, just style differently
     const classes = isToday 
       ? "bg-blue-600 text-white border-blue-600" 
       : hasGames 
         ? "bg-white text-gray-800 border-gray-300 hover:bg-blue-50 hover:border-blue-300" 
-        : "bg-gray-50 text-gray-400 border-gray-200";
+        : "bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100";
     
     days.push(`
       <a href="/dias/${dateStr}/" 
@@ -315,7 +316,52 @@ async function main(){
   const byDate = {};
   for (const ds of dates){
     console.log(`Fetching fixtures for ${ds}...`);
-    const allFixtures = await api("/fixtures", { date: ds, timezone: TZ });
+    
+    // Try multiple API calls to get comprehensive data
+    let allFixtures = [];
+    
+    // Primary call - by date
+    const dateFixtures = await api("/fixtures", { date: ds, timezone: TZ });
+    allFixtures = [...dateFixtures];
+    
+    // Additional calls for Brazilian leagues if date has few results
+    if (allFixtures.length < 5) {
+      console.log(`    Low fixture count (${allFixtures.length}), trying specific leagues...`);
+      
+      // Try Brazilian league IDs (Série A, B, Copa do Brasil, etc.)
+      const brazilLeagues = ["71", "72", "73", "74", "75", "76", "387", "388"];
+      for (const leagueId of brazilLeagues) {
+        try {
+          const leagueFixtures = await api("/fixtures", { 
+            date: ds, 
+            timezone: TZ,
+            league: leagueId
+          });
+          allFixtures = [...allFixtures, ...leagueFixtures];
+          console.log(`      League ${leagueId}: +${leagueFixtures.length} fixtures`);
+        } catch (error) {
+          // Continue with other leagues if one fails
+        }
+      }
+      
+      // Try by country Brazil
+      try {
+        const countryFixtures = await api("/fixtures", { 
+          date: ds, 
+          timezone: TZ,
+          country: "Brazil"
+        });
+        allFixtures = [...allFixtures, ...countryFixtures];
+        console.log(`      Country Brazil: +${countryFixtures.length} fixtures`);
+      } catch (error) {
+        // Continue if country call fails
+      }
+    }
+    
+    // Remove duplicates based on fixture ID
+    allFixtures = allFixtures.filter((fixture, index, self) => 
+      index === self.findIndex(f => f.fixture?.id === fixture.fixture?.id)
+    );
     
     // Enhanced Brazilian filtering - include all competitions with Brazilian teams
     const brazilianFixtures = allFixtures.filter(fixture => {
@@ -360,12 +406,72 @@ async function main(){
     });
     
     console.log(`  Found ${allFixtures.length} total, ${brazilianFixtures.length} Brazilian fixtures`);
+    
+    // If no fixtures found for future dates, try alternative approach
+    if (brazilianFixtures.length === 0 && ds > dates[2]) { // After day 3
+      console.log(`    No fixtures for ${ds}, trying season/round based approach...`);
+      
+      // Try getting fixtures by current season for Brazilian leagues
+      const currentYear = new Date().getFullYear();
+      for (const seasonYear of [currentYear, currentYear + 1]) {
+        try {
+          const seasonFixtures = await api("/fixtures", {
+            league: "71", // Brasileirão Série A
+            season: seasonYear.toString(),
+            from: ds,
+            to: ds
+          });
+          if (seasonFixtures.length > 0) {
+            allFixtures = [...allFixtures, ...seasonFixtures];
+            console.log(`      Season ${seasonYear}: +${seasonFixtures.length} fixtures`);
+          }
+        } catch (error) {
+          // Continue
+        }
+      }
+      
+      // Re-filter with new fixtures
+      const newBrazilianFixtures = allFixtures.filter(fixture => {
+        const league = fixture.league?.name?.toLowerCase() || '';
+        const country = fixture.league?.country?.toLowerCase() || '';
+        const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
+        const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
+        
+        const isBrazilianLeague = country.includes('brazil') || 
+          league.includes('brasileiro') || 
+          league.includes('serie');
+          
+        const hasBrazilianTeam = COMPREHENSIVE_TEAMS.some(team => {
+          const teamName = team.name.toLowerCase();
+          return homeTeam.includes(teamName) || awayTeam.includes(teamName);
+        });
+        
+        return isBrazilianLeague || hasBrazilianTeam;
+      });
+      
+      brazilianFixtures.push(...newBrazilianFixtures.filter(f => 
+        !brazilianFixtures.some(existing => existing.fixture?.id === f.fixture?.id)
+      ));
+      console.log(`    Updated to ${brazilianFixtures.length} Brazilian fixtures after season search`);
+    }
+    
     byDate[ds] = brazilianFixtures;
     fs.writeFileSync(path.join(DATA_DIR, `${ds}.json`), JSON.stringify(brazilianFixtures, null, 2));
   }
 
-  // Determine which dates have games
+  // Determine which dates have games and log details
   const datesWithGames = dates.filter(d => byDate[d].length > 0);
+  
+  console.log('\n📅 Calendar Data Summary:');
+  console.log(`Total dates fetched: ${dates.length}`);
+  console.log(`Dates with games: ${datesWithGames.length}`);
+  console.log(`First date: ${dates[0]}, Last date: ${dates[dates.length-1]}`);
+  
+  // Log each date and game count for debugging
+  dates.forEach(date => {
+    const gameCount = byDate[date].length;
+    console.log(`  ${date}: ${gameCount} games ${gameCount > 0 ? '⚽' : '-'}`);
+  });
   
   // Build index.html
   const date_today = dates[0], date_tomorrow = dates[1];
@@ -419,10 +525,22 @@ async function main(){
       popularTeams.some(popular => team.toLowerCase().includes(popular.toLowerCase()))
     ) || "Brasileirão";
     
+    // Generate content for this specific day
+    const dayCards = byDate[ds].length > 0 ? renderCards(byDate[ds]) : 
+      `<div class="text-center py-12 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+        <div class="text-4xl mb-4">📅</div>
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">Nenhum jogo brasileiro agendado</h3>
+        <p class="text-gray-500 mb-4">Não há jogos de times brasileiros para ${new Date(ds).toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}</p>
+        <div class="flex justify-center gap-4">
+          <a href="/dias/${dates[0]}/" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Ver jogos de hoje</a>
+          <a href="/times/" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">Ver todos os times</a>
+        </div>
+      </div>`;
+
     const page = tpl
       .replaceAll("{date_today}", ds)
       .replaceAll("{date_tomorrow}", dates[1] || ds)
-      .replaceAll("{cards_today}", renderCards(byDate[ds]))
+      .replaceAll("{cards_today}", dayCards)
       .replaceAll("{cards_tomorrow}", "")
       .replaceAll("{cards_next}", "")
       .replaceAll("{calendar_nav}", generateCalendarNav(ds, datesWithGames))
