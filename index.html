@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hoje Tem Jogo - Jogos de hoje, horários e onde assistir</title>
+  <meta name="description" content="Veja os jogos de hoje no Brasil: horários, placar em tempo real e onde assistir (TV/streaming). Brasileirão, Copa do Brasil, Libertadores e mais.">
+  <meta name="keywords" content="jogos de hoje, onde assistir, onde assistir Flamengo, onde assistir Palmeiras, onde assistir Corinthians, jogo do Flamengo hoje, horário do jogo, canal do jogo, transmissão ao vivo, Brasileirão, Copa do Brasil, Libertadores, Sul-Americana, jogos de amanhã, placar ao vivo, Fortaleza, São Paulo, Vasco, Botafogo, Grêmio, Internacional, Fluminense, Cruzeiro, Atlético-MG, Bahia, Athletico-PR, Santos">
+  <link rel="canonical" href="https://hojetemjogo.com.br/" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0ea5e9">
+  <meta property="og:title" content="Hoje Tem Jogo - Jogos de hoje, horários e onde assistir">
+  <meta property="og:description" content="Calendário diário e onde assistir futebol no Brasil.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hojetemjogo.com.br/">
+  <meta property="og:image" content="https://hojetemjogo.com.br/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hoje Tem Jogo">
+  <meta name="twitter:description" content="Jogos de hoje, horários e onde assistir">
+  <meta name="twitter:image" content="https://hojetemjogo.com.br/assets/og.png">
+
+  <!-- Tailwind via CDN for quick styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Favicon (emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/assets/logo.svg" alt="Hoje Tem Jogo" class="h-8 w-auto"/>
+        <span class="font-bold text-xl">Hoje Tem Jogo</span>
+      </a>
+      <nav class="hidden sm:flex gap-4 text-sm">
+        <a href="#hoje" class="hover:underline">Hoje</a>
+        <a href="#amanha" class="hover:underline">Amanhã</a>
+        <a href="#proximos" class="hover:underline">Próximos dias</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <section class="mb-6">
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Jogos de hoje no Brasil — horários e onde assistir</h1>
+      <p class="text-slate-600 mt-2">Carregando partidas do dia… Caso não haja jogos hoje, mostramos automaticamente os próximos dias. Use o botão “ver mais” para expandir.</p>
+      <div class="mt-3">
+        <label class="block text-sm mb-1" for="teamSearch">Pesquisar time</label>
+        <input id="teamSearch" type="search" placeholder="Ex.: Flamengo, Fortaleza, Palmeiras…" class="w-full sm:max-w-sm px-3 py-2 border rounded-lg" />
+      </div>
+    </section>
+
+    <section id="alert" class="hidden mb-4"></section>
+
+    <section id="hoje" class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Hoje <span id="date-today" class="font-normal text-slate-500"></span></h2>
+      <div id="list-today" class="grid gap-3"></div>
+      <button id="more-today" class="hidden mt-3 px-4 py-2 rounded-xl border">Ver mais</button>
+    </section>
+
+    <section id="amanha" class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Amanhã <span id="date-tomorrow" class="font-normal text-slate-500"></span></h2>
+      <div id="list-tomorrow" class="grid gap-3"></div>
+      <button id="more-tomorrow" class="hidden mt-3 px-4 py-2 rounded-xl border">Ver mais</button>
+    </section>
+
+    <section id="proximos" class="mb-10">
+      <h2 class="text-xl font-bold mb-3">Próximos dias</h2>
+      <div id="list-next" class="grid gap-3"></div>
+      <button id="more-next" class="hidden mt-3 px-4 py-2 rounded-xl border">Ver mais</button>
+    </section>
+
+    <section class="mt-12 prose max-w-none">
+      <h3>SEO — termos populares</h3>
+      <p>Buscas comuns dos torcedores: <em>jogo do [time] hoje</em>, <em>horário do jogo</em>, <em>onde assistir [time]</em>, <em>canal que transmite</em>, <em>transmissão ao vivo</em>, <em>Brasileirão</em>, <em>Libertadores</em>, <em>Sul-Americana</em>, <em>Copa do Brasil</em>. Exemplos: “Onde assistir Flamengo”, “Onde assistir Fortaleza”, “Onde assistir Palmeiras”.</p>
+      <p>Também atendemos a pesquisas por <strong>times</strong> (Flamengo, Fortaleza, Corinthians, São Paulo, Vasco, Botafogo, Grêmio, Internacional, Fluminense, Cruzeiro, Atlético-MG, Bahia, Athletico-PR, Santos) e por <strong>competições</strong>.</p>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 mt-10">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-slate-600 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+      <div>&copy; 2025 Hoje Tem Jogo — Feito com ❤️ no Brasil</div>
+      <nav class="flex gap-4">
+        <a class="hover:underline" href="/sitemap.xml">Sitemap</a>
+        <a class="hover:underline" href="/robots.txt">Robots</a>
+        <a class="hover:underline" href="mailto:contato@hojetemjogo.com.br">Contato</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/teams.js" defer></script>
+  <script src="/config.js" defer></script>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>

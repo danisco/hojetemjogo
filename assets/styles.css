@@ -1,0 +1,5 @@
+
+/* Tailwind is loaded via CDN. Only place minimal custom tweaks here if needed. */
+:root { --brand: #0ea5e9; }
+.card { background:white; border:1px solid #e5e7eb; border-radius:1rem; padding:1rem; }
+.badge { font-size: .75rem; border:1px solid #e5e7eb; border-radius:.75rem; padding:.15rem .5rem; }

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hojetemjogo.com.br/sitemap.xml
