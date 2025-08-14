@@ -12,10 +12,14 @@ const TIMES_DIR = path.join(OUT, "times");
 const TEAMS = JSON.parse(fs.readFileSync(path.join("assets","teams.json"), "utf-8"));
 
 async function api(pathname, params){
+  const apiKey = process.env.API_FOOTBALL_KEY || "64dbbac01db6ca5c41fefe0e061937a8";
   const url = new URL(API + pathname);
   Object.entries(params).forEach(([k,v]) => url.searchParams.set(k, v));
-  const res = await fetch(url, { headers: { "x-apisports-key": process.env.API_FOOTBALL_KEY || "" }});
-  if(!res.ok) throw new Error(`API error ${res.status}`);
+  const res = await fetch(url, { headers: { "x-apisports-key": apiKey }});
+  if(!res.ok) {
+    console.warn(`API error ${res.status} for ${url.toString()}`);
+    return []; // Return empty array instead of throwing error
+  }
   const j = await res.json();
   return j.response || [];
 }
