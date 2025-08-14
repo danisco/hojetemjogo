@@ -1,0 +1,1192 @@
+[
+  {
+    "fixture": {
+      "id": 1373853,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T14:00:00-03:00",
+      "timestamp": 1755104400,
+      "periods": {
+        "first": 1755104400,
+        "second": 1755108000
+      },
+      "venue": {
+        "id": 21281,
+        "name": "Centro de Formação de Atletas Presidente Laudo Natel",
+        "city": "Cotia, São Paulo"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 4
+      }
+    },
+    "league": {
+      "id": 1128,
+      "name": "Brasileiro U17",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1128.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 14",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 24487,
+        "name": "Sao Paulo U17",
+        "logo": "https://media.api-sports.io/football/teams/24487.png",
+        "winner": false
+      },
+      "away": {
+        "id": 24486,
+        "name": "Santos U17",
+        "logo": "https://media.api-sports.io/football/teams/24486.png",
+        "winner": true
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 2
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 1
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 2
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1415266,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T14:45:00-03:00",
+      "timestamp": 1755107100,
+      "periods": {
+        "first": 1755107100,
+        "second": 1755110700
+      },
+      "venue": {
+        "id": 5635,
+        "name": "Estádio Jânio de Moraes",
+        "city": "Nova Iguaçu, Rio de Janeiro"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 10
+      }
+    },
+    "league": {
+      "id": 1035,
+      "name": "Copa Rio",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1035.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 7782,
+        "name": "Nova Iguaçu",
+        "logo": "https://media.api-sports.io/football/teams/7782.png",
+        "winner": true
+      },
+      "away": {
+        "id": 13114,
+        "name": "Olaria",
+        "logo": "https://media.api-sports.io/football/teams/13114.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 1,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 1,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1415267,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T14:45:00-03:00",
+      "timestamp": 1755107100,
+      "periods": {
+        "first": 1755107100,
+        "second": 1755110700
+      },
+      "venue": {
+        "id": 8281,
+        "name": "Estádio Giulite Coutinho",
+        "city": "Mesquita, Rio de Janeiro"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 9
+      }
+    },
+    "league": {
+      "id": 1035,
+      "name": "Copa Rio",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1035.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 13107,
+        "name": "Audax Rio",
+        "logo": "https://media.api-sports.io/football/teams/13107.png",
+        "winner": false
+      },
+      "away": {
+        "id": 13104,
+        "name": "América RJ",
+        "logo": "https://media.api-sports.io/football/teams/13104.png",
+        "winner": true
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 2
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 2
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 2
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1415268,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T14:45:00-03:00",
+      "timestamp": 1755107100,
+      "periods": {
+        "first": 1755107100,
+        "second": 1755110700
+      },
+      "venue": {
+        "id": 217,
+        "name": "Estádio Elcyr Resende de Mendonça",
+        "city": "Saquarema, Rio de Janeiro"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 11
+      }
+    },
+    "league": {
+      "id": 1035,
+      "name": "Copa Rio",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1035.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 2206,
+        "name": "Boavista SC",
+        "logo": "https://media.api-sports.io/football/teams/2206.png",
+        "winner": false
+      },
+      "away": {
+        "id": 10672,
+        "name": "Cabofriense",
+        "logo": "https://media.api-sports.io/football/teams/10672.png",
+        "winner": true
+      }
+    },
+    "goals": {
+      "home": 1,
+      "away": 2
+    },
+    "score": {
+      "halftime": {
+        "home": 1,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 1,
+        "away": 2
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1415270,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T14:45:00-03:00",
+      "timestamp": 1755107100,
+      "periods": {
+        "first": 1755107100,
+        "second": 1755110700
+      },
+      "venue": {
+        "id": 20721,
+        "name": "Centro de Treinamento João Saldanha",
+        "city": "Rio de Janeiro, Rio de Janeiro"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 3
+      }
+    },
+    "league": {
+      "id": 1035,
+      "name": "Copa Rio",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1035.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 14000,
+        "name": "CFRJ / Maricá",
+        "logo": "https://media.api-sports.io/football/teams/14000.png",
+        "winner": null
+      },
+      "away": {
+        "id": 23262,
+        "name": "Petrópolis",
+        "logo": "https://media.api-sports.io/football/teams/23262.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1415271,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T14:45:00-03:00",
+      "timestamp": 1755107100,
+      "periods": {
+        "first": 1755107100,
+        "second": 1755110700
+      },
+      "venue": {
+        "id": 5633,
+        "name": "Estádio Aniceto Moscoso",
+        "city": "Rio de Janeiro, Rio de Janeiro"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 6
+      }
+    },
+    "league": {
+      "id": 1035,
+      "name": "Copa Rio",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1035.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 7780,
+        "name": "Madureira",
+        "logo": "https://media.api-sports.io/football/teams/7780.png",
+        "winner": false
+      },
+      "away": {
+        "id": 12278,
+        "name": "Duque de Caxias",
+        "logo": "https://media.api-sports.io/football/teams/12278.png",
+        "winner": true
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 1
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 1
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1416220,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T14:45:00-03:00",
+      "timestamp": 1755107100,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 8290,
+        "name": "Estádio Lourival Gomes de Almeida",
+        "city": "Saquarema, Rio de Janeiro"
+      },
+      "status": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 1035,
+      "name": "Copa Rio",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1035.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 13109,
+        "name": "Bonsucesso",
+        "logo": "https://media.api-sports.io/football/teams/13109.png",
+        "winner": null
+      },
+      "away": {
+        "id": 13115,
+        "name": "Sampaio Corrêa RJ",
+        "logo": "https://media.api-sports.io/football/teams/13115.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1373844,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T15:00:00-03:00",
+      "timestamp": 1755108000,
+      "periods": {
+        "first": 1755108000,
+        "second": 1755111600
+      },
+      "venue": {
+        "id": 21516,
+        "name": "CT do Red Bull Bragantino",
+        "city": "Atibaia, São Paulo"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 7
+      }
+    },
+    "league": {
+      "id": 1128,
+      "name": "Brasileiro U17",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1128.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 14",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 24485,
+        "name": "RB Bragantino U17",
+        "logo": "https://media.api-sports.io/football/teams/24485.png",
+        "winner": false
+      },
+      "away": {
+        "id": 24469,
+        "name": "Athletico PR U17",
+        "logo": "https://media.api-sports.io/football/teams/24469.png",
+        "winner": true
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 1
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 1
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 1
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1373849,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T15:00:00-03:00",
+      "timestamp": 1755108000,
+      "periods": {
+        "first": 1755108000,
+        "second": 1755111600
+      },
+      "venue": {
+        "id": 21725,
+        "name": "Arena Vera Cruz",
+        "city": "Betim, Minas Gerais"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 1128,
+      "name": "Brasileiro U17",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1128.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 14",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 24468,
+        "name": "America MG U17",
+        "logo": "https://media.api-sports.io/football/teams/24468.png",
+        "winner": false
+      },
+      "away": {
+        "id": 24471,
+        "name": "Atlético Mineiro U17",
+        "logo": "https://media.api-sports.io/football/teams/24471.png",
+        "winner": true
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 2
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 2
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1373851,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T15:00:00-03:00",
+      "timestamp": 1755108000,
+      "periods": {
+        "first": 1755108000,
+        "second": 1755111600
+      },
+      "venue": {
+        "id": null,
+        "name": "Estádio Municipal Homero Soldatelli",
+        "city": "Flores da Cunha"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 5
+      }
+    },
+    "league": {
+      "id": 1128,
+      "name": "Brasileiro U17",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1128.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 14",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 25797,
+        "name": "Juventude U17",
+        "logo": "https://media.api-sports.io/football/teams/25797.png",
+        "winner": null
+      },
+      "away": {
+        "id": 24473,
+        "name": "Botafogo U17",
+        "logo": "https://media.api-sports.io/football/teams/24473.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": 2,
+      "away": 2
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 2
+      },
+      "fulltime": {
+        "home": 2,
+        "away": 2
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1373852,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T15:00:00-03:00",
+      "timestamp": 1755108000,
+      "periods": {
+        "first": 1755108000,
+        "second": 1755111600
+      },
+      "venue": {
+        "id": null,
+        "name": "Centro de Treinamento Ribamar Bezerra",
+        "city": "Maracanaú, Ceará"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 1128,
+      "name": "Brasileiro U17",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1128.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 14",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 24480,
+        "name": "Fortaleza U17",
+        "logo": "https://media.api-sports.io/football/teams/24480.png",
+        "winner": true
+      },
+      "away": {
+        "id": 24484,
+        "name": "Palmeiras U17",
+        "logo": "https://media.api-sports.io/football/teams/24484.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 2,
+      "away": 1
+    },
+    "score": {
+      "halftime": {
+        "home": null,
+        "away": null
+      },
+      "fulltime": {
+        "home": 2,
+        "away": 1
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1431055,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T15:00:00-03:00",
+      "timestamp": 1755108000,
+      "periods": {
+        "first": 1755108000,
+        "second": 1755111600
+      },
+      "venue": {
+        "id": 0,
+        "name": null,
+        "city": null
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 4
+      }
+    },
+    "league": {
+      "id": 1146,
+      "name": "Alagoano - 2",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1146.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 1",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 22960,
+        "name": "Zumbi",
+        "logo": "https://media.api-sports.io/football/teams/22960.png",
+        "winner": null
+      },
+      "away": {
+        "id": 18363,
+        "name": "Cruzeiro Arapiraca",
+        "logo": "https://media.api-sports.io/football/teams/18363.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1431056,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T15:00:00-03:00",
+      "timestamp": 1755108000,
+      "periods": {
+        "first": null,
+        "second": null
+      },
+      "venue": {
+        "id": 0,
+        "name": null,
+        "city": null
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 1146,
+      "name": "Alagoano - 2",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1146.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 1",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 15603,
+        "name": "Aliança AL",
+        "logo": "https://media.api-sports.io/football/teams/15603.png",
+        "winner": true
+      },
+      "away": {
+        "id": 9128,
+        "name": "Miguelense",
+        "logo": "https://media.api-sports.io/football/teams/9128.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 2,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 1,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 2,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1429762,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T19:00:00-03:00",
+      "timestamp": 1755122400,
+      "periods": {
+        "first": 1755122400,
+        "second": 1755126000
+      },
+      "venue": {
+        "id": 233,
+        "name": "Estádio Heriberto Hülse",
+        "city": "Criciúma, Santa Catarina"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 7
+      }
+    },
+    "league": {
+      "id": 1076,
+      "name": "Catarinense U20",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1076.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Semi-finals",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 12999,
+        "name": "Criciuma U20",
+        "logo": "https://media.api-sports.io/football/teams/12999.png",
+        "winner": true
+      },
+      "away": {
+        "id": 23321,
+        "name": "Barra SC U20",
+        "logo": "https://media.api-sports.io/football/teams/23321.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 2,
+      "away": 1
+    },
+    "score": {
+      "halftime": {
+        "home": 2,
+        "away": 1
+      },
+      "fulltime": {
+        "home": 2,
+        "away": 1
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1431053,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T19:00:00-03:00",
+      "timestamp": 1755122400,
+      "periods": {
+        "first": 1755122400,
+        "second": 1755126000
+      },
+      "venue": {
+        "id": null,
+        "name": null,
+        "city": null
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 10
+      }
+    },
+    "league": {
+      "id": 851,
+      "name": "Carioca A2",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/851.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Championship - Final",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 7854,
+        "name": "Bangu",
+        "logo": "https://media.api-sports.io/football/teams/7854.png",
+        "winner": true
+      },
+      "away": {
+        "id": 13118,
+        "name": "São Gonçalo EC RJ",
+        "logo": "https://media.api-sports.io/football/teams/13118.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 1,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 1,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 1,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1415274,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T20:00:00-03:00",
+      "timestamp": 1755126000,
+      "periods": {
+        "first": 1755126000,
+        "second": 1755129600
+      },
+      "venue": {
+        "id": 5665,
+        "name": "Estádio Luso-Brasileiro",
+        "city": "Rio de Janeiro, Rio de Janeiro"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 9
+      }
+    },
+    "league": {
+      "id": 1035,
+      "name": "Copa Rio",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1035.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Round of 16",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 7835,
+        "name": "Portuguesa RJ",
+        "logo": "https://media.api-sports.io/football/teams/7835.png",
+        "winner": null
+      },
+      "away": {
+        "id": 4857,
+        "name": "Resende",
+        "logo": "https://media.api-sports.io/football/teams/4857.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1431057,
+      "referee": null,
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-13T20:00:00-03:00",
+      "timestamp": 1755126000,
+      "periods": {
+        "first": 1755126000,
+        "second": 1755129600
+      },
+      "venue": {
+        "id": 0,
+        "name": null,
+        "city": null
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 3
+      }
+    },
+    "league": {
+      "id": 1146,
+      "name": "Alagoano - 2",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/1146.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "1st Phase - 1",
+      "standings": true
+    },
+    "teams": {
+      "home": {
+        "id": 25006,
+        "name": "Guarany Alagoano",
+        "logo": "https://media.api-sports.io/football/teams/25006.png",
+        "winner": true
+      },
+      "away": {
+        "id": 9125,
+        "name": "Dimensão Saúde",
+        "logo": "https://media.api-sports.io/football/teams/9125.png",
+        "winner": false
+      }
+    },
+    "goals": {
+      "home": 3,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 1,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 3,
+        "away": 0
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  }
+]

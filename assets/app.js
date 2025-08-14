@@ -27,12 +27,18 @@
     const url = new URL(cfg.API_BASE + "/fixtures");
     url.searchParams.set("date", date);
     url.searchParams.set("timezone", tz);
-    url.searchParams.set("country", cfg.COUNTRY); // limitar ao Brasil
+    // Note: Don't use country parameter as it doesn't work properly
     try {
       const res = await fetch(url.toString(), { headers });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      return data.response || [];
+      // Filter for Brazilian leagues after getting all fixtures
+      const allFixtures = data.response || [];
+      const brazilianFixtures = allFixtures.filter(fixture => 
+        fixture.league?.country?.toLowerCase().includes('brazil')
+      );
+      console.log(`Found ${allFixtures.length} total fixtures, ${brazilianFixtures.length} Brazilian fixtures`);
+      return brazilianFixtures;
     } catch (e) {
       console.error("Erro ao buscar fixtures", e);
       showAlert("Não foi possível carregar os jogos agora. Tente novamente em instantes.");
