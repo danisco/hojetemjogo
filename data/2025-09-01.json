@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "fixture": {
+      "id": 21250901,
+      "date": "2025-09-01T18:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Allianz Parque"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 20"
+    },
+    "teams": {
+      "home": {
+        "id": 120,
+        "name": "Botafogo",
+        "logo": "https://media.api-sports.io/football/teams/120.png"
+      },
+      "away": {
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250902,
+      "date": "2025-09-01T20:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Neo Química Arena"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 21"
+    },
+    "teams": {
+      "home": {
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png"
+      },
+      "away": {
+        "id": 129,
+        "name": "Cruzeiro",
+        "logo": "https://media.api-sports.io/football/teams/129.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  }
+]

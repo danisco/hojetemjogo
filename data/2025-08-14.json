@@ -16,8 +16,8 @@
         "city": null
       },
       "status": {
-        "long": "Not Started",
-        "short": "NS",
+        "long": "Match Postponed",
+        "short": "PST",
         "elapsed": null,
         "extra": null
       }
@@ -86,8 +86,8 @@
         "city": null
       },
       "status": {
-        "long": "Not Started",
-        "short": "NS",
+        "long": "Match Postponed",
+        "short": "PST",
         "elapsed": null,
         "extra": null
       }
@@ -142,12 +142,12 @@
   {
     "fixture": {
       "id": 1377455,
-      "referee": "Wilmar Alexander Roldán Pérez",
+      "referee": "Wilmar Roldan, Colombia",
       "timezone": "America/Sao_Paulo",
       "date": "2025-08-14T19:00:00-03:00",
       "timestamp": 1755208800,
       "periods": {
-        "first": null,
+        "first": 1755208800,
         "second": null
       },
       "venue": {
@@ -156,10 +156,10 @@
         "city": "Rio de Janeiro"
       },
       "status": {
-        "long": "Not Started",
-        "short": "NS",
-        "elapsed": null,
-        "extra": null
+        "long": "Halftime",
+        "short": "HT",
+        "elapsed": 45,
+        "extra": 3
       }
     },
     "league": {
@@ -177,23 +177,23 @@
         "id": 120,
         "name": "Botafogo",
         "logo": "https://media.api-sports.io/football/teams/120.png",
-        "winner": null
+        "winner": true
       },
       "away": {
         "id": 1158,
         "name": "LDU de Quito",
         "logo": "https://media.api-sports.io/football/teams/1158.png",
-        "winner": null
+        "winner": false
       }
     },
     "goals": {
-      "home": null,
-      "away": null
+      "home": 1,
+      "away": 0
     },
     "score": {
       "halftime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "fulltime": {
         "home": null,
