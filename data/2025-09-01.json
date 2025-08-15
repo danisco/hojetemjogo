@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Morumbi"
+        "name": "Neo Química Arena"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 1207,
-        "name": "RB Bragantino",
-        "logo": "https://media.api-sports.io/football/teams/1207.png"
+        "id": 128,
+        "name": "Santos",
+        "logo": "https://media.api-sports.io/football/teams/128.png"
       },
       "away": {
-        "id": 152,
-        "name": "Juventude",
-        "logo": "https://media.api-sports.io/football/teams/152.png"
+        "id": 1569,
+        "name": "Cuiabá",
+        "logo": "https://media.api-sports.io/football/teams/1569.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Estádio Olímpico Nilton Santos"
       }
     },
     "league": {
@@ -54,49 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 124,
-        "name": "Vasco da Gama",
-        "logo": "https://media.api-sports.io/football/teams/124.png"
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
       },
       "away": {
-        "id": 160,
-        "name": "Fortaleza",
-        "logo": "https://media.api-sports.io/football/teams/160.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250903,
-      "date": "2025-09-01T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Mineirão"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 123,
-        "name": "Coritiba",
-        "logo": "https://media.api-sports.io/football/teams/123.png"
-      },
-      "away": {
-        "id": 139,
-        "name": "Ponte Preta",
-        "logo": "https://media.api-sports.io/football/teams/139.png"
+        "id": 134,
+        "name": "Sport",
+        "logo": "https://media.api-sports.io/football/teams/134.png"
       }
     },
     "goals": {

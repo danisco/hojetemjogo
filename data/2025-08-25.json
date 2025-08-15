@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Allianz Parque"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -24,9 +24,44 @@
         "logo": "https://media.api-sports.io/football/teams/1569.png"
       },
       "away": {
-        "id": 121,
-        "name": "Palmeiras",
-        "logo": "https://media.api-sports.io/football/teams/121.png"
+        "id": 130,
+        "name": "Atlético-MG",
+        "logo": "https://media.api-sports.io/football/teams/130.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250826,
+      "date": "2025-08-25T20:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Morumbi"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 21"
+    },
+    "teams": {
+      "home": {
+        "id": 152,
+        "name": "Juventude",
+        "logo": "https://media.api-sports.io/football/teams/152.png"
+      },
+      "away": {
+        "id": 125,
+        "name": "Fluminense",
+        "logo": "https://media.api-sports.io/football/teams/125.png"
       }
     },
     "goals": {

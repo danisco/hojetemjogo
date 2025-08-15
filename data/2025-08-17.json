@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Vila Belmiro"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 155,
-        "name": "América-MG",
-        "logo": "https://media.api-sports.io/football/teams/155.png"
+        "id": 158,
+        "name": "Avaí",
+        "logo": "https://media.api-sports.io/football/teams/158.png"
       },
       "away": {
-        "id": 128,
-        "name": "Santos",
-        "logo": "https://media.api-sports.io/football/teams/128.png"
+        "id": 120,
+        "name": "Botafogo",
+        "logo": "https://media.api-sports.io/football/teams/120.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -54,14 +54,49 @@
     },
     "teams": {
       "home": {
-        "id": 118,
-        "name": "Bahia",
-        "logo": "https://media.api-sports.io/football/teams/118.png"
+        "id": 128,
+        "name": "Santos",
+        "logo": "https://media.api-sports.io/football/teams/128.png"
       },
       "away": {
-        "id": 1207,
-        "name": "RB Bragantino",
-        "logo": "https://media.api-sports.io/football/teams/1207.png"
+        "id": 160,
+        "name": "Fortaleza",
+        "logo": "https://media.api-sports.io/football/teams/160.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250819,
+      "date": "2025-08-17T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Neo Química Arena"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 130,
+        "name": "Atlético-MG",
+        "logo": "https://media.api-sports.io/football/teams/130.png"
+      },
+      "away": {
+        "id": 10269,
+        "name": "Mirassol",
+        "logo": "https://media.api-sports.io/football/teams/10269.png"
       }
     },
     "goals": {

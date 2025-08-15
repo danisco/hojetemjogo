@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Morumbi"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 127,
-        "name": "Flamengo",
-        "logo": "https://media.api-sports.io/football/teams/127.png"
+        "id": 126,
+        "name": "São Paulo",
+        "logo": "https://media.api-sports.io/football/teams/126.png"
       },
       "away": {
-        "id": 134,
-        "name": "Sport",
-        "logo": "https://media.api-sports.io/football/teams/134.png"
+        "id": 158,
+        "name": "Avaí",
+        "logo": "https://media.api-sports.io/football/teams/158.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Maracanã"
+        "name": "Estádio Olímpico Nilton Santos"
       }
     },
     "league": {
@@ -54,14 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 160,
-        "name": "Fortaleza",
-        "logo": "https://media.api-sports.io/football/teams/160.png"
+        "id": 118,
+        "name": "Bahia",
+        "logo": "https://media.api-sports.io/football/teams/118.png"
       },
       "away": {
-        "id": 139,
-        "name": "Ponte Preta",
-        "logo": "https://media.api-sports.io/football/teams/139.png"
+        "id": 123,
+        "name": "Coritiba",
+        "logo": "https://media.api-sports.io/football/teams/123.png"
       }
     },
     "goals": {
@@ -78,7 +78,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Morumbi"
+        "name": "Estádio Olímpico Nilton Santos"
       }
     },
     "league": {
@@ -89,14 +89,14 @@
     },
     "teams": {
       "home": {
-        "id": 10269,
-        "name": "Mirassol",
-        "logo": "https://media.api-sports.io/football/teams/10269.png"
+        "id": 124,
+        "name": "Vasco da Gama",
+        "logo": "https://media.api-sports.io/football/teams/124.png"
       },
       "away": {
-        "id": 123,
-        "name": "Coritiba",
-        "logo": "https://media.api-sports.io/football/teams/123.png"
+        "id": 158,
+        "name": "Avaí",
+        "logo": "https://media.api-sports.io/football/teams/158.png"
       }
     },
     "goals": {
