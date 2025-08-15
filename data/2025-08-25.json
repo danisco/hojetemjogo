@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Estádio Olímpico Nilton Santos"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 1569,
-        "name": "Cuiabá",
-        "logo": "https://media.api-sports.io/football/teams/1569.png"
+        "id": 125,
+        "name": "Fluminense",
+        "logo": "https://media.api-sports.io/football/teams/125.png"
       },
       "away": {
-        "id": 130,
-        "name": "Atlético-MG",
-        "logo": "https://media.api-sports.io/football/teams/130.png"
+        "id": 123,
+        "name": "Coritiba",
+        "logo": "https://media.api-sports.io/football/teams/123.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Morumbi"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -54,14 +54,49 @@
     },
     "teams": {
       "home": {
-        "id": 152,
-        "name": "Juventude",
-        "logo": "https://media.api-sports.io/football/teams/152.png"
+        "id": 139,
+        "name": "Ponte Preta",
+        "logo": "https://media.api-sports.io/football/teams/139.png"
       },
       "away": {
-        "id": 125,
-        "name": "Fluminense",
-        "logo": "https://media.api-sports.io/football/teams/125.png"
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250827,
+      "date": "2025-08-25T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Maracanã"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 129,
+        "name": "Cruzeiro",
+        "logo": "https://media.api-sports.io/football/teams/129.png"
+      },
+      "away": {
+        "id": 124,
+        "name": "Vasco da Gama",
+        "logo": "https://media.api-sports.io/football/teams/124.png"
       }
     },
     "goals": {

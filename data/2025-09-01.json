@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Neo Química Arena"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 128,
-        "name": "Santos",
-        "logo": "https://media.api-sports.io/football/teams/128.png"
+        "id": 120,
+        "name": "Botafogo",
+        "logo": "https://media.api-sports.io/football/teams/120.png"
       },
       "away": {
-        "id": 1569,
-        "name": "Cuiabá",
-        "logo": "https://media.api-sports.io/football/teams/1569.png"
+        "id": 160,
+        "name": "Fortaleza",
+        "logo": "https://media.api-sports.io/football/teams/160.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
+        "name": "Allianz Parque"
       }
     },
     "league": {
@@ -54,14 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 1207,
-        "name": "RB Bragantino",
-        "logo": "https://media.api-sports.io/football/teams/1207.png"
-      },
-      "away": {
         "id": 134,
         "name": "Sport",
         "logo": "https://media.api-sports.io/football/teams/134.png"
+      },
+      "away": {
+        "id": 159,
+        "name": "Vitória",
+        "logo": "https://media.api-sports.io/football/teams/159.png"
       }
     },
     "goals": {

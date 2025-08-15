@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -19,84 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 126,
-        "name": "São Paulo",
-        "logo": "https://media.api-sports.io/football/teams/126.png"
+        "id": 1209,
+        "name": "Chapecoense",
+        "logo": "https://media.api-sports.io/football/teams/1209.png"
       },
       "away": {
-        "id": 158,
-        "name": "Avaí",
-        "logo": "https://media.api-sports.io/football/teams/158.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250819,
-      "date": "2025-08-18T20:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 21"
-    },
-    "teams": {
-      "home": {
-        "id": 118,
-        "name": "Bahia",
-        "logo": "https://media.api-sports.io/football/teams/118.png"
-      },
-      "away": {
-        "id": 123,
-        "name": "Coritiba",
-        "logo": "https://media.api-sports.io/football/teams/123.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250820,
-      "date": "2025-08-18T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 124,
-        "name": "Vasco da Gama",
-        "logo": "https://media.api-sports.io/football/teams/124.png"
-      },
-      "away": {
-        "id": 158,
-        "name": "Avaí",
-        "logo": "https://media.api-sports.io/football/teams/158.png"
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
       }
     },
     "goals": {

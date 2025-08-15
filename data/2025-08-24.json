@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -24,79 +24,9 @@
         "logo": "https://media.api-sports.io/football/teams/126.png"
       },
       "away": {
-        "id": 124,
-        "name": "Vasco da Gama",
-        "logo": "https://media.api-sports.io/football/teams/124.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250825,
-      "date": "2025-08-24T20:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 21"
-    },
-    "teams": {
-      "home": {
-        "id": 134,
-        "name": "Sport",
-        "logo": "https://media.api-sports.io/football/teams/134.png"
-      },
-      "away": {
-        "id": 1209,
-        "name": "Chapecoense",
-        "logo": "https://media.api-sports.io/football/teams/1209.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250826,
-      "date": "2025-08-24T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Allianz Parque"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 134,
-        "name": "Sport",
-        "logo": "https://media.api-sports.io/football/teams/134.png"
-      },
-      "away": {
-        "id": 1209,
-        "name": "Chapecoense",
-        "logo": "https://media.api-sports.io/football/teams/1209.png"
+        "id": 155,
+        "name": "América-MG",
+        "logo": "https://media.api-sports.io/football/teams/155.png"
       }
     },
     "goals": {
