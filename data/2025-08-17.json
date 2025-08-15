@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Vila Belmiro"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -19,44 +19,9 @@
     },
     "teams": {
       "home": {
-        "id": 121,
-        "name": "Palmeiras",
-        "logo": "https://media.api-sports.io/football/teams/121.png"
-      },
-      "away": {
-        "id": 160,
-        "name": "Fortaleza",
-        "logo": "https://media.api-sports.io/football/teams/160.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250818,
-      "date": "2025-08-17T20:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Neo Química Arena"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 21"
-    },
-    "teams": {
-      "home": {
-        "id": 1214,
-        "name": "Criciúma",
-        "logo": "https://media.api-sports.io/football/teams/1214.png"
+        "id": 1569,
+        "name": "Cuiabá",
+        "logo": "https://media.api-sports.io/football/teams/1569.png"
       },
       "away": {
         "id": 159,

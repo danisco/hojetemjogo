@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Maracanã"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -19,9 +19,9 @@
     },
     "teams": {
       "home": {
-        "id": 133,
-        "name": "Bahia",
-        "logo": "https://media.api-sports.io/football/teams/133.png"
+        "id": 160,
+        "name": "Fortaleza",
+        "logo": "https://media.api-sports.io/football/teams/160.png"
       },
       "away": {
         "id": 123,

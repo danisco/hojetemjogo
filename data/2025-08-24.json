@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Allianz Parque"
+        "name": "Morumbi"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 1214,
-        "name": "Criciúma",
-        "logo": "https://media.api-sports.io/football/teams/1214.png"
+        "id": 128,
+        "name": "Santos",
+        "logo": "https://media.api-sports.io/football/teams/128.png"
       },
       "away": {
-        "id": 122,
-        "name": "Athletico Paranaense",
-        "logo": "https://media.api-sports.io/football/teams/122.png"
+        "id": 155,
+        "name": "América-MG",
+        "logo": "https://media.api-sports.io/football/teams/155.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Neo Química Arena"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -54,49 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 1569,
-        "name": "Cuiabá",
-        "logo": "https://media.api-sports.io/football/teams/1569.png"
+        "id": 126,
+        "name": "São Paulo",
+        "logo": "https://media.api-sports.io/football/teams/126.png"
       },
       "away": {
-        "id": 122,
-        "name": "Athletico Paranaense",
-        "logo": "https://media.api-sports.io/football/teams/122.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250826,
-      "date": "2025-08-24T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Vila Belmiro"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 158,
-        "name": "Avaí",
-        "logo": "https://media.api-sports.io/football/teams/158.png"
-      },
-      "away": {
-        "id": 127,
-        "name": "Flamengo",
-        "logo": "https://media.api-sports.io/football/teams/127.png"
+        "id": 159,
+        "name": "Vitória",
+        "logo": "https://media.api-sports.io/football/teams/159.png"
       }
     },
     "goals": {
