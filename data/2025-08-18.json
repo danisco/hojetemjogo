@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Morumbi"
+        "name": "Vila Belmiro"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 1569,
-        "name": "Cuiabá",
-        "logo": "https://media.api-sports.io/football/teams/1569.png"
-      },
-      "away": {
         "id": 121,
         "name": "Palmeiras",
         "logo": "https://media.api-sports.io/football/teams/121.png"
+      },
+      "away": {
+        "id": 152,
+        "name": "Juventude",
+        "logo": "https://media.api-sports.io/football/teams/152.png"
       }
     },
     "goals": {
@@ -54,49 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 121,
-        "name": "Palmeiras",
-        "logo": "https://media.api-sports.io/football/teams/121.png"
+        "id": 124,
+        "name": "Vasco da Gama",
+        "logo": "https://media.api-sports.io/football/teams/124.png"
       },
       "away": {
-        "id": 132,
-        "name": "Internacional",
-        "logo": "https://media.api-sports.io/football/teams/132.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250820,
-      "date": "2025-08-18T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Morumbi"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 134,
-        "name": "Sport",
-        "logo": "https://media.api-sports.io/football/teams/134.png"
-      },
-      "away": {
-        "id": 121,
-        "name": "Palmeiras",
-        "logo": "https://media.api-sports.io/football/teams/121.png"
+        "id": 1214,
+        "name": "Criciúma",
+        "logo": "https://media.api-sports.io/football/teams/1214.png"
       }
     },
     "goals": {

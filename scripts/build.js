@@ -28,8 +28,8 @@ const COMPREHENSIVE_TEAMS = [
   { name: "Vitória", slug: "vitoria", id: 159 },
   { name: "Vasco da Gama", slug: "vasco", id: 124 },
   { name: "Fortaleza", slug: "fortaleza", id: 160 },
-  { name: "Juventude", slug: "juventude", id: 1204 },
-  { name: "Bahia", slug: "bahia", id: 133 },
+  { name: "Juventude", slug: "juventude", id: 152 },
+  { name: "Bahia", slug: "bahia", id: 118 },
   { name: "Santos", slug: "santos", id: 128 }, // Promoted from Serie B
   { name: "Mirassol", slug: "mirassol", id: 10269 }, // Promoted from Serie B
   { name: "Sport", slug: "sport", id: 134 }, // Promoted from Serie B  
@@ -56,6 +56,7 @@ const COMPREHENSIVE_TEAMS = [
   { name: "Athletic Club", slug: "athletic-club", id: 2282 }, // Promoted from Serie C
   { name: "Volta Redonda", slug: "volta-redonda", id: 2353 }, // Promoted from Serie C
   { name: "Paysandu", slug: "paysandu", id: 1205 },
+  { name: "Ponte Preta", slug: "ponte-preta", id: 139 },
   
   // Use original teams.json as fallback for any additional teams
   ...TEAMS_JSON
@@ -80,9 +81,11 @@ function generateSampleFixtures(date, count = 2) {
     { name: "Grêmio", id: 131, logo: "https://media.api-sports.io/football/teams/131.png" },
     { name: "RB Bragantino", id: 1207, logo: "https://media.api-sports.io/football/teams/1207.png" },
     { name: "Vasco da Gama", id: 124, logo: "https://media.api-sports.io/football/teams/124.png" },
-    { name: "Bahia", id: 133, logo: "https://media.api-sports.io/football/teams/133.png" },
+    { name: "Bahia", id: 118, logo: "https://media.api-sports.io/football/teams/118.png" },
     { name: "Fortaleza", id: 160, logo: "https://media.api-sports.io/football/teams/160.png" },
     { name: "Vitória", id: 159, logo: "https://media.api-sports.io/football/teams/159.png" },
+    { name: "Juventude", id: 152, logo: "https://media.api-sports.io/football/teams/152.png" },
+    { name: "Ponte Preta", id: 139, logo: "https://media.api-sports.io/football/teams/139.png" },
     { name: "Mirassol", id: 10269, logo: "https://media.api-sports.io/football/teams/10269.png" },
     { name: "Sport", id: 134, logo: "https://media.api-sports.io/football/teams/134.png" },
     { name: "Ceará", id: 161, logo: "https://media.api-sports.io/football/teams/161.png" },
@@ -452,7 +455,7 @@ async function main(){
       index === self.findIndex(f => f.fixture?.id === fixture.fixture?.id)
     );
     
-    // Apply Brazilian filtering (same logic as original)
+    // Apply ENHANCED Brazilian filtering - MAJOR TOURNAMENTS ONLY
     const brazilianFixtures = allFixtures.filter(fixture => {
       const league = fixture.league?.name?.toLowerCase() || '';
       const country = fixture.league?.country?.toLowerCase() || '';
@@ -482,23 +485,50 @@ async function main(){
         return false;
       }
       
-      // INCLUDE Brazilian domestic competitions
-      const isBrazilianDomestic = country.includes('brazil') && (
+      // EXCLUDE ALL UNWANTED TOURNAMENTS - State tournaments B divisions, youth, women's, foreign leagues
+      if (league.includes('copa paulista') || league.includes('paulista série b') || 
+          league.includes('paulista b') || league.includes('paulista serie b') ||
+          league.includes('carioca b') || league.includes('carioca série b') ||
+          league.includes('carioca serie b') || league.includes('copa carioca') ||
+          league.includes('carioca a2') || league.includes('carioca c') ||
+          league.includes('copa do interior') || league.includes('copa sp') ||
+          league.includes('copa rio') || league.includes('taça guanabara') ||
+          league.includes('taca guanabara') || league.includes('taça rio') ||
+          league.includes('taca rio') || league.includes('supercopa carioca') ||
+          league.includes('supercopa paulista') || league.includes('copa fgf') ||
+          league.includes('copa fpf') || league.includes('copa fmf') ||
+          league.includes('copa federação') || league.includes('copa federacao') ||
+          league.includes('alagoano - 2') || league.includes('brasileiro u17') ||
+          league.includes('catarinense u20') || league.includes('liga pro serie b') ||
+          league.includes('toppserien') || league.includes('serie d') ||
+          league.includes(' a2') || league.includes(' b2') || league.includes(' c') ||
+          league.includes('2a divisão') || league.includes('2ª divisão') ||
+          league.includes('terceira') || league.includes('quarta') ||
+          !country.includes('brazil')) { // EXCLUDE ALL NON-BRAZILIAN LEAGUES
+        return false;
+      }
+      
+      // ONLY MAJOR BRAZILIAN DOMESTIC COMPETITIONS
+      const isMajorBrazilianDomestic = country.includes('brazil') && (
+        // National competitions only
         league.includes('brasileiro') || 
         league.includes('serie a') || league.includes('serie b') || league.includes('serie c') ||
         league.includes('copa do brasil') ||
-        league.includes('carioca') ||
-        league.includes('paulista') ||
-        league.includes('mineiro') ||
-        league.includes('gaúcho') || league.includes('gaucho') ||
-        league.includes('baiano') ||
-        league.includes('pernambucano') ||
-        league.includes('cearense') ||
-        league.includes('paraense') ||
         league.includes('copa do nordeste') ||
-        league.includes('copa verde') ||
-        league.includes('recopa') ||
-        league.includes('supercopa')
+        league.includes('copa verde')
+      );
+      
+      // ONLY MAJOR STATE TOURNAMENTS (first division only)
+      const isMajorStateTournament = country.includes('brazil') && (
+        (league.includes('carioca') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('copa')) ||
+        (league.includes('paulista') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('copa')) ||
+        (league.includes('mineiro') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
+        (league.includes('gaúcho') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
+        (league.includes('gaucho') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
+        (league.includes('baiano') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
+        (league.includes('pernambucano') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
+        (league.includes('cearense') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
+        (league.includes('paraense') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b'))
       );
       
       // INCLUDE international competitions with Brazilian teams
@@ -513,7 +543,7 @@ async function main(){
                awayTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, ''));
       });
       
-      return isBrazilianDomestic || isBrazilianInternational;
+      return isMajorBrazilianDomestic || isMajorStateTournament || isBrazilianInternational;
     });
     
     // If no fixtures found and it's a future weekend date, add sample data for testing

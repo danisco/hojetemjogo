@@ -15,7 +15,10 @@
       "WebSearch",
       "WebFetch(domain:www.sofascore.com)",
       "Bash(timeout:*)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:media.api-sports.io)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

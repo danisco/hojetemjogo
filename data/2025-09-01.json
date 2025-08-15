@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Neo Química Arena"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 130,
-        "name": "Atlético-MG",
-        "logo": "https://media.api-sports.io/football/teams/130.png"
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png"
       },
       "away": {
-        "id": 158,
-        "name": "Avaí",
-        "logo": "https://media.api-sports.io/football/teams/158.png"
+        "id": 152,
+        "name": "Juventude",
+        "logo": "https://media.api-sports.io/football/teams/152.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Allianz Parque"
       }
     },
     "league": {
@@ -54,14 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 1214,
-        "name": "Criciúma",
-        "logo": "https://media.api-sports.io/football/teams/1214.png"
+        "id": 123,
+        "name": "Coritiba",
+        "logo": "https://media.api-sports.io/football/teams/123.png"
       },
       "away": {
-        "id": 1569,
-        "name": "Cuiabá",
-        "logo": "https://media.api-sports.io/football/teams/1569.png"
+        "id": 121,
+        "name": "Palmeiras",
+        "logo": "https://media.api-sports.io/football/teams/121.png"
       }
     },
     "goals": {
@@ -89,14 +89,14 @@
     },
     "teams": {
       "home": {
-        "id": 159,
-        "name": "Vitória",
-        "logo": "https://media.api-sports.io/football/teams/159.png"
+        "id": 129,
+        "name": "Cruzeiro",
+        "logo": "https://media.api-sports.io/football/teams/129.png"
       },
       "away": {
-        "id": 156,
-        "name": "Goiás",
-        "logo": "https://media.api-sports.io/football/teams/156.png"
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png"
       }
     },
     "goals": {
