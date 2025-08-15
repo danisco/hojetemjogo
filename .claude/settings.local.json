@@ -18,7 +18,8 @@
       "Bash(jq:*)",
       "Bash(find:*)",
       "WebFetch(domain:media.api-sports.io)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "WebFetch(domain:www.livesoccertv.com)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Vila Belmiro"
+        "name": "Morumbi"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 121,
-        "name": "Palmeiras",
-        "logo": "https://media.api-sports.io/football/teams/121.png"
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png"
       },
       "away": {
-        "id": 152,
-        "name": "Juventude",
-        "logo": "https://media.api-sports.io/football/teams/152.png"
+        "id": 134,
+        "name": "Sport",
+        "logo": "https://media.api-sports.io/football/teams/134.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -54,14 +54,49 @@
     },
     "teams": {
       "home": {
-        "id": 124,
-        "name": "Vasco da Gama",
-        "logo": "https://media.api-sports.io/football/teams/124.png"
+        "id": 160,
+        "name": "Fortaleza",
+        "logo": "https://media.api-sports.io/football/teams/160.png"
       },
       "away": {
-        "id": 1214,
-        "name": "Criciúma",
-        "logo": "https://media.api-sports.io/football/teams/1214.png"
+        "id": 139,
+        "name": "Ponte Preta",
+        "logo": "https://media.api-sports.io/football/teams/139.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250820,
+      "date": "2025-08-18T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Morumbi"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 10269,
+        "name": "Mirassol",
+        "logo": "https://media.api-sports.io/football/teams/10269.png"
+      },
+      "away": {
+        "id": 123,
+        "name": "Coritiba",
+        "logo": "https://media.api-sports.io/football/teams/123.png"
       }
     },
     "goals": {

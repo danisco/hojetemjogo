@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Vila Belmiro"
+        "name": "Estádio Olímpico Nilton Santos"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 129,
-        "name": "Cruzeiro",
-        "logo": "https://media.api-sports.io/football/teams/129.png"
+        "id": 134,
+        "name": "Sport",
+        "logo": "https://media.api-sports.io/football/teams/134.png"
       },
       "away": {
-        "id": 128,
-        "name": "Santos",
-        "logo": "https://media.api-sports.io/football/teams/128.png"
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -54,49 +54,14 @@
     },
     "teams": {
       "home": {
+        "id": 131,
+        "name": "Grêmio",
+        "logo": "https://media.api-sports.io/football/teams/131.png"
+      },
+      "away": {
         "id": 122,
         "name": "Athletico Paranaense",
         "logo": "https://media.api-sports.io/football/teams/122.png"
-      },
-      "away": {
-        "id": 159,
-        "name": "Vitória",
-        "logo": "https://media.api-sports.io/football/teams/159.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250833,
-      "date": "2025-08-31T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Allianz Parque"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 126,
-        "name": "São Paulo",
-        "logo": "https://media.api-sports.io/football/teams/126.png"
-      },
-      "away": {
-        "id": 125,
-        "name": "Fluminense",
-        "logo": "https://media.api-sports.io/football/teams/125.png"
       }
     },
     "goals": {

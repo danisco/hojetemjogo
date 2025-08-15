@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 161,
-        "name": "Ceará",
-        "logo": "https://media.api-sports.io/football/teams/161.png"
-      },
-      "away": {
         "id": 134,
         "name": "Sport",
         "logo": "https://media.api-sports.io/football/teams/134.png"
+      },
+      "away": {
+        "id": 10269,
+        "name": "Mirassol",
+        "logo": "https://media.api-sports.io/football/teams/10269.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Maracanã"
+        "name": "Morumbi"
       }
     },
     "league": {
@@ -54,14 +54,49 @@
     },
     "teams": {
       "home": {
+        "id": 155,
+        "name": "América-MG",
+        "logo": "https://media.api-sports.io/football/teams/155.png"
+      },
+      "away": {
         "id": 161,
         "name": "Ceará",
         "logo": "https://media.api-sports.io/football/teams/161.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250826,
+      "date": "2025-08-24T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Mineirão"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 132,
+        "name": "Internacional",
+        "logo": "https://media.api-sports.io/football/teams/132.png"
       },
       "away": {
-        "id": 127,
-        "name": "Flamengo",
-        "logo": "https://media.api-sports.io/football/teams/127.png"
+        "id": 118,
+        "name": "Bahia",
+        "logo": "https://media.api-sports.io/football/teams/118.png"
       }
     },
     "goals": {

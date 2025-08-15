@@ -6,8 +6,8 @@
 - Ótimo para **SEO**: conteúdo já vem no HTML (JSON-LD incluído).
 
 ## Como funciona
-Durante o build (`node scripts/build.js`), o script busca os jogos de **hoje e próximos dias** e escreve:
-- `index.html` (Hoje, Amanhã e Próximos)
+Durante o build (`node scripts/build.js`), o script busca os jogos de **hoje e amanhã** e escreve:
+- `index.html` (Hoje e Amanhã)
 - `dias/YYYY-MM-DD/index.html` (páginas por data)
 - `times/<time>/index.html` (páginas por time)
 - `data/YYYY-MM-DD.json` (dados brutos, útil para debug)

@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Maracanã"
+        "name": "Morumbi"
       }
     },
     "league": {
@@ -19,9 +19,9 @@
     },
     "teams": {
       "home": {
-        "id": 127,
-        "name": "Flamengo",
-        "logo": "https://media.api-sports.io/football/teams/127.png"
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
       },
       "away": {
         "id": 152,
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Allianz Parque"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -54,14 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 123,
-        "name": "Coritiba",
-        "logo": "https://media.api-sports.io/football/teams/123.png"
+        "id": 124,
+        "name": "Vasco da Gama",
+        "logo": "https://media.api-sports.io/football/teams/124.png"
       },
       "away": {
-        "id": 121,
-        "name": "Palmeiras",
-        "logo": "https://media.api-sports.io/football/teams/121.png"
+        "id": 160,
+        "name": "Fortaleza",
+        "logo": "https://media.api-sports.io/football/teams/160.png"
       }
     },
     "goals": {
@@ -78,7 +78,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Morumbi"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -89,14 +89,14 @@
     },
     "teams": {
       "home": {
-        "id": 129,
-        "name": "Cruzeiro",
-        "logo": "https://media.api-sports.io/football/teams/129.png"
+        "id": 123,
+        "name": "Coritiba",
+        "logo": "https://media.api-sports.io/football/teams/123.png"
       },
       "away": {
-        "id": 127,
-        "name": "Flamengo",
-        "logo": "https://media.api-sports.io/football/teams/127.png"
+        "id": 139,
+        "name": "Ponte Preta",
+        "logo": "https://media.api-sports.io/football/teams/139.png"
       }
     },
     "goals": {

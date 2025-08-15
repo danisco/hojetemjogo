@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Allianz Parque"
+        "name": "Vila Belmiro"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 161,
-        "name": "Ceará",
-        "logo": "https://media.api-sports.io/football/teams/161.png"
+        "id": 155,
+        "name": "América-MG",
+        "logo": "https://media.api-sports.io/football/teams/155.png"
       },
       "away": {
-        "id": 1214,
-        "name": "Criciúma",
-        "logo": "https://media.api-sports.io/football/teams/1214.png"
+        "id": 128,
+        "name": "Santos",
+        "logo": "https://media.api-sports.io/football/teams/128.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Neo Química Arena"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -59,9 +59,9 @@
         "logo": "https://media.api-sports.io/football/teams/118.png"
       },
       "away": {
-        "id": 156,
-        "name": "Goiás",
-        "logo": "https://media.api-sports.io/football/teams/156.png"
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
       }
     },
     "goals": {

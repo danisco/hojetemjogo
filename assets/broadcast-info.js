@@ -10,7 +10,8 @@ window.BROADCAST_INFO = {
         { name: 'Globo', type: 'TV Aberta', schedule: 'Sábados 19h, Domingos 16h e 18h30' },
         { name: 'SporTV', type: 'TV Fechada', schedule: 'Múltiplos jogos por rodada' },
         { name: 'Premiere', type: 'Pay-per-view', schedule: 'Todos os jogos exclusivos' },
-        { name: 'Globoplay', type: 'Streaming', schedule: 'Jogos da Globo e SporTV' }
+        { name: 'Globoplay', type: 'Streaming', schedule: 'Jogos da Globo e SporTV' },
+        { name: 'CazéTV (YouTube)', type: 'Streaming Gratuito', schedule: '1 jogo por rodada', url: 'https://youtube.com/@CazeTV' }
       ],
       defaultPlatform: 'Premiere'
     },
@@ -39,7 +40,8 @@ window.BROADCAST_INFO = {
         { name: 'SBT', type: 'TV Aberta', schedule: 'Jogos com times brasileiros' },
         { name: 'ESPN', type: 'TV Fechada', schedule: 'Jogos selecionados' },
         { name: 'Paramount+', type: 'Streaming', schedule: 'Todos os jogos' },
-        { name: 'Pluto TV', type: 'Streaming Gratuito', schedule: 'Jogos selecionados' }
+        { name: 'Pluto TV', type: 'Streaming Gratuito', schedule: 'Jogos selecionados' },
+        { name: 'CazéTV (YouTube)', type: 'Streaming Gratuito', schedule: 'Jogos selecionados com times brasileiros', url: 'https://youtube.com/@CazeTV' }
       ],
       defaultPlatform: 'Paramount+'
     },
@@ -48,7 +50,8 @@ window.BROADCAST_INFO = {
       platforms: [
         { name: 'SBT', type: 'TV Aberta', schedule: 'Finais' },
         { name: 'ESPN', type: 'TV Fechada', schedule: 'Fases eliminatórias' },
-        { name: 'Paramount+', type: 'Streaming', schedule: 'Todos os jogos' }
+        { name: 'Paramount+', type: 'Streaming', schedule: 'Todos os jogos' },
+        { name: 'CazéTV (YouTube)', type: 'Streaming Gratuito', schedule: 'Jogos selecionados com times brasileiros', url: 'https://youtube.com/@CazeTV' }
       ],
       defaultPlatform: 'Paramount+'
     },
@@ -97,6 +100,27 @@ window.BROADCAST_INFO = {
         { name: 'Premiere', type: 'Pay-per-view', schedule: 'Demais jogos' }
       ],
       defaultPlatform: 'SporTV'
+    },
+    'europa-league': {
+      name: 'UEFA Europa League',
+      platforms: [
+        { name: 'CazéTV (YouTube)', type: 'Streaming Gratuito', schedule: 'Todos os jogos', url: 'https://youtube.com/@CazeTV' }
+      ],
+      defaultPlatform: 'CazéTV (YouTube)'
+    },
+    'conference-league': {
+      name: 'UEFA Conference League',
+      platforms: [
+        { name: 'CazéTV (YouTube)', type: 'Streaming Gratuito', schedule: 'Todos os jogos', url: 'https://youtube.com/@CazeTV' }
+      ],
+      defaultPlatform: 'CazéTV (YouTube)'
+    },
+    'ligue-1': {
+      name: 'Ligue 1 (França)',
+      platforms: [
+        { name: 'CazéTV (YouTube)', type: 'Streaming Gratuito', schedule: 'Jogos selecionados', url: 'https://youtube.com/@CazeTV' }
+      ],
+      defaultPlatform: 'CazéTV (YouTube)'
     }
   },
 
@@ -175,6 +199,12 @@ window.getBroadcastInfo = function(fixture) {
     competitionType = 'mineiro';
   } else if (league.includes('gaúcho') || league.includes('gaucho')) {
     competitionType = 'gaucho';
+  } else if (league.includes('europa league') || league.includes('uefa europa')) {
+    competitionType = 'europa-league';
+  } else if (league.includes('conference league') || league.includes('uefa conference')) {
+    competitionType = 'conference-league';
+  } else if (league.includes('ligue 1') || league.includes('frança')) {
+    competitionType = 'ligue-1';
   }
 
   const competition = window.BROADCAST_INFO.competitions[competitionType];
@@ -215,16 +245,62 @@ window.getBroadcastInfo = function(fixture) {
   };
 };
 
+// Function to check if CazeTV is likely to broadcast this match
+window.isCazeTVMatch = function(fixture) {
+  const league = fixture.league?.name?.toLowerCase() || '';
+  const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
+  const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
+  const matchDate = new Date(fixture.fixture?.date || '');
+  const dayOfWeek = matchDate.getDay(); // 0 = Sunday, 6 = Saturday
+  const hour = matchDate.getHours();
+  
+  // CazeTV has exclusive rights to these competitions
+  if (league.includes('europa league') || league.includes('uefa europa') ||
+      league.includes('conference league') || league.includes('uefa conference') ||
+      league.includes('ligue 1')) {
+    return true;
+  }
+  
+  // CazeTV broadcasts 1 Brasileirao match per round (usually on weekends)
+  if (league.includes('serie a') || league.includes('brasileiro')) {
+    // More likely on weekends and peak times
+    if ((dayOfWeek === 0 || dayOfWeek === 6) && (hour >= 16 && hour <= 21)) {
+      return true;
+    }
+    // Also possible on weekday prime time
+    if (hour >= 19 && hour <= 22) {
+      return Math.random() > 0.7; // 30% chance for prime time weekday matches
+    }
+  }
+  
+  // CazeTV broadcasts selected Libertadores/Sul-Americana matches with Brazilian teams
+  if ((league.includes('libertadores') || league.includes('sul-americana')) &&
+      (homeTeam.includes('bra') || awayTeam.includes('bra') || 
+       ['flamengo', 'palmeiras', 'fluminense', 'atletico', 'sao paulo', 'santos', 'corinthians', 'botafogo'].some(team => 
+         homeTeam.includes(team) || awayTeam.includes(team)))) {
+    return Math.random() > 0.5; // 50% chance for Brazilian team international matches
+  }
+  
+  return false;
+};
+
 // Function to get detailed broadcast information
 window.getDetailedBroadcastInfo = function(fixture) {
   const broadcastInfo = window.getBroadcastInfo(fixture);
   const homeTeam = fixture.teams?.home?.name || '';
   const awayTeam = fixture.teams?.away?.name || '';
+  const isCazeTV = window.isCazeTVMatch(fixture);
+  
+  let streamingTip = 'Verifique também: Globoplay, Paramount+, Amazon Prime Video';
+  if (isCazeTV) {
+    streamingTip = '🔥 Pode estar disponível GRÁTIS na CazéTV! Confira: ' + streamingTip;
+  }
   
   return {
     ...broadcastInfo,
+    isCazeTV: isCazeTV,
     searchTerm: `onde assistir ${homeTeam} x ${awayTeam}`,
     alternativeSearch: `${homeTeam} ${awayTeam} ao vivo`,
-    streamingTip: 'Verifique também: Globoplay, Paramount+, Amazon Prime Video'
+    streamingTip: streamingTip
   };
 };

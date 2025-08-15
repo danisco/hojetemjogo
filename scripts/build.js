@@ -267,6 +267,41 @@ function renderCards(fixtures, oddsData = {}){
     const broadcastInfo = getBroadcastInfo(f);
     const broadcastPlatform = broadcastInfo.platform;
     
+    // Check if CazeTV might broadcast this match
+    const leagueName = f.league?.name?.toLowerCase() || '';
+    const homeTeam = f.teams?.home?.name?.toLowerCase() || '';
+    const awayTeam = f.teams?.away?.name?.toLowerCase() || '';
+    const matchDate = new Date(f.fixture?.date || '');
+    const dayOfWeek = matchDate.getDay();
+    const hour = matchDate.getHours();
+    
+    let isCazeTV = false;
+    let cazeTVText = '';
+    
+    // CazeTV exclusive competitions
+    if (leagueName.includes('europa league') || leagueName.includes('uefa europa') ||
+        leagueName.includes('conference league') || leagueName.includes('uefa conference') ||
+        leagueName.includes('ligue 1')) {
+      isCazeTV = true;
+      cazeTVText = 'CazéTV (GRÁTIS)';
+    }
+    // CazeTV selected Brasileirao matches (1 per round, typically weekends)
+    else if (leagueName.includes('serie a') || leagueName.includes('brasileiro')) {
+      if ((dayOfWeek === 0 || dayOfWeek === 6) && (hour >= 16 && hour <= 21)) {
+        isCazeTV = true;
+        cazeTVText = 'Possível na CazéTV';
+      }
+    }
+    // CazeTV selected international matches with Brazilian teams
+    else if ((leagueName.includes('libertadores') || leagueName.includes('sul-americana')) &&
+             (['flamengo', 'palmeiras', 'fluminense', 'atletico', 'sao paulo', 'santos', 'corinthians', 'botafogo'].some(team => 
+               homeTeam.includes(team) || awayTeam.includes(team)))) {
+      isCazeTV = true;
+      cazeTVText = 'Possível na CazéTV';
+    }
+    
+    const finalBroadcastPlatform = isCazeTV ? cazeTVText : broadcastPlatform;
+    
     // Status badge with better styling
     let statusBadge = "";
     if (live) {
@@ -323,14 +358,20 @@ function renderCards(fixtures, oddsData = {}){
           📍 ${venue || "Local a definir"}
         </div>
         <div class="flex items-center gap-3 flex-shrink-0">
-          <div class="inline-flex items-center gap-1 px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-200 font-medium text-sm">
-            📺 ${broadcastPlatform}
+          <div class="inline-flex items-center gap-1 px-3 py-1 ${isCazeTV ? 'bg-red-50 text-red-700 border-red-200' : 'bg-green-50 text-green-700 border-green-200'} rounded-full border font-medium text-sm">
+            ${isCazeTV ? '🔥' : '📺'} ${finalBroadcastPlatform}
           </div>
-          <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(h + " x " + a)}&dates=${new Date(ts).toISOString().replace(/[-:]/g, '').slice(0,15)}Z%2F${new Date(new Date(ts).getTime() + 2*3600000).toISOString().replace(/[-:]/g, '').slice(0,15)}Z&details=Jogo%20%E2%80%A2%20hojetemjogo.com.br%20%E2%80%A2%20${encodeURIComponent(broadcastPlatform)}" 
+          <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(h + " x " + a)}&dates=${new Date(ts).toISOString().replace(/[-:]/g, '').slice(0,15)}Z%2F${new Date(new Date(ts).getTime() + 2*3600000).toISOString().replace(/[-:]/g, '').slice(0,15)}Z&details=Jogo%20%E2%80%A2%20hojetemjogo.com.br%20%E2%80%A2%20${encodeURIComponent(finalBroadcastPlatform)}" 
              target="_blank" rel="nofollow"
              class="inline-flex items-center gap-1 px-3 py-1 bg-gray-50 text-gray-700 rounded-full hover:bg-gray-100 transition-colors text-xs">
             📅 Lembrete
           </a>
+          ${isCazeTV ? 
+            `<a href="https://youtube.com/@CazeTV" target="_blank" rel="nofollow noopener" 
+               class="inline-flex items-center gap-1 px-2 py-1 text-red-600 hover:text-red-800 transition-colors text-xs">
+              🔥 CazéTV
+             </a>` : ''
+          }
           <a href="${google}" target="_blank" rel="nofollow noopener" 
              class="inline-flex items-center gap-1 px-2 py-1 text-blue-600 hover:text-blue-800 transition-colors text-xs">
             🔗 Mais info
@@ -583,12 +624,6 @@ async function main(){
   const cards_today = renderCards(byDate[date_today], {});
   const cards_tomorrow = renderCards(byDate[date_tomorrow], {});
   
-  // Next days: first date after today that has fixtures
-  let nextFixtures = [];
-  for (let i=1;i<dates.length;i++){
-    if (byDate[dates[i]].length){ nextFixtures = byDate[dates[i]]; break; }
-  }
-  const cards_next = renderCards(nextFixtures, {});
   
   // Generate calendar navigation with enhanced logic
   const calendar_nav = generateCalendarNav(date_today, datesWithGames, dates);
@@ -608,14 +643,13 @@ async function main(){
     .replaceAll("{date_tomorrow}", date_tomorrow)
     .replaceAll("{cards_today}", cards_today)
     .replaceAll("{cards_tomorrow}", cards_tomorrow)
-    .replaceAll("{cards_next}", cards_next)
     .replaceAll("{calendar_nav}", calendar_nav)
     .replaceAll("{json_ld}", jsonLD(byDate[date_today]))
     .replaceAll("{year}", String(new Date().getFullYear()))
     .replaceAll("{kw_team}", featuredTeam)
     .replaceAll("{more_today}", "")
     .replaceAll("{more_tomorrow}", "")
-    .replaceAll("{more_next}", "");
+;
 
   fs.writeFileSync(path.join(OUT,"index.html"), html, "utf-8");
 
@@ -647,14 +681,13 @@ async function main(){
       .replaceAll("{date_tomorrow}", dates[1] || ds)
       .replaceAll("{cards_today}", dayCards)
       .replaceAll("{cards_tomorrow}", "")
-      .replaceAll("{cards_next}", "")
       .replaceAll("{calendar_nav}", generateCalendarNav(ds, datesWithGames, dates))
       .replaceAll("{json_ld}", jsonLD(byDate[ds]))
       .replaceAll("{year}", String(new Date().getFullYear()))
       .replaceAll("{kw_team}", dayFeaturedTeam)
       .replaceAll("{more_today}", "")
       .replaceAll("{more_tomorrow}", "")
-      .replaceAll("{more_next}", "");
+  ;
     fs.writeFileSync(path.join(outDir,"index.html"), page, "utf-8");
   }
 
@@ -675,14 +708,13 @@ async function main(){
       .replaceAll("{date_tomorrow}", fmtDate(new Date(Date.now()+86400000)))
       .replaceAll("{cards_today}", renderCards(filtered, {}))
       .replaceAll("{cards_tomorrow}", "")
-      .replaceAll("{cards_next}", "")
       .replaceAll("{calendar_nav}", generateCalendarNav(fmtDate(new Date()), datesWithGames, dates))
       .replaceAll("{json_ld}", jsonLD(filtered))
       .replaceAll("{year}", String(new Date().getFullYear()))
       .replaceAll("{kw_team}", team.name)
       .replaceAll("{more_today}", "")
       .replaceAll("{more_tomorrow}", "")
-      .replaceAll("{more_next}", "");
+  ;
     fs.writeFileSync(path.join(outDir,"index.html"), page, "utf-8");
   }
 
