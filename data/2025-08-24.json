@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Vila Belmiro"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 156,
-        "name": "Goiás",
-        "logo": "https://media.api-sports.io/football/teams/156.png"
+        "id": 10269,
+        "name": "Mirassol",
+        "logo": "https://media.api-sports.io/football/teams/10269.png"
       },
       "away": {
-        "id": 128,
-        "name": "Santos",
-        "logo": "https://media.api-sports.io/football/teams/128.png"
+        "id": 132,
+        "name": "Internacional",
+        "logo": "https://media.api-sports.io/football/teams/132.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Mineirão"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -54,49 +54,14 @@
     },
     "teams": {
       "home": {
-        "id": 152,
-        "name": "Juventude",
-        "logo": "https://media.api-sports.io/football/teams/152.png"
+        "id": 161,
+        "name": "Ceará",
+        "logo": "https://media.api-sports.io/football/teams/161.png"
       },
       "away": {
-        "id": 125,
-        "name": "Fluminense",
-        "logo": "https://media.api-sports.io/football/teams/125.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250826,
-      "date": "2025-08-24T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Vila Belmiro"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 131,
-        "name": "Grêmio",
-        "logo": "https://media.api-sports.io/football/teams/131.png"
-      },
-      "away": {
-        "id": 158,
-        "name": "Avaí",
-        "logo": "https://media.api-sports.io/football/teams/158.png"
+        "id": 121,
+        "name": "Palmeiras",
+        "logo": "https://media.api-sports.io/football/teams/121.png"
       }
     },
     "goals": {

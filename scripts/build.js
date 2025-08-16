@@ -535,6 +535,19 @@ async function main(){
       const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
       const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
       
+      // EXCLUDE LOW DIVISION TOURNAMENTS IMMEDIATELY
+      const isLowDivision = 
+        league.includes('-2') || league.includes('-3') || league.includes('-4') ||
+        league.includes('série b') || league.includes('serie b') ||
+        league.includes('terceira') || league.includes('segunda') ||
+        league.includes('divisão de acesso') ||
+        league.includes('cearense - 3') || league.includes('gaúcho - 2') ||
+        league.includes('paraense') || league.includes('cearense') && league.includes('-');
+        
+      if (isLowDivision) {
+        return false; // Immediately exclude low division tournaments
+      }
+      
       // EXCLUDE youth tournaments
       if (league.includes('u20') || league.includes('u17') || league.includes('u19') || 
           league.includes('u18') || league.includes('u21') || league.includes('sub-')) {
@@ -591,17 +604,17 @@ async function main(){
         league.includes('copa verde')
       );
       
-      // ONLY MAJOR STATE TOURNAMENTS (first division only)
+      // ONLY MAJOR STATE TOURNAMENTS (first division only) - EXCLUDE ALL LOW DIVISIONS
       const isMajorStateTournament = country.includes('brazil') && (
-        (league.includes('carioca') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('copa')) ||
-        (league.includes('paulista') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('copa')) ||
-        (league.includes('mineiro') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
-        (league.includes('gaúcho') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
-        (league.includes('gaucho') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
-        (league.includes('baiano') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
-        (league.includes('pernambucano') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
-        (league.includes('cearense') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b')) ||
-        (league.includes('paraense') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b'))
+        // Must be first division only (no -2, -3, série b, etc.)
+        (league.includes('carioca') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('copa') && !league.includes('-2') && !league.includes('-3')) ||
+        (league.includes('paulista') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('copa') && !league.includes('-2') && !league.includes('-3')) ||
+        (league.includes('mineiro') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('-2') && !league.includes('-3')) ||
+        (league.includes('gaúcho') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('-2') && !league.includes('-3')) ||
+        (league.includes('gaucho') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('-2') && !league.includes('-3')) ||
+        (league.includes('baiano') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('-2') && !league.includes('-3')) ||
+        (league.includes('pernambucano') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b') && !league.includes('-2') && !league.includes('-3'))
+        // Removed cearense and paraense as they're typically lower profile
       );
       
       // INCLUDE international competitions with Brazilian teams (expanded)

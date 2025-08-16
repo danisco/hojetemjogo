@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Allianz Parque"
+        "name": "Neo Química Arena"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 125,
-        "name": "Fluminense",
-        "logo": "https://media.api-sports.io/football/teams/125.png"
+        "id": 158,
+        "name": "Avaí",
+        "logo": "https://media.api-sports.io/football/teams/158.png"
       },
       "away": {
-        "id": 139,
-        "name": "Ponte Preta",
-        "logo": "https://media.api-sports.io/football/teams/139.png"
+        "id": 123,
+        "name": "Coritiba",
+        "logo": "https://media.api-sports.io/football/teams/123.png"
       }
     },
     "goals": {
