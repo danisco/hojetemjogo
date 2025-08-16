@@ -1,1 +1,39 @@
-[]
+[
+  {
+    "fixture": {
+      "id": "sula_2025_08_22_001",
+      "date": "2025-08-22T21:30:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Neo Química Arena"
+      }
+    },
+    "league": {
+      "id": 11,
+      "name": "CONMEBOL Sudamericana",
+      "logo": "https://media.api-sports.io/football/leagues/11.png",
+      "round": "Round of 16 - Second Leg"
+    },
+    "teams": {
+      "home": {
+        "id": 119,
+        "name": "Corinthians",
+        "logo": "https://media.api-sports.io/football/teams/119.png"
+      },
+      "away": {
+        "id": 9995,
+        "name": "Independiente",
+        "logo": "https://media.api-sports.io/football/teams/9995.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "_estimated": true,
+    "_source": "Sul-Americana Official Schedule"
+  }
+]

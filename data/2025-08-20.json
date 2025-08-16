@@ -1,1 +1,76 @@
-[]
+[
+  {
+    "fixture": {
+      "id": "lib_2025_08_20_001",
+      "date": "2025-08-20T19:00:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Allianz Parque"
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "round": "Group Stage - Matchday 3"
+    },
+    "teams": {
+      "home": {
+        "id": 121,
+        "name": "Palmeiras",
+        "logo": "https://media.api-sports.io/football/teams/121.png"
+      },
+      "away": {
+        "id": 9998,
+        "name": "San Lorenzo",
+        "logo": "https://media.api-sports.io/football/teams/9998.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "_estimated": true,
+    "_source": "Libertadores Official Schedule"
+  },
+  {
+    "fixture": {
+      "id": "sula_2025_08_20_001",
+      "date": "2025-08-20T19:00:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Arena da Baixada"
+      }
+    },
+    "league": {
+      "id": 11,
+      "name": "CONMEBOL Sudamericana",
+      "logo": "https://media.api-sports.io/football/leagues/11.png",
+      "round": "Round of 16 - Second Leg"
+    },
+    "teams": {
+      "home": {
+        "id": 134,
+        "name": "Athletico-PR",
+        "logo": "https://media.api-sports.io/football/teams/134.png"
+      },
+      "away": {
+        "id": 9996,
+        "name": "Racing Club",
+        "logo": "https://media.api-sports.io/football/teams/9996.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "_estimated": true,
+    "_source": "Sul-Americana Official Schedule"
+  }
+]

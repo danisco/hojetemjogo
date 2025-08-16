@@ -1,1 +1,39 @@
-[]
+[
+  {
+    "fixture": {
+      "id": "lib_2025_08_21_001",
+      "date": "2025-08-21T21:30:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Estádio Olímpico Nilton Santos"
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "round": "Group Stage - Matchday 3"
+    },
+    "teams": {
+      "home": {
+        "id": 120,
+        "name": "Botafogo",
+        "logo": "https://media.api-sports.io/football/teams/120.png"
+      },
+      "away": {
+        "id": 9997,
+        "name": "Universidad Católica",
+        "logo": "https://media.api-sports.io/football/teams/9997.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "_estimated": true,
+    "_source": "Libertadores Official Schedule"
+  }
+]

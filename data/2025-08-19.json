@@ -1,1 +1,39 @@
-[]
+[
+  {
+    "fixture": {
+      "id": "lib_2025_08_19_001",
+      "date": "2025-08-19T21:30:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Maracanã"
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "round": "Group Stage - Matchday 3"
+    },
+    "teams": {
+      "home": {
+        "id": 127,
+        "name": "Flamengo",
+        "logo": "https://media.api-sports.io/football/teams/127.png"
+      },
+      "away": {
+        "id": 9999,
+        "name": "Peñarol",
+        "logo": "https://media.api-sports.io/football/teams/9999.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    },
+    "_estimated": true,
+    "_source": "Libertadores Official Schedule"
+  }
+]

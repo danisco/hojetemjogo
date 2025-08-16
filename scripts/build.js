@@ -1,6 +1,7 @@
 // Enhanced build script that better handles calendar navigation and future dates
 import fs from "fs";
 import path from "path";
+import { getSupplementalGames, shouldAddSupplementalGames } from "../libertadores-schedule-2025.js";
 const API = "https://v3.football.api-sports.io";
 // Handle timezone properly - Vercel might set TZ to invalid values
 let TZ = process.env.TZ || "America/Sao_Paulo";
@@ -454,7 +455,14 @@ async function main(){
     if (allFixtures.length < 5) {
       console.log(`    Low fixture count (${allFixtures.length}), trying specific leagues...`);
       
-      const brazilLeagues = ["71", "72", "73", "74", "75", "76", "387", "388"];
+      // Comprehensive league coverage: Brazilian + International with Brazilian teams
+      const brazilLeagues = [
+        "71", "72", "73", "74", "75", "76", "387", "388", // Brazilian leagues
+        "13", "11", "12", // CONMEBOL Libertadores, Sudamericana, Recopa
+        "480", "484", // Alternative IDs for Copa Libertadores/Sudamericana
+        "77", "78", "79", // Additional Brazilian state leagues
+        "389", "390", "391", "392", "393", "394", "395", "396", "397", "398" // More Brazilian leagues
+      ];
       for (const leagueId of brazilLeagues) {
         try {
           const leagueFixtures = await api("/fixtures", { 
@@ -476,6 +484,49 @@ async function main(){
     allFixtures = allFixtures.filter((fixture, index, self) => 
       index === self.findIndex(f => f.fixture?.id === fixture.fixture?.id)
     );
+    
+    // If still very few results, try fetching ALL fixtures for the date and filter client-side
+    if (allFixtures.length < 3) {
+      console.log(`    Very low fixture count (${allFixtures.length}), trying comprehensive search...`);
+      try {
+        const allDayFixtures = await api("/fixtures", { date: ds, timezone: TZ });
+        console.log(`      Found ${allDayFixtures.length} total fixtures for ${ds}`);
+        
+        // Filter for any international competitions or Brazilian involvement
+        const internationalFixtures = allDayFixtures.filter(fixture => {
+          const league = fixture.league?.name?.toLowerCase() || '';
+          const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
+          const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
+          const country = fixture.league?.country?.toLowerCase() || '';
+          
+          // International competitions that might have Brazilian teams
+          const hasInternationalCompetition = league.includes('libertadores') || 
+                                            league.includes('sudamericana') || 
+                                            league.includes('sul-americana') ||
+                                            league.includes('champions') ||
+                                            league.includes('recopa') ||
+                                            league.includes('mundial') ||
+                                            league.includes('world');
+          
+          // Check for Brazilian team names in international games
+          const brazilianTeamNames = COMPREHENSIVE_TEAMS.map(t => t.name.toLowerCase());
+          const hasBrazilianTeam = brazilianTeamNames.some(teamName => 
+            homeTeam.includes(teamName) || awayTeam.includes(teamName) ||
+            homeTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, '')) ||
+            awayTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, ''))
+          );
+          
+          return hasInternationalCompetition && hasBrazilianTeam;
+        });
+        
+        if (internationalFixtures.length > 0) {
+          console.log(`      Found ${internationalFixtures.length} additional international fixtures`);
+          allFixtures = [...allFixtures, ...internationalFixtures];
+        }
+      } catch (error) {
+        console.warn(`      Comprehensive search failed: ${error.message}`);
+      }
+    }
     
     // Apply ENHANCED Brazilian filtering - MAJOR TOURNAMENTS ONLY
     const brazilianFixtures = allFixtures.filter(fixture => {
@@ -553,20 +604,34 @@ async function main(){
         (league.includes('paraense') && !league.includes('b') && !league.includes('série b') && !league.includes('serie b'))
       );
       
-      // INCLUDE international competitions with Brazilian teams
+      // INCLUDE international competitions with Brazilian teams (expanded)
       const isBrazilianInternational = (
         league.includes('libertadores') ||
         league.includes('sul-americana') || league.includes('sudamericana') ||
-        league.includes('recopa sudamericana')
+        league.includes('recopa sudamericana') ||
+        league.includes('mundial') || league.includes('world') ||
+        league.includes('copa américa') || league.includes('copa america') ||
+        league.includes('supercopa') || league.includes('champions')
       ) && COMPREHENSIVE_TEAMS.some(team => {
         const teamName = team.name.toLowerCase();
+        const teamSlug = team.slug?.toLowerCase();
         return homeTeam.includes(teamName) || awayTeam.includes(teamName) ||
+               (teamSlug && (homeTeam.includes(teamSlug) || awayTeam.includes(teamSlug))) ||
                homeTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, '')) ||
                awayTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, ''));
       });
       
       return isMajorBrazilianDomestic || isMajorStateTournament || isBrazilianInternational;
     });
+    
+    // Add supplemental international games if available
+    if (shouldAddSupplementalGames(ds, brazilianFixtures)) {
+      const supplementalGames = getSupplementalGames(ds);
+      if (supplementalGames.length > 0) {
+        console.log(`    🌍 Adding ${supplementalGames.length} supplemental international games for ${ds}`);
+        brazilianFixtures.push(...supplementalGames);
+      }
+    }
     
     // If no fixtures found and it's a future weekend date, add sample data for testing
     const dateObj = new Date(ds);
