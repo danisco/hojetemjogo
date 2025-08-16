@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hojetemjogo.com.br/</loc><lastmod>2025-08-16</lastmod><changefreq>hourly</changefreq></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage - Highest Priority -->
+  <url>
+    <loc>https://hojetemjogo.com.br/</loc>
+    <lastmod>2025-08-16T18:07:32+00:00</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+  </url>
   <url><loc>https://hojetemjogo.com.br/dias/2025-08-16/</loc><lastmod>2025-08-16</lastmod><changefreq>hourly</changefreq></url>
   <url><loc>https://hojetemjogo.com.br/dias/2025-08-17/</loc><lastmod>2025-08-16</lastmod><changefreq>hourly</changefreq></url>
   <url><loc>https://hojetemjogo.com.br/dias/2025-08-18/</loc><lastmod>2025-08-16</lastmod><changefreq>hourly</changefreq></url>
@@ -120,4 +129,19 @@
   <url><loc>https://hojetemjogo.com.br/times/vit-ria/</loc><lastmod>2025-08-16</lastmod><changefreq>hourly</changefreq></url>
   <url><loc>https://hojetemjogo.com.br/times/volta-redonda/</loc><lastmod>2025-08-16</lastmod><changefreq>hourly</changefreq></url>
   <url><loc>https://hojetemjogo.com.br/times/ypiranga-rs/</loc><lastmod>2025-08-16</lastmod><changefreq>hourly</changefreq></url>
+  
+  <!-- Static Content Pages - High SEO Value -->
+  <url>
+    <loc>https://hojetemjogo.com.br/como-assistir/</loc>
+    <lastmod>2025-08-16T18:07:32+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://hojetemjogo.com.br/brasileirao/</loc>
+    <lastmod>2025-08-16T18:07:32+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

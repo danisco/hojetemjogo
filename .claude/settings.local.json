@@ -20,7 +20,8 @@
       "WebFetch(domain:media.api-sports.io)",
       "Bash(rm:*)",
       "WebFetch(domain:www.livesoccertv.com)",
-      "Bash(set TZ=:UTC)"
+      "Bash(set TZ=:UTC)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
