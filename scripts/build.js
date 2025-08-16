@@ -2,7 +2,11 @@
 import fs from "fs";
 import path from "path";
 const API = "https://v3.football.api-sports.io";
-const TZ = process.env.TZ || "America/Sao_Paulo";
+// Handle timezone properly - Vercel might set TZ to invalid values
+let TZ = process.env.TZ || "America/Sao_Paulo";
+if (TZ === ":UTC" || TZ.startsWith(":")) {
+  TZ = "America/Sao_Paulo";
+}
 const OUT = process.cwd();
 const DATA_DIR = path.join(OUT, "data");
 const DIAS_DIR = path.join(OUT, "dias");
@@ -414,7 +418,14 @@ async function main(){
 
   // Get current date in Brazilian timezone
   const today = new Date();
-  const brazilToday = new Date(today.toLocaleString("en-US", {timeZone: TZ}));
+  let brazilToday;
+  
+  try {
+    brazilToday = new Date(today.toLocaleString("en-US", {timeZone: TZ}));
+  } catch (error) {
+    console.warn(`⚠️ Invalid timezone "${TZ}", falling back to America/Sao_Paulo`);
+    brazilToday = new Date(today.toLocaleString("en-US", {timeZone: "America/Sao_Paulo"}));
+  }
   
   console.log(`🕐 Current UTC time: ${today.toISOString()}`);
   console.log(`🇧🇷 Current Brazil time: ${brazilToday.toISOString()}`);
