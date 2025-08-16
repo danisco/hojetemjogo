@@ -349,10 +349,10 @@ function renderCards(fixtures, oddsData = {}){
 // Enhanced calendar navigation generation
 function generateCalendarNav(currentDate, datesWithGames, allDates) {
   const days = [];
-  const currentDateObj = new Date(currentDate);
+  const currentDateObj = new Date(currentDate + 'T12:00:00');
   
   for (const dateStr of allDates) {
-    const date = new Date(dateStr);
+    const date = new Date(dateStr + 'T12:00:00'); // Add time to avoid timezone issues
     const isToday = dateStr === currentDate;
     const hasGames = datesWithGames.includes(dateStr);
     
@@ -412,9 +412,17 @@ async function main(){
   fs.mkdirSync(DIAS_DIR, {recursive:true});
   fs.mkdirSync(TIMES_DIR, {recursive:true});
 
+  // Get current date in Brazilian timezone
   const today = new Date();
-  const dates = Array.from({length: 21}, (_, n) => {
-    const d = new Date(today.getTime()+n*86400000);
+  const brazilToday = new Date(today.toLocaleString("en-US", {timeZone: TZ}));
+  
+  console.log(`🕐 Current UTC time: ${today.toISOString()}`);
+  console.log(`🇧🇷 Current Brazil time: ${brazilToday.toISOString()}`);
+  console.log(`📅 Today's date in Brazil: ${fmtDate(brazilToday)}`);
+  
+  // Generate dates starting from TODAY in Brazilian timezone
+  const dates = Array.from({length: 14}, (_, n) => {
+    const d = new Date(brazilToday.getTime()+n*86400000);
     return fmtDate(d);
   });
 

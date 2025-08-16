@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Maracanã"
+        "name": "Allianz Parque"
       }
     },
     "league": {
@@ -19,14 +19,84 @@
     },
     "teams": {
       "home": {
-        "id": 1209,
-        "name": "Chapecoense",
-        "logo": "https://media.api-sports.io/football/teams/1209.png"
+        "id": 118,
+        "name": "Bahia",
+        "logo": "https://media.api-sports.io/football/teams/118.png"
       },
       "away": {
-        "id": 1207,
-        "name": "RB Bragantino",
-        "logo": "https://media.api-sports.io/football/teams/1207.png"
+        "id": 125,
+        "name": "Fluminense",
+        "logo": "https://media.api-sports.io/football/teams/125.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250819,
+      "date": "2025-08-18T20:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Neo Química Arena"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 21"
+    },
+    "teams": {
+      "home": {
+        "id": 152,
+        "name": "Juventude",
+        "logo": "https://media.api-sports.io/football/teams/152.png"
+      },
+      "away": {
+        "id": 134,
+        "name": "Sport",
+        "logo": "https://media.api-sports.io/football/teams/134.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250820,
+      "date": "2025-08-18T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Neo Química Arena"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 161,
+        "name": "Ceará",
+        "logo": "https://media.api-sports.io/football/teams/161.png"
+      },
+      "away": {
+        "id": 158,
+        "name": "Avaí",
+        "logo": "https://media.api-sports.io/football/teams/158.png"
       }
     },
     "goals": {

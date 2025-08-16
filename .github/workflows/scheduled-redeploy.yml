@@ -1,0 +1,23 @@
+name: Daily Site Update
+
+on:
+  schedule:
+    # Run twice daily at 9 AM and 9 PM UTC (6 AM and 6 PM Brazil time)
+    - cron: '0 9 * * *'
+    - cron: '0 21 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  trigger-vercel-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: |
+          # Replace VERCEL_DEPLOY_HOOK_URL with your actual Vercel deploy hook URL
+          # You can get this from Vercel Dashboard → Project → Settings → Deploy Hooks
+          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
+          
+      - name: Log deployment trigger
+        run: |
+          echo "✅ Triggered daily rebuild at $(date)"
+          echo "🇧🇷 This ensures today's games are always current"

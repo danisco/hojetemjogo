@@ -22,14 +22,28 @@ Durante o build (`node scripts/build.js`), o script busca os jogos de **hoje e a
 - Configure **Environment Variable** `API_FOOTBALL_KEY`.
 - Faça um deploy para testar.
 
-### Atualização 2x por dia (Deploy Hook)
-1. Em Vercel → Project → Settings → **Deploy Hooks** → crie um Hook (`main`).
-2. Em **Settings → Cron Jobs**, adicione 2 crons (UTC):
-   - `0 9 * * *` → chama o Deploy Hook
-   - `0 21 * * *` → chama o Deploy Hook
-3. Cada cron dispara um deploy que roda o **build** e atualiza o HTML.
+### Atualização Automática Diária
 
-> Alternativa: use o GitHub Actions (arquivo em `.github/workflows/scheduled-redeploy.yml`) para chamar o Deploy Hook nos mesmos horários.
+**IMPORTANTE:** O site deve ser reconstruído diariamente para mostrar sempre os jogos de HOJE.
+
+#### Opção 1: GitHub Actions (Recomendado)
+1. No GitHub Repository → **Settings** → **Secrets and variables** → **Actions**
+2. Adicione o secret: `VERCEL_DEPLOY_HOOK_URL` com a URL do seu Deploy Hook do Vercel
+3. O arquivo `.github/workflows/scheduled-redeploy.yml` já está configurado para:
+   - Executar 2x por dia (9h e 21h UTC = 6h e 18h Brasil)
+   - Triggerar automaticamente rebuild do Vercel
+   - Garantir que "hoje" sempre seja a data atual
+
+#### Opção 2: Vercel Cron Jobs  
+1. Em Vercel → Project → Settings → **Deploy Hooks** → crie um Hook (`main`)
+2. Em **Settings → Cron Jobs**, adicione 2 crons (UTC):
+   - `0 9 * * *` → chama o Deploy Hook  
+   - `0 21 * * *` → chama o Deploy Hook
+
+#### Para testar manualmente:
+```bash
+npm run build  # Sempre gera com a data de HOJE
+```
 
 ## Desenvolvimento local
 ```bash

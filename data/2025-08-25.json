@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
+        "name": "Morumbi"
       }
     },
     "league": {
@@ -19,84 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 125,
-        "name": "Fluminense",
-        "logo": "https://media.api-sports.io/football/teams/125.png"
-      },
-      "away": {
-        "id": 123,
-        "name": "Coritiba",
-        "logo": "https://media.api-sports.io/football/teams/123.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250826,
-      "date": "2025-08-25T20:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Maracanã"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 21"
-    },
-    "teams": {
-      "home": {
         "id": 139,
         "name": "Ponte Preta",
         "logo": "https://media.api-sports.io/football/teams/139.png"
       },
       "away": {
-        "id": 1207,
-        "name": "RB Bragantino",
-        "logo": "https://media.api-sports.io/football/teams/1207.png"
-      }
-    },
-    "goals": {
-      "home": null,
-      "away": null
-    }
-  },
-  {
-    "fixture": {
-      "id": 21250827,
-      "date": "2025-08-25T22:00:00.000Z",
-      "status": {
-        "long": "Not Started",
-        "short": "NS"
-      },
-      "venue": {
-        "name": "Maracanã"
-      }
-    },
-    "league": {
-      "id": 71,
-      "name": "Serie A",
-      "logo": "https://media.api-sports.io/football/leagues/71.png",
-      "round": "Regular Season - 22"
-    },
-    "teams": {
-      "home": {
-        "id": 129,
-        "name": "Cruzeiro",
-        "logo": "https://media.api-sports.io/football/teams/129.png"
-      },
-      "away": {
-        "id": 124,
-        "name": "Vasco da Gama",
-        "logo": "https://media.api-sports.io/football/teams/124.png"
+        "id": 134,
+        "name": "Sport",
+        "logo": "https://media.api-sports.io/football/teams/134.png"
       }
     },
     "goals": {
