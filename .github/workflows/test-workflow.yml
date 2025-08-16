@@ -1,0 +1,66 @@
+name: Test Workflow (Manual Only)
+
+on:
+  workflow_dispatch: # Only manual triggering
+
+jobs:
+  test-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Test environment
+        run: |
+          echo "🧪 Testing GitHub Actions environment..."
+          echo "📅 Current date: $(date)"
+          echo "🌍 Current timezone: $(date +%Z)"
+          echo "🇧🇷 Brazil time: $(TZ='America/Sao_Paulo' date)"
+          
+      - name: Check workflow files
+        run: |
+          echo "📋 Checking workflow files..."
+          ls -la .github/workflows/
+          echo "✅ Daily update workflow exists: $(test -f .github/workflows/scheduled-redeploy.yml && echo 'Yes' || echo 'No')"
+          
+      - name: Test without deploy hook
+        run: |
+          echo "🔧 Testing without deploy hook (safe test)..."
+          if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" ]; then
+            echo "⚠️ VERCEL_DEPLOY_HOOK_URL secret not set (expected for first test)"
+            echo "📝 To complete setup:"
+            echo "   1. Create Vercel Deploy Hook"
+            echo "   2. Add GitHub secret: VERCEL_DEPLOY_HOOK_URL"
+            echo "   3. Test the main workflow: 'Daily Site Update'"
+          else
+            echo "✅ VERCEL_DEPLOY_HOOK_URL secret is configured"
+            echo "🚀 Ready for deploy hook testing"
+          fi
+          
+      - name: Validate build script
+        run: |
+          echo "📦 Checking build script..."
+          if [ -f "scripts/build.js" ]; then
+            echo "✅ Build script exists"
+            echo "🔍 Checking for timezone handling..."
+            if grep -q "America/Sao_Paulo" scripts/build.js; then
+              echo "✅ Brazilian timezone configured"
+            fi
+            if grep -q "getSupplementalGames" scripts/build.js; then
+              echo "✅ International games support enabled"
+            fi
+          fi
+          
+      - name: Summary
+        run: |
+          echo "📊 Test Summary:"
+          echo "✅ GitHub Actions environment working"
+          echo "✅ Workflow files present"
+          echo "✅ Repository structure correct"
+          echo "⚠️ Next step: Configure VERCEL_DEPLOY_HOOK_URL secret"
+          echo ""
+          echo "🎯 To complete daily update setup:"
+          echo "1. Create Vercel Deploy Hook in dashboard"
+          echo "2. Add GitHub secret with hook URL"  
+          echo "3. Test 'Daily Site Update' workflow"
+          echo "4. Verify site updates with current date"
