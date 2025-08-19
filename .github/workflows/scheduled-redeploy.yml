@@ -11,10 +11,24 @@ jobs:
   trigger-vercel-rebuild:
     runs-on: ubuntu-latest
     steps:
+      - name: Check if Vercel Deploy Hook is configured
+        run: |
+          if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" ]; then
+            echo "⚠️ VERCEL_DEPLOY_HOOK_URL secret not configured"
+            echo "📝 To complete setup:"
+            echo "   1. Go to Vercel Dashboard → Project → Settings → Git"
+            echo "   2. Create a Deploy Hook"
+            echo "   3. Copy the hook URL"
+            echo "   4. Add it to GitHub Secrets as VERCEL_DEPLOY_HOOK_URL"
+            echo "   5. Re-run this workflow"
+            exit 1
+          else
+            echo "✅ VERCEL_DEPLOY_HOOK_URL is configured"
+          fi
+          
       - name: Trigger Vercel Deploy Hook
         run: |
-          # Replace VERCEL_DEPLOY_HOOK_URL with your actual Vercel deploy hook URL
-          # You can get this from Vercel Dashboard → Project → Settings → Deploy Hooks
+          echo "🚀 Triggering Vercel deployment..."
           curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
           
       - name: Log deployment trigger
