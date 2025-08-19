@@ -461,13 +461,13 @@ async function main(){
     
     let allFixtures = [];
     
-    // Primary call - by date
+    // Primary call - by date (get ALL fixtures to avoid missing international games)
     const dateFixtures = await api("/fixtures", { date: ds, timezone: TZ });
     allFixtures = [...dateFixtures];
+    console.log(`    Found ${allFixtures.length} total fixtures from main API call`);
     
-    // If very few results, try specific Brazilian leagues
-    if (allFixtures.length < 5) {
-      console.log(`    Low fixture count (${allFixtures.length}), trying specific leagues...`);
+    // Always try specific Brazilian leagues for additional coverage
+    console.log(`    Checking specific Brazilian and international leagues for additional games...`);
       
       // Comprehensive league coverage: Brazilian + International with Brazilian teams
       const brazilLeagues = [
@@ -492,62 +492,57 @@ async function main(){
           // Continue with other leagues if one fails
         }
       }
-    }
     
     // Remove duplicates
     allFixtures = allFixtures.filter((fixture, index, self) => 
       index === self.findIndex(f => f.fixture?.id === fixture.fixture?.id)
     );
     
-    // If still very few results, try fetching ALL fixtures for the date and filter client-side
-    if (allFixtures.length < 3) {
-      console.log(`    Very low fixture count (${allFixtures.length}), trying comprehensive search...`);
-      try {
-        const allDayFixtures = await api("/fixtures", { date: ds, timezone: TZ });
-        console.log(`      Found ${allDayFixtures.length} total fixtures for ${ds}`);
-        
-        // Filter for any international competitions or Brazilian involvement
-        const internationalFixtures = allDayFixtures.filter(fixture => {
-          const league = fixture.league?.name?.toLowerCase() || '';
-          const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
-          const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
-          const country = fixture.league?.country?.toLowerCase() || '';
-          
-          // International competitions that might have Brazilian teams
-          const hasInternationalCompetition = league.includes('libertadores') || 
-                                            league.includes('sudamericana') || 
-                                            league.includes('sul-americana') ||
-                                            league.includes('champions') ||
-                                            league.includes('recopa') ||
-                                            league.includes('mundial') ||
-                                            league.includes('world');
-          
-          // Check for Brazilian team names in international games
-          const brazilianTeamNames = COMPREHENSIVE_TEAMS.map(t => t.name.toLowerCase());
-          const hasBrazilianTeam = brazilianTeamNames.some(teamName => 
-            homeTeam.includes(teamName) || awayTeam.includes(teamName) ||
-            homeTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, '')) ||
-            awayTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, ''))
-          );
-          
-          return hasInternationalCompetition && hasBrazilianTeam;
-        });
-        
-        if (internationalFixtures.length > 0) {
-          console.log(`      Found ${internationalFixtures.length} additional international fixtures`);
-          allFixtures = [...allFixtures, ...internationalFixtures];
-        }
-      } catch (error) {
-        console.warn(`      Comprehensive search failed: ${error.message}`);
+    // Additional validation: ensure we're not missing international games with Brazilian teams
+    console.log(`    Validating international fixtures with Brazilian teams...`);
+    const allInternationalFixtures = allFixtures.filter(fixture => {
+      const league = fixture.league?.name?.toLowerCase() || '';
+      const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
+      const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
+      
+      // Check if it's an international competition
+      const isInternationalCompetition = league.includes('libertadores') || 
+                                        league.includes('sudamericana') || 
+                                        league.includes('sul-americana') ||
+                                        league.includes('champions') ||
+                                        league.includes('recopa') ||
+                                        league.includes('mundial') ||
+                                        league.includes('world');
+      
+      if (isInternationalCompetition) {
+        console.log(`      🌍 Found international match: ${homeTeam} vs ${awayTeam} (${league})`);
       }
-    }
+      
+      return isInternationalCompetition;
+    });
+    
+    console.log(`      Total international fixtures found: ${allInternationalFixtures.length}`);
     
     // Apply ENHANCED Brazilian filtering - MAJOR TOURNAMENTS ONLY
+    console.log(`    🔍 Applying Brazilian filtering to ${allFixtures.length} fixtures...`);
     const brazilianFixtures = allFixtures.filter(fixture => {
       const league = fixture.league?.name?.toLowerCase() || '';
       const country = fixture.league?.country?.toLowerCase() || '';
       const homeTeam = fixture.teams?.home?.name?.toLowerCase() || '';
       const awayTeam = fixture.teams?.away?.name?.toLowerCase() || '';
+      
+      // Debug: log international matches with Brazilian teams for inspection
+      const isInternationalMatch = league.includes('libertadores') || 
+                                   league.includes('sudamericana') || 
+                                   league.includes('sul-americana');
+      
+      if (isInternationalMatch) {
+        const brazilianTeamNames = ['fortaleza', 'sao paulo', 'são paulo', 'fluminense', 'flamengo', 'palmeiras', 'santos', 'corinthians'];
+        const hasBrazilianTeam = brazilianTeamNames.some(team => homeTeam.includes(team) || awayTeam.includes(team));
+        if (hasBrazilianTeam) {
+          console.log(`      🌟 INTERNATIONAL: ${homeTeam} vs ${awayTeam} (${league})`);
+        }
+      }
       
       // EXCLUDE LOW DIVISION TOURNAMENTS IMMEDIATELY
       const isLowDivision = 
@@ -632,23 +627,66 @@ async function main(){
       );
       
       // INCLUDE international competitions with Brazilian teams (expanded)
-      const isBrazilianInternational = (
+      const isInternationalCompetition = (
         league.includes('libertadores') ||
         league.includes('sul-americana') || league.includes('sudamericana') ||
         league.includes('recopa sudamericana') ||
         league.includes('mundial') || league.includes('world') ||
         league.includes('copa américa') || league.includes('copa america') ||
         league.includes('supercopa') || league.includes('champions')
-      ) && COMPREHENSIVE_TEAMS.some(team => {
+      );
+      
+      const hasBrazilianTeam = isInternationalCompetition && COMPREHENSIVE_TEAMS.some(team => {
         const teamName = team.name.toLowerCase();
         const teamSlug = team.slug?.toLowerCase();
-        return homeTeam.includes(teamName) || awayTeam.includes(teamName) ||
-               (teamSlug && (homeTeam.includes(teamSlug) || awayTeam.includes(teamSlug))) ||
-               homeTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, '')) ||
-               awayTeam.replace(/[^a-zA-Z0-9]/g, '').includes(teamName.replace(/[^a-zA-Z0-9]/g, ''));
+        
+        // Helper function to normalize strings (remove accents, special chars)
+        const normalize = (str) => str.toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '') // Remove accents
+          .replace(/[^a-zA-Z0-9]/g, '');   // Remove special chars
+          
+        const normalizedHome = normalize(homeTeam);
+        const normalizedAway = normalize(awayTeam);
+        const normalizedTeamName = normalize(teamName);
+        const normalizedTeamSlug = teamSlug ? normalize(teamSlug) : '';
+        
+        // Multiple matching strategies for robustness
+        const match1 = homeTeam.includes(teamName) || awayTeam.includes(teamName);
+        const match2 = teamSlug && (homeTeam.includes(teamSlug) || awayTeam.includes(teamSlug));
+        const match3 = normalizedHome.includes(normalizedTeamName) || normalizedAway.includes(normalizedTeamName);
+        const match4 = normalizedTeamSlug && (normalizedHome.includes(normalizedTeamSlug) || normalizedAway.includes(normalizedTeamSlug));
+        const match5 = teamName.includes(homeTeam) || teamName.includes(awayTeam); // Reverse matching
+        const match6 = normalizedTeamName.includes(normalizedHome) || normalizedTeamName.includes(normalizedAway);
+        
+        return match1 || match2 || match3 || match4 || match5 || match6;
       });
       
-      return isMajorBrazilianDomestic || isMajorStateTournament || isBrazilianInternational;
+      const isBrazilianInternational = isInternationalCompetition && hasBrazilianTeam;
+      const shouldInclude = isMajorBrazilianDomestic || isMajorStateTournament || isBrazilianInternational;
+      
+      // Debug: log decisions for international matches
+      if (isInternationalCompetition && (homeTeam.includes('fortaleza') || awayTeam.includes('fortaleza') ||
+                                         homeTeam.includes('sao paulo') || awayTeam.includes('sao paulo') ||
+                                         homeTeam.includes('fluminense') || awayTeam.includes('fluminense'))) {
+        console.log(`      🔍 DECISION for ${homeTeam} vs ${awayTeam}:`);
+        console.log(`          International Competition: ${isInternationalCompetition}`);
+        console.log(`          Has Brazilian Team: ${hasBrazilianTeam}`);
+        console.log(`          Brazilian International: ${isBrazilianInternational}`);
+        console.log(`          Include: ${shouldInclude}`);
+      }
+      
+      return shouldInclude;
+    });
+    
+    console.log(`    ✅ After filtering: ${brazilianFixtures.length} fixtures passed`);
+    
+    // Debug: list what actually passed the filter
+    brazilianFixtures.forEach(fixture => {
+      const league = fixture.league?.name || 'Unknown';
+      const home = fixture.teams?.home?.name || 'Unknown';
+      const away = fixture.teams?.away?.name || 'Unknown';
+      console.log(`      ✅ PASSED: ${home} vs ${away} (${league})`);
     });
     
     // Add supplemental international games if available
