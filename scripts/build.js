@@ -4,9 +4,27 @@ import path from "path";
 import { getSupplementalGames, shouldAddSupplementalGames } from "../libertadores-schedule-2025.js";
 const API = "https://v3.football.api-sports.io";
 // Handle timezone properly - Vercel might set TZ to invalid values
-let TZ = process.env.TZ || "America/Sao_Paulo";
-if (TZ === ":UTC" || TZ.startsWith(":")) {
-  TZ = "America/Sao_Paulo";
+const BRAZIL_TZ = "America/Sao_Paulo";
+let TZ = process.env.TZ || BRAZIL_TZ;
+
+// Validate timezone and fallback if invalid
+function validateTimezone(tz) {
+  try {
+    // Test if timezone is valid by trying to use it
+    new Date().toLocaleString("en-US", {timeZone: tz});
+    return tz;
+  } catch (error) {
+    console.warn(`⚠️ Invalid timezone "${tz}", falling back to ${BRAZIL_TZ}`);
+    return BRAZIL_TZ;
+  }
+}
+
+// Handle common Vercel timezone issues
+if (TZ === ":UTC" || TZ.startsWith(":") || TZ === "UTC") {
+  console.log(`🔧 Vercel timezone "${TZ}" detected, using ${BRAZIL_TZ}`);
+  TZ = BRAZIL_TZ;
+} else {
+  TZ = validateTimezone(TZ);
 }
 const OUT = process.cwd();
 const DATA_DIR = path.join(OUT, "data");
@@ -250,18 +268,18 @@ function renderCards(fixtures, oddsData = {}){
         day: "2-digit",
         month: "2-digit", 
         year: "numeric",
-        timeZone: "America/Sao_Paulo" 
+        timeZone: TZ 
       });
       
       dayOfWeekStr = matchDate.toLocaleDateString("pt-BR", { 
         weekday: "long",
-        timeZone: "America/Sao_Paulo" 
+        timeZone: TZ 
       });
       
       timeStr = matchDate.toLocaleTimeString("pt-BR", { 
         hour: "2-digit", 
         minute: "2-digit", 
-        timeZone: "America/Sao_Paulo" 
+        timeZone: TZ 
       });
     }
     
@@ -363,7 +381,7 @@ function generateCalendarNav(currentDate, datesWithGames, allDates) {
     
     const dayName = date.toLocaleDateString("pt-BR", { 
       weekday: "short", 
-      timeZone: "America/Sao_Paulo" 
+      timeZone: TZ 
     }).replace('.', '');
     
     const dayNum = date.getDate();
@@ -421,14 +439,10 @@ async function main(){
   const today = new Date();
   let brazilToday;
   
-  try {
-    brazilToday = new Date(today.toLocaleString("en-US", {timeZone: TZ}));
-  } catch (error) {
-    console.warn(`⚠️ Invalid timezone "${TZ}", falling back to America/Sao_Paulo`);
-    brazilToday = new Date(today.toLocaleString("en-US", {timeZone: "America/Sao_Paulo"}));
-  }
+  brazilToday = new Date(today.toLocaleString("en-US", {timeZone: TZ}));
   
   console.log(`🕐 Current UTC time: ${today.toISOString()}`);
+  console.log(`🌍 Using timezone: ${TZ}`);
   console.log(`🇧🇷 Current Brazil time: ${brazilToday.toISOString()}`);
   console.log(`📅 Today's date in Brazil: ${fmtDate(brazilToday)}`);
   
