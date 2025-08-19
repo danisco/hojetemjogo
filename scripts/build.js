@@ -636,30 +636,18 @@ async function main(){
         league.includes('supercopa') || league.includes('champions')
       );
       
-      const hasBrazilianTeam = isInternationalCompetition && COMPREHENSIVE_TEAMS.some(team => {
-        const teamName = team.name.toLowerCase();
-        const teamSlug = team.slug?.toLowerCase();
-        
-        // Helper function to normalize strings (remove accents, special chars)
-        const normalize = (str) => str.toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '') // Remove accents
-          .replace(/[^a-zA-Z0-9]/g, '');   // Remove special chars
-          
-        const normalizedHome = normalize(homeTeam);
-        const normalizedAway = normalize(awayTeam);
-        const normalizedTeamName = normalize(teamName);
-        const normalizedTeamSlug = teamSlug ? normalize(teamSlug) : '';
-        
-        // Multiple matching strategies for robustness
-        const match1 = homeTeam.includes(teamName) || awayTeam.includes(teamName);
-        const match2 = teamSlug && (homeTeam.includes(teamSlug) || awayTeam.includes(teamSlug));
-        const match3 = normalizedHome.includes(normalizedTeamName) || normalizedAway.includes(normalizedTeamName);
-        const match4 = normalizedTeamSlug && (normalizedHome.includes(normalizedTeamSlug) || normalizedAway.includes(normalizedTeamSlug));
-        const match5 = teamName.includes(homeTeam) || teamName.includes(awayTeam); // Reverse matching
-        const match6 = normalizedTeamName.includes(normalizedHome) || normalizedTeamName.includes(normalizedAway);
-        
-        return match1 || match2 || match3 || match4 || match5 || match6;
+      // Simple, robust Brazilian team detection for international matches
+      const knownBrazilianTeams = [
+        'flamengo', 'botafogo', 'palmeiras', 'corinthians', 'sao paulo', 'são paulo',
+        'internacional', 'cruzeiro', 'atletico-mg', 'atlético-mg', 'fluminense', 
+        'gremio', 'grêmio', 'bragantino', 'vitoria', 'vitória', 'vasco', 'fortaleza', 
+        'juventude', 'bahia', 'santos', 'mirassol', 'sport', 'ceara', 'ceará'
+      ];
+      
+      const hasBrazilianTeam = isInternationalCompetition && knownBrazilianTeams.some(brazilianTeam => {
+        const homeMatch = homeTeam.includes(brazilianTeam) || homeTeam.replace(/[^a-z]/g, '').includes(brazilianTeam.replace(/[^a-z]/g, ''));
+        const awayMatch = awayTeam.includes(brazilianTeam) || awayTeam.replace(/[^a-z]/g, '').includes(brazilianTeam.replace(/[^a-z]/g, ''));
+        return homeMatch || awayMatch;
       });
       
       const isBrazilianInternational = isInternationalCompetition && hasBrazilianTeam;
@@ -667,7 +655,7 @@ async function main(){
       
       // Debug: log decisions for international matches
       if (isInternationalCompetition && (homeTeam.includes('fortaleza') || awayTeam.includes('fortaleza') ||
-                                         homeTeam.includes('sao paulo') || awayTeam.includes('sao paulo') ||
+                                         homeTeam === 'sao paulo' || awayTeam === 'sao paulo' ||
                                          homeTeam.includes('fluminense') || awayTeam.includes('fluminense'))) {
         console.log(`      🔍 DECISION for ${homeTeam} vs ${awayTeam}:`);
         console.log(`          International Competition: ${isInternationalCompetition}`);
