@@ -35,5 +35,110 @@
     },
     "_estimated": true,
     "_source": "Libertadores Official Schedule"
+  },
+  {
+    "fixture": {
+      "id": "lib_2025_08_19_002",
+      "date": "2025-08-19T19:00:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Estadio José Amalfitani"
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "round": "Group Stage - Matchday 3"
+    },
+    "teams": {
+      "home": {
+        "id": 9998,
+        "name": "Velez Sarsfield",
+        "logo": "https://media.api-sports.io/football/teams/9998.png"
+      },
+      "away": {
+        "id": 160,
+        "name": "Fortaleza",
+        "logo": "https://media.api-sports.io/football/teams/160.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": "lib_2025_08_19_003",
+      "date": "2025-08-19T21:30:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Morumbi"
+      }
+    },
+    "league": {
+      "id": 13,
+      "name": "CONMEBOL Libertadores",
+      "logo": "https://media.api-sports.io/football/leagues/13.png",
+      "round": "Group Stage - Matchday 3"
+    },
+    "teams": {
+      "home": {
+        "id": 126,
+        "name": "São Paulo",
+        "logo": "https://media.api-sports.io/football/teams/126.png"
+      },
+      "away": {
+        "id": 9997,
+        "name": "Atletico Nacional",
+        "logo": "https://media.api-sports.io/football/teams/9997.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": "sula_2025_08_19_001",
+      "date": "2025-08-19T19:00:00-03:00",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Maracanã"
+      }
+    },
+    "league": {
+      "id": 11,
+      "name": "CONMEBOL Sudamericana",
+      "logo": "https://media.api-sports.io/football/leagues/11.png",
+      "round": "Round of 16 - First Leg"
+    },
+    "teams": {
+      "home": {
+        "id": 125,
+        "name": "Fluminense",
+        "logo": "https://media.api-sports.io/football/teams/125.png"
+      },
+      "away": {
+        "id": 9996,
+        "name": "America de Cali",
+        "logo": "https://media.api-sports.io/football/teams/9996.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
   }
 ]

@@ -1,0 +1,72 @@
+[
+  {
+    "fixture": {
+      "id": 21250908,
+      "date": "2025-09-08T18:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Maracanã"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 20"
+    },
+    "teams": {
+      "home": {
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
+      },
+      "away": {
+        "id": 139,
+        "name": "Ponte Preta",
+        "logo": "https://media.api-sports.io/football/teams/139.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250909,
+      "date": "2025-09-08T20:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Allianz Parque"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 21"
+    },
+    "teams": {
+      "home": {
+        "id": 122,
+        "name": "Athletico Paranaense",
+        "logo": "https://media.api-sports.io/football/teams/122.png"
+      },
+      "away": {
+        "id": 134,
+        "name": "Sport",
+        "logo": "https://media.api-sports.io/football/teams/134.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  }
+]

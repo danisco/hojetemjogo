@@ -21,7 +21,15 @@
       "Bash(rm:*)",
       "WebFetch(domain:www.livesoccertv.com)",
       "Bash(set TZ=:UTC)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(TZ=\":UTC\" node -e \"\nconst BRAZIL_TZ = ''America/Sao_Paulo'';\nlet TZ = process.env.TZ || BRAZIL_TZ;\n\nfunction validateTimezone(tz) {\n  try {\n    new Date().toLocaleString(''en-US'', {timeZone: tz});\n    return tz;\n  } catch (error) {\n    console.log(''Invalid timezone detected:'', tz);\n    return BRAZIL_TZ;\n  }\n}\n\nif (TZ === '':UTC'' || TZ.startsWith('':'') || TZ === ''UTC'') {\n  console.log(''Vercel timezone detected:'', TZ, ''-> using'', BRAZIL_TZ);\n  TZ = BRAZIL_TZ;\n} else {\n  TZ = validateTimezone(TZ);\n}\n\nconsole.log(''Final timezone:'', TZ);\nconst today = new Date();\nconst brazilToday = new Date(today.toLocaleString(''en-US'', {timeZone: TZ}));\nconsole.log(''Success! Brazil time:'', brazilToday.toISOString());\n\")",
+      "Bash(TZ=\":UTC\" node -e \"\nconst BRAZIL_TZ = ''America/Sao_Paulo'';\nlet TZ = process.env.TZ || BRAZIL_TZ;\nconsole.log(''Input TZ:'', TZ);\n\nfunction validateTimezone(tz) {\n  try {\n    new Date().toLocaleString(''en-US'', {timeZone: tz});\n    return tz;\n  } catch (error) {\n    console.log(''Invalid timezone detected:'', tz);\n    return BRAZIL_TZ;\n  }\n}\n\nif (TZ === '':UTC'' || TZ.startsWith('':'') || TZ === ''UTC'') {\n  console.log(''Vercel timezone detected:'', TZ, ''-> using'', BRAZIL_TZ);\n  TZ = BRAZIL_TZ;\n} else {\n  TZ = validateTimezone(TZ);\n}\n\nconsole.log(''Final timezone:'', TZ);\n\")",
+      "Bash(env TZ=\":UTC\" node -e \"console.log(''TZ env var:'', process.env.TZ)\")",
+      "Bash(TZ=\":UTC\" printenv TZ)",
+      "Bash(TZ=\":UTC\" node -e \"\nconsole.log(''process.env.TZ:'', process.env.TZ);\nconsole.log(''Starts with colon:'', process.env.TZ?.startsWith('':''));\nconsole.log(''Equals :UTC:'', process.env.TZ === '':UTC'');\n\")",
+      "Bash(grep:*)",
+      "Bash(TZ=\"America/Sao_Paulo\" node -e \"\nconst now = new Date();\nconst brazilNow = new Date(now.toLocaleString(''en-US'', {timeZone: ''America/Sao_Paulo''}));\nconsole.log(''Current UTC time:'', now.toISOString());\nconsole.log(''Current Brazil time:'', brazilNow.toISOString());\nconsole.log(''Brazil date (YYYY-MM-DD):'', brazilNow.toISOString().split(''T'')[0]);\nconsole.log(''Weekday in Brazil:'', brazilNow.toLocaleDateString(''pt-BR'', {weekday: ''long'', timeZone: ''America/Sao_Paulo''}));\n\")",
+      "Bash(TZ=\"America/Sao_Paulo\" node -e \"\nconsole.log(''Testing API call for today...'');\nconst today = new Date().toLocaleDateString(''en-CA'', {timeZone: ''America/Sao_Paulo''});\nconsole.log(''Today in Brazil:'', today);\n\")"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

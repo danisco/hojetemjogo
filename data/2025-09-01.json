@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Maracanã"
+        "name": "Allianz Parque"
       }
     },
     "league": {
@@ -24,9 +24,9 @@
         "logo": "https://media.api-sports.io/football/teams/120.png"
       },
       "away": {
-        "id": 160,
-        "name": "Fortaleza",
-        "logo": "https://media.api-sports.io/football/teams/160.png"
+        "id": 155,
+        "name": "América-MG",
+        "logo": "https://media.api-sports.io/football/teams/155.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Allianz Parque"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -54,14 +54,49 @@
     },
     "teams": {
       "home": {
-        "id": 134,
-        "name": "Sport",
-        "logo": "https://media.api-sports.io/football/teams/134.png"
+        "id": 152,
+        "name": "Juventude",
+        "logo": "https://media.api-sports.io/football/teams/152.png"
       },
       "away": {
-        "id": 159,
-        "name": "Vitória",
-        "logo": "https://media.api-sports.io/football/teams/159.png"
+        "id": 156,
+        "name": "Goiás",
+        "logo": "https://media.api-sports.io/football/teams/156.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250903,
+      "date": "2025-09-01T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Vila Belmiro"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 132,
+        "name": "Internacional",
+        "logo": "https://media.api-sports.io/football/teams/132.png"
+      },
+      "away": {
+        "id": 139,
+        "name": "Ponte Preta",
+        "logo": "https://media.api-sports.io/football/teams/139.png"
       }
     },
     "goals": {

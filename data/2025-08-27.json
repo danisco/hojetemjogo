@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "fixture": {
+      "id": 1436278,
+      "referee": "Ramon Abatti Abel, Brazil",
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-27T19:30:00-03:00",
+      "timestamp": 1756333800,
+      "periods": {
+        "first": 1756333800,
+        "second": 1756337400
+      },
+      "venue": {
+        "id": 21427,
+        "name": "Arena MRV",
+        "city": "Belo Horizonte, Minas Gerais"
+      },
+      "status": {
+        "long": "Match Finished",
+        "short": "FT",
+        "elapsed": 90,
+        "extra": 7
+      }
+    },
+    "league": {
+      "id": 73,
+      "name": "Copa Do Brasil",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/73.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Quarter-finals",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 1062,
+        "name": "Atletico-MG",
+        "logo": "https://media.api-sports.io/football/teams/1062.png",
+        "winner": false
+      },
+      "away": {
+        "id": 135,
+        "name": "Cruzeiro",
+        "logo": "https://media.api-sports.io/football/teams/135.png",
+        "winner": true
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 2
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": 0,
+        "away": 2
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1436280,
+      "referee": "Anderson Daronco, Brazil",
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-27T21:30:00-03:00",
+      "timestamp": 1756341000,
+      "periods": {
+        "first": 1756341000,
+        "second": null
+      },
+      "venue": {
+        "id": 19377,
+        "name": "Estádio São Januário",
+        "city": "Rio de Janeiro, Rio de Janeiro"
+      },
+      "status": {
+        "long": "First Half",
+        "short": "1H",
+        "elapsed": 8,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 73,
+      "name": "Copa Do Brasil",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/73.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Quarter-finals",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 133,
+        "name": "Vasco DA Gama",
+        "logo": "https://media.api-sports.io/football/teams/133.png",
+        "winner": null
+      },
+      "away": {
+        "id": 120,
+        "name": "Botafogo",
+        "logo": "https://media.api-sports.io/football/teams/120.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  },
+  {
+    "fixture": {
+      "id": 1436281,
+      "referee": "Wilton Pereira Sampaio, Brazil",
+      "timezone": "America/Sao_Paulo",
+      "date": "2025-08-27T21:30:00-03:00",
+      "timestamp": 1756341000,
+      "periods": {
+        "first": 1756341000,
+        "second": null
+      },
+      "venue": {
+        "id": 10493,
+        "name": "Ligga Arena",
+        "city": "Curitiba, Paraná"
+      },
+      "status": {
+        "long": "First Half",
+        "short": "1H",
+        "elapsed": 9,
+        "extra": null
+      }
+    },
+    "league": {
+      "id": 73,
+      "name": "Copa Do Brasil",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/leagues/73.png",
+      "flag": "https://media.api-sports.io/flags/br.svg",
+      "season": 2025,
+      "round": "Quarter-finals",
+      "standings": false
+    },
+    "teams": {
+      "home": {
+        "id": 134,
+        "name": "Atletico Paranaense",
+        "logo": "https://media.api-sports.io/football/teams/134.png",
+        "winner": null
+      },
+      "away": {
+        "id": 131,
+        "name": "Corinthians",
+        "logo": "https://media.api-sports.io/football/teams/131.png",
+        "winner": null
+      }
+    },
+    "goals": {
+      "home": 0,
+      "away": 0
+    },
+    "score": {
+      "halftime": {
+        "home": 0,
+        "away": 0
+      },
+      "fulltime": {
+        "home": null,
+        "away": null
+      },
+      "extratime": {
+        "home": null,
+        "away": null
+      },
+      "penalty": {
+        "home": null,
+        "away": null
+      }
+    }
+  }
+]

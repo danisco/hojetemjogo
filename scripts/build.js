@@ -207,6 +207,31 @@ function fmtDate(d){
   return `${y}-${m}-${da}`;
 }
 
+// Generate day-specific title
+function getDayTitle(dateStr, isToday = false) {
+  if (isToday) {
+    return "Jogos de Hoje";
+  }
+  
+  const date = new Date(dateStr + 'T12:00:00');
+  const weekday = date.toLocaleDateString('pt-BR', { weekday: 'long' });
+  const capitalizedWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+  
+  // Map Portuguese weekdays to proper format
+  const dayMap = {
+    'Segunda-feira': 'Segunda',
+    'Terça-feira': 'Terça', 
+    'Quarta-feira': 'Quarta',
+    'Quinta-feira': 'Quinta',
+    'Sexta-feira': 'Sexta',
+    'Sábado': 'Sábado',
+    'Domingo': 'Domingo'
+  };
+  
+  const shortDay = dayMap[capitalizedWeekday] || capitalizedWeekday;
+  return `Jogos de ${shortDay}`;
+}
+
 // Load template
 const tpl = fs.readFileSync(path.join("scripts","template_index.html"), "utf-8");
 
@@ -746,6 +771,7 @@ async function main(){
     .replaceAll("{json_ld}", jsonLD(byDate[date_today]))
     .replaceAll("{year}", String(new Date().getFullYear()))
     .replaceAll("{kw_team}", featuredTeam)
+    .replaceAll("{day_title}", getDayTitle(date_today, true))
     .replaceAll("{more_today}", "")
     .replaceAll("{more_tomorrow}", "")
 ;
@@ -784,6 +810,7 @@ async function main(){
       .replaceAll("{json_ld}", jsonLD(byDate[ds]))
       .replaceAll("{year}", String(new Date().getFullYear()))
       .replaceAll("{kw_team}", dayFeaturedTeam)
+      .replaceAll("{day_title}", getDayTitle(ds, ds === dates[0]))
       .replaceAll("{more_today}", "")
       .replaceAll("{more_tomorrow}", "")
   ;

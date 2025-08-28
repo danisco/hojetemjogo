@@ -1,0 +1,107 @@
+[
+  {
+    "fixture": {
+      "id": 21250907,
+      "date": "2025-09-07T18:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Morumbi"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 20"
+    },
+    "teams": {
+      "home": {
+        "id": 1569,
+        "name": "Cuiabá",
+        "logo": "https://media.api-sports.io/football/teams/1569.png"
+      },
+      "away": {
+        "id": 1209,
+        "name": "Chapecoense",
+        "logo": "https://media.api-sports.io/football/teams/1209.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250908,
+      "date": "2025-09-07T20:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Vila Belmiro"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 21"
+    },
+    "teams": {
+      "home": {
+        "id": 123,
+        "name": "Coritiba",
+        "logo": "https://media.api-sports.io/football/teams/123.png"
+      },
+      "away": {
+        "id": 158,
+        "name": "Avaí",
+        "logo": "https://media.api-sports.io/football/teams/158.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250909,
+      "date": "2025-09-07T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Neo Química Arena"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 132,
+        "name": "Internacional",
+        "logo": "https://media.api-sports.io/football/teams/132.png"
+      },
+      "away": {
+        "id": 125,
+        "name": "Fluminense",
+        "logo": "https://media.api-sports.io/football/teams/125.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  }
+]

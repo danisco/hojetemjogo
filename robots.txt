@@ -1,26 +1,3 @@
 User-agent: *
 Allow: /
-
-# Priority crawling for daily content
-Allow: /dias/
-Allow: /times/
-
-# Block unnecessary files
-Disallow: /node_modules/
-Disallow: /scripts/
-Disallow: /*.js$
-Disallow: /*.json$
-Disallow: /config.js
-Disallow: /vercel.json
-Disallow: /package.json
-
-# Allow important files
-Allow: /assets/
-Allow: /manifest.json
-Allow: /sitemap.xml
-
-# Crawl delay to be respectful
-Crawl-delay: 1
-
-# Sitemap location
 Sitemap: https://hojetemjogo.com.br/sitemap.xml

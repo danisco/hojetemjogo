@@ -8,7 +8,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Neo Química Arena"
+        "name": "Maracanã"
       }
     },
     "league": {
@@ -19,14 +19,14 @@
     },
     "teams": {
       "home": {
-        "id": 122,
-        "name": "Athletico Paranaense",
-        "logo": "https://media.api-sports.io/football/teams/122.png"
+        "id": 152,
+        "name": "Juventude",
+        "logo": "https://media.api-sports.io/football/teams/152.png"
       },
       "away": {
-        "id": 156,
-        "name": "Goiás",
-        "logo": "https://media.api-sports.io/football/teams/156.png"
+        "id": 126,
+        "name": "São Paulo",
+        "logo": "https://media.api-sports.io/football/teams/126.png"
       }
     },
     "goals": {
@@ -43,7 +43,7 @@
         "short": "NS"
       },
       "venue": {
-        "name": "Estádio Olímpico Nilton Santos"
+        "name": "Mineirão"
       }
     },
     "league": {
@@ -54,14 +54,49 @@
     },
     "teams": {
       "home": {
-        "id": 1569,
-        "name": "Cuiabá",
-        "logo": "https://media.api-sports.io/football/teams/1569.png"
+        "id": 1209,
+        "name": "Chapecoense",
+        "logo": "https://media.api-sports.io/football/teams/1209.png"
       },
       "away": {
-        "id": 158,
-        "name": "Avaí",
-        "logo": "https://media.api-sports.io/football/teams/158.png"
+        "id": 120,
+        "name": "Botafogo",
+        "logo": "https://media.api-sports.io/football/teams/120.png"
+      }
+    },
+    "goals": {
+      "home": null,
+      "away": null
+    }
+  },
+  {
+    "fixture": {
+      "id": 21250833,
+      "date": "2025-08-31T22:00:00.000Z",
+      "status": {
+        "long": "Not Started",
+        "short": "NS"
+      },
+      "venue": {
+        "name": "Allianz Parque"
+      }
+    },
+    "league": {
+      "id": 71,
+      "name": "Serie A",
+      "logo": "https://media.api-sports.io/football/leagues/71.png",
+      "round": "Regular Season - 22"
+    },
+    "teams": {
+      "home": {
+        "id": 10269,
+        "name": "Mirassol",
+        "logo": "https://media.api-sports.io/football/teams/10269.png"
+      },
+      "away": {
+        "id": 1207,
+        "name": "RB Bragantino",
+        "logo": "https://media.api-sports.io/football/teams/1207.png"
       }
     },
     "goals": {
