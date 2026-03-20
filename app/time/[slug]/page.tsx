@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getFixturesByTeam } from '@/lib/api/football';
-import { getTeamBySlug, getTeamByApiId, TEAMS_WITH_API_IDS } from '@/lib/teams/slugs';
+import { getTeamBySlug, getTeamByApiId } from '@/lib/teams/slugs';
 import { getLeague } from '@/lib/leagues';
 import { getBroadcast } from '@/lib/broadcast/mapping';
 import MatchCard from '@/components/matches/MatchCard';
@@ -10,9 +10,7 @@ interface Props {
   params: { slug: string };
 }
 
-export async function generateStaticParams() {
-  return TEAMS_WITH_API_IDS.map((team) => ({ slug: team.slug }));
-}
+// No generateStaticParams — team pages render on-demand (ISR) to avoid API calls at build time
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const team = getTeamBySlug(params.slug);

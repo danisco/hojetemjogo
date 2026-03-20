@@ -5,15 +5,13 @@ import { LEAGUES, TRACKED_LEAGUE_IDS, getLeague, getSeasonYear } from '@/lib/lea
 
 const API_BASE = 'https://v3.football.api-sports.io';
 
-function getApiKey(): string {
-  const key = process.env.FOOTBALL_API_KEY;
-  if (!key) {
-    throw new Error(
-      'FOOTBALL_API_KEY environment variable is not set. ' +
-      'Add it to .env.local (dev) or Vercel environment variables (prod).'
-    );
-  }
-  return key;
+function getApiKey(): string | null {
+  // Support both naming conventions in case the Vercel variable was set with the old name
+  return (
+    process.env.FOOTBALL_API_KEY ??
+    process.env.API_FOOTBALL_KEY ??
+    null
+  );
 }
 
 /** Raw fixture shape returned by API-Football v3 */
@@ -111,6 +109,10 @@ async function fetchFixturesForLeague(
  */
 export async function getFixturesByDate(dateStr: string): Promise<FixtureGroup[]> {
   const apiKey = getApiKey();
+  if (!apiKey) {
+    console.error('API key not set — set FOOTBALL_API_KEY in Vercel environment variables');
+    return [];
+  }
 
   const results = await Promise.allSettled(
     LEAGUES.map((league) => fetchFixturesForLeague(league.id, dateStr, apiKey))
@@ -144,6 +146,9 @@ export async function getFixturesByTeam(
   limit = 10
 ): Promise<{ upcoming: Fixture[]; recent: Fixture[] }> {
   const apiKey = getApiKey();
+  if (!apiKey) {
+    return { upcoming: [], recent: [] };
+  }
   const season = new Date().getFullYear();
 
   const url = new URL(`${API_BASE}/fixtures`);
