@@ -21,10 +21,10 @@ export const LEAGUES: League[] = [
   { id: 75,  name: 'Copa do Nordeste',       shortName: 'Copa NE',       priority: 6,  broadcastKey: 'copa-nordeste'  },
   { id: 73,  name: 'Brasileirão Série C',    shortName: 'Série C',       priority: 7,  broadcastKey: 'serie-b'        },
   { id: 12,  name: 'Recopa Sudamericana',    shortName: 'Recopa',        priority: 8,  broadcastKey: 'sul-americana'  },
-  { id: 267, name: 'Campeonato Carioca',     shortName: 'Carioca',       priority: 9,  broadcastKey: 'carioca'        },
-  { id: 268, name: 'Campeonato Paulista',    shortName: 'Paulistão',     priority: 10, broadcastKey: 'paulista'       },
-  { id: 265, name: 'Campeonato Mineiro',     shortName: 'Mineiro',       priority: 11, broadcastKey: 'mineiro'        },
-  { id: 271, name: 'Campeonato Gaúcho',      shortName: 'Gaúcho',        priority: 12, broadcastKey: 'gaucho'         },
+  { id: 130, name: 'Campeonato Carioca',     shortName: 'Carioca',       priority: 9,  broadcastKey: 'carioca'        },
+  { id: 475, name: 'Campeonato Paulista',    shortName: 'Paulistão',     priority: 10, broadcastKey: 'paulista'       },
+  { id: 472, name: 'Campeonato Mineiro',     shortName: 'Mineiro',       priority: 11, broadcastKey: 'mineiro'        },
+  { id: 477, name: 'Campeonato Gaúcho',      shortName: 'Gaúcho',        priority: 12, broadcastKey: 'gaucho'         },
 ];
 
 export const TRACKED_LEAGUE_IDS = new Set(LEAGUES.map((l) => l.id));
