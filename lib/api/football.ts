@@ -1,187 +1,199 @@
 import 'server-only';
 
 import type { Fixture, FixtureGroup } from '@/lib/types';
-import { LEAGUES, TRACKED_LEAGUE_IDS, getLeague, getSeasonYear } from '@/lib/leagues';
 
-const API_BASE = 'https://v3.football.api-sports.io';
+const API_BASE = 'https://api.football-data.org/v4';
 
 function getApiKey(): string | null {
-  // Support both naming conventions in case the Vercel variable was set with the old name
-  return (
-    process.env.FOOTBALL_API_KEY ??
-    process.env.API_FOOTBALL_KEY ??
-    null
-  );
+  return process.env.FOOTBALL_DATA_API_KEY ?? null;
 }
 
-/** Raw fixture shape returned by API-Football v3 */
-interface RawFixture {
-  fixture: {
-    id: number;
-    date: string;
-    status: { short: string; elapsed: number | null };
-    venue: { name: string | null; city: string | null };
-  };
-  league: {
-    id: number;
-    name: string;
-    logo: string;
-    season: number;
-    round: string;
-  };
-  teams: {
-    home: { id: number; name: string; logo: string; winner: boolean | null };
-    away: { id: number; name: string; logo: string; winner: boolean | null };
-  };
-  goals: { home: number | null; away: number | null };
+// ── Competition config ────────────────────────────────────────────────────────
+
+interface Competition {
+  code: string;
+  id: number;
+  name: string;
+  shortName: string;
+  priority: number;
+  broadcastKey: string;
 }
 
-function mapFixture(raw: RawFixture): Fixture {
+const COMPETITIONS: Competition[] = [
+  { code: 'BSA', id: 2013, name: 'Brasileirão Série A', shortName: 'Brasileirão', priority: 1, broadcastKey: 'brasileirao'    },
+  { code: 'BSB', id: 2029, name: 'Brasileirão Série B', shortName: 'Série B',      priority: 2, broadcastKey: 'serie-b'        },
+  { code: 'CDB', id: 2037, name: 'Copa do Brasil',      shortName: 'Copa BR',      priority: 3, broadcastKey: 'copa-do-brasil' },
+];
+
+export { COMPETITIONS };
+
+// ── Raw API types ─────────────────────────────────────────────────────────────
+
+interface RawMatch {
+  id: number;
+  utcDate: string;
+  status: string;
+  matchday: number | null;
+  stage: string;
+  competition: { id: number; name: string; code: string; emblem: string };
+  homeTeam: { id: number; name: string; shortName: string; tla: string; crest: string };
+  awayTeam: { id: number; name: string; shortName: string; tla: string; crest: string };
+  score: {
+    winner: string | null;
+    fullTime: { home: number | null; away: number | null };
+    halfTime: { home: number | null; away: number | null };
+  };
+  venue: string | null;
+}
+
+// ── Status mapping ────────────────────────────────────────────────────────────
+
+function mapStatus(raw: string): Fixture['status'] {
+  switch (raw) {
+    case 'TIMED':
+    case 'SCHEDULED': return 'NS';
+    case 'IN_PLAY':   return '1H';
+    case 'PAUSED':    return 'HT';
+    case 'FINISHED':  return 'FT';
+    case 'SUSPENDED': return 'SUSP';
+    case 'POSTPONED': return 'PST';
+    case 'CANCELLED': return 'CANC';
+    case 'AWARDED':   return 'AWD';
+    default:          return 'NS';
+  }
+}
+
+function mapMatch(raw: RawMatch, competition: Competition): Fixture {
   return {
-    id: raw.fixture.id,
-    date: raw.fixture.date,
-    status: raw.fixture.status.short as Fixture['status'],
-    elapsed: raw.fixture.status.elapsed,
-    venue: raw.fixture.venue.name,
-    city: raw.fixture.venue.city,
-    leagueId: raw.league.id,
-    leagueName: raw.league.name,
-    leagueLogo: raw.league.logo,
-    round: raw.league.round,
-    season: raw.league.season,
-    homeTeamId: raw.teams.home.id,
-    homeTeamName: raw.teams.home.name,
-    homeTeamLogo: raw.teams.home.logo,
-    awayTeamId: raw.teams.away.id,
-    awayTeamName: raw.teams.away.name,
-    awayTeamLogo: raw.teams.away.logo,
-    homeGoals: raw.goals.home,
-    awayGoals: raw.goals.away,
+    id: raw.id,
+    date: raw.utcDate,
+    status: mapStatus(raw.status),
+    elapsed: null,
+    venue: raw.venue ?? null,
+    city: null,
+    leagueId: competition.id,
+    leagueName: competition.name,
+    leagueLogo: raw.competition.emblem ?? '',
+    round: raw.matchday ? `Rodada ${raw.matchday}` : raw.stage,
+    season: parseInt(raw.utcDate.slice(0, 4), 10),
+    homeTeamId: raw.homeTeam.id,
+    homeTeamName: raw.homeTeam.name,
+    homeTeamLogo: raw.homeTeam.crest ?? '',
+    awayTeamId: raw.awayTeam.id,
+    awayTeamName: raw.awayTeam.name,
+    awayTeamLogo: raw.awayTeam.crest ?? '',
+    homeGoals: raw.score.fullTime.home,
+    awayGoals: raw.score.fullTime.away,
   };
 }
 
-async function fetchFixturesForLeague(
-  leagueId: number,
+// ── Fetch helpers ─────────────────────────────────────────────────────────────
+
+async function fetchMatchesForCompetition(
+  competition: Competition,
   dateStr: string,
   apiKey: string
 ): Promise<Fixture[]> {
-  const season = getSeasonYear(leagueId, dateStr);
-  const url = new URL(`${API_BASE}/fixtures`);
-  url.searchParams.set('league', String(leagueId));
-  url.searchParams.set('season', String(season));
-  url.searchParams.set('date', dateStr);
-  url.searchParams.set('timezone', 'America/Sao_Paulo');
+  // football-data.org: dateTo is exclusive, so add 1 day to include the target date
+  const nextDay = new Date(dateStr);
+  nextDay.setDate(nextDay.getDate() + 1);
+  const dateTo = nextDay.toISOString().slice(0, 10);
 
-  // Determine cache revalidation based on date vs. today
-  const today = new Date().toISOString().slice(0, 10); // rough UTC date, good enough for cache key
-  let revalidateSeconds = 3600;
-  if (dateStr === today) revalidateSeconds = 900;       // 15 min for today
-  else if (dateStr < today) revalidateSeconds = 86400;  // 24 h for past
+  const url = `${API_BASE}/competitions/${competition.code}/matches?dateFrom=${dateStr}&dateTo=${dateTo}`;
 
-  const res = await fetch(url.toString(), {
-    headers: {
-      'x-apisports-key': apiKey,
-    },
-    next: { revalidate: revalidateSeconds },
+  const today = new Date().toISOString().slice(0, 10);
+  const revalidate = dateStr === today ? 900 : dateStr < today ? 86400 : 3600;
+
+  const res = await fetch(url, {
+    headers: { 'X-Auth-Token': apiKey },
+    next: { revalidate },
   });
 
+  if (res.status === 403) {
+    console.error(`football-data.org: 403 for ${competition.code} — check your API key`);
+    return [];
+  }
   if (!res.ok) {
-    console.error(`API-Football error ${res.status} for league ${leagueId} date ${dateStr}`);
+    console.error(`football-data.org: ${res.status} for ${competition.code}`);
     return [];
   }
 
-  const data = await res.json() as {
-    errors: Record<string, string>;
-    response: RawFixture[];
-  };
-
-  if (data.errors && Object.keys(data.errors).length > 0) {
-    console.error('API-Football errors:', data.errors);
-    return [];
-  }
-
-  return (data.response ?? []).map(mapFixture);
+  const data = await res.json() as { matches: RawMatch[] };
+  return (data.matches ?? []).map((m) => mapMatch(m, competition));
 }
 
-/**
- * Fetch and group all tracked-league fixtures for a given date (YYYY-MM-DD).
- * Returns an empty array per league if the API call fails, so the page still renders.
- */
+// ── Public API ────────────────────────────────────────────────────────────────
+
 export async function getFixturesByDate(dateStr: string): Promise<FixtureGroup[]> {
   const apiKey = getApiKey();
   if (!apiKey) {
-    console.error('API key not set — set FOOTBALL_API_KEY in Vercel environment variables');
+    console.error('FOOTBALL_DATA_API_KEY not set — register free at football-data.org');
     return [];
   }
 
   const results = await Promise.allSettled(
-    LEAGUES.map((league) => fetchFixturesForLeague(league.id, dateStr, apiKey))
+    COMPETITIONS.map((c) => fetchMatchesForCompetition(c, dateStr, apiKey))
   );
 
-  const groups: FixtureGroup[] = [];
-
-  results.forEach((result, i) => {
-    const league = LEAGUES[i];
-    const fixtures = result.status === 'fulfilled' ? result.value : [];
-    if (fixtures.length > 0) {
-      groups.push({
-        leagueId: league.id,
-        leagueName: league.name,
+  return results
+    .map((result, i) => {
+      const comp = COMPETITIONS[i];
+      const fixtures = result.status === 'fulfilled' ? result.value : [];
+      if (fixtures.length === 0) return null;
+      return {
+        leagueId: comp.id,
+        leagueName: comp.name,
         leagueLogo: fixtures[0]?.leagueLogo ?? '',
-        priority: league.priority,
+        priority: comp.priority,
         fixtures,
-      });
-    }
-  });
-
-  // Sort by priority
-  return groups.sort((a, b) => a.priority - b.priority);
+      } satisfies FixtureGroup;
+    })
+    .filter((g): g is FixtureGroup => g !== null)
+    .sort((a, b) => a.priority - b.priority);
 }
 
-/**
- * Fetch upcoming + recent fixtures for a specific team.
- */
 export async function getFixturesByTeam(
   teamApiId: number,
   limit = 10
 ): Promise<{ upcoming: Fixture[]; recent: Fixture[] }> {
   const apiKey = getApiKey();
-  if (!apiKey) {
-    return { upcoming: [], recent: [] };
-  }
+  if (!apiKey) return { upcoming: [], recent: [] };
+
   const season = new Date().getFullYear();
 
-  const url = new URL(`${API_BASE}/fixtures`);
-  url.searchParams.set('team', String(teamApiId));
-  url.searchParams.set('season', String(season));
-  url.searchParams.set('timezone', 'America/Sao_Paulo');
-  url.searchParams.set('next', String(limit));
-
-  const urlRecent = new URL(`${API_BASE}/fixtures`);
-  urlRecent.searchParams.set('team', String(teamApiId));
-  urlRecent.searchParams.set('season', String(season));
-  urlRecent.searchParams.set('timezone', 'America/Sao_Paulo');
-  urlRecent.searchParams.set('last', String(limit));
-
-  const [nextRes, lastRes] = await Promise.allSettled([
-    fetch(url.toString(), {
-      headers: { 'x-apisports-key': apiKey },
-      next: { revalidate: 21600 }, // 6 h
-    }),
-    fetch(urlRecent.toString(), {
-      headers: { 'x-apisports-key': apiKey },
+  const fetchForComp = async (comp: Competition): Promise<Fixture[]> => {
+    const url = `${API_BASE}/competitions/${comp.code}/matches?season=${season}&status=SCHEDULED,TIMED`;
+    const res = await fetch(url, {
+      headers: { 'X-Auth-Token': apiKey },
       next: { revalidate: 21600 },
-    }),
-  ]);
-
-  const mapRes = async (res: PromiseSettledResult<Response>): Promise<Fixture[]> => {
-    if (res.status === 'rejected' || !res.value.ok) return [];
-    const data = await res.value.json() as { response: RawFixture[] };
-    return (data.response ?? [])
-      .filter((f) => TRACKED_LEAGUE_IDS.has(f.league.id))
-      .map(mapFixture);
+    });
+    if (!res.ok) return [];
+    const data = await res.json() as { matches: RawMatch[] };
+    return (data.matches ?? [])
+      .filter((m) => m.homeTeam.id === teamApiId || m.awayTeam.id === teamApiId)
+      .map((m) => mapMatch(m, comp));
   };
 
-  const [upcoming, recent] = await Promise.all([mapRes(nextRes), mapRes(lastRes)]);
+  const fetchRecentForComp = async (comp: Competition): Promise<Fixture[]> => {
+    const url = `${API_BASE}/competitions/${comp.code}/matches?season=${season}&status=FINISHED`;
+    const res = await fetch(url, {
+      headers: { 'X-Auth-Token': apiKey },
+      next: { revalidate: 21600 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json() as { matches: RawMatch[] };
+    return (data.matches ?? [])
+      .filter((m) => m.homeTeam.id === teamApiId || m.awayTeam.id === teamApiId)
+      .slice(-limit)
+      .map((m) => mapMatch(m, comp));
+  };
+
+  const [upcomingAll, recentAll] = await Promise.all([
+    Promise.all(COMPETITIONS.map(fetchForComp)),
+    Promise.all(COMPETITIONS.map(fetchRecentForComp)),
+  ]);
+
+  const upcoming = upcomingAll.flat().slice(0, limit);
+  const recent = recentAll.flat().slice(-limit);
   return { upcoming, recent };
 }
